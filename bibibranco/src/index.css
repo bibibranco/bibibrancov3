@@ -50,3 +50,9 @@ body{
 	background-color: #0055D4;
 	margin: 48px 80px;
 }
+
+.section {
+	color: #DCEAFF;
+	font-size: 32px;
+	line-height: 40px;
+}

@@ -1,0 +1,43 @@
+.containerGetInTouch {
+display: flex;
+width: 400px;
+padding: 24px;
+flex-direction: column;
+align-items: flex-end;
+gap: 32px;
+background-color: #DCEAFF;
+font-family: 'Syne';
+}
+
+.textDivider {
+display: flex;
+height: 2px;
+align-self: stretch;
+background-color: #0055D4;
+gap: 4px;
+}
+
+.linkFooter {
+    gap: 16px;
+    display: flex;
+    align-self: stretch;
+    flex-direction: column;
+}
+
+p {
+color: #0055D4;
+font-weight: 400 !important;
+line-height: 24px !important;
+}
+
+a {
+    display: flex !important;
+    color: #0055D4;
+    font-weight: 700 !important;
+    line-height: 24px;
+    text-decoration-line: underline;
+    gap: 8px;
+    align-items: center;
+
+}
+
