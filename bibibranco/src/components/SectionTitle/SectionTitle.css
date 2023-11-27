@@ -1,0 +1,30 @@
+.default-title{
+    font-family: Syne;
+    font-size: 32px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 40px !important;
+    color: #DCEAFF !important;
+}
+
+.primary-title{
+    font-family: Syne;
+    font-size: 32px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 40px !important;
+    color: #DCEAFF !important;
+    border-top: 2px solid #DCEAFF;
+    display: inline-block;
+}
+
+.secondary-title{
+    border-top: 1px solid #0055D4;
+    font-family: Syne;
+    font-size: 32px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 40px !important;
+    color: #DCEAFF !important;
+    border-top: 2px solid #0055D4;
+}
