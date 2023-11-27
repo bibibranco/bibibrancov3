@@ -1,0 +1,19 @@
+h1{
+    font-family: 'Syne', sans-serif !important;
+    font-size: 80px !important;
+}
+.container-main-text{
+    align-items: center;
+    color: #DCEAFF;
+    display: flex;
+    height: 60vh;
+
+}
+.container-main-text__div{
+    border-bottom: 2px solid #DCEAFF;
+    padding-bottom: 48px;
+}
+.container-main-text__text{
+    margin-right: 600px;
+
+}
