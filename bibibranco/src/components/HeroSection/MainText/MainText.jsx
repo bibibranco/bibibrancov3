@@ -6,7 +6,7 @@ function MainText() {
     <>
       <div className='container-main-text'>
         <div className='container-main-text__div'>
-          <h1 className='container-main-text__text'>Hey there! I'm Bibi Branco and I</h1>
+          <h1 className='container-main-text__text'>Hey there! I'm Bibi <br/> Branco and I</h1>
         </div>
       </div>
     </>
