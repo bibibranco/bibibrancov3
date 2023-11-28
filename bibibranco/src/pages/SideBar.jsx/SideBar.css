@@ -1,0 +1,44 @@
+.sideBar-container{
+    display: flex;
+    color: #0055D4 !important;
+    font-family: 'Syne', sans-serif !important;
+    border-right: 2px solid #0055D4;
+    flex-direction: column;
+    max-width: 300px;
+    text-align: right;
+    height: 100%;
+    justify-content: space-between;
+    padding-right: 24px;
+}
+.sideBar-container__title{
+    text-decoration-line: underline !important;
+    color: #0055D4 !important;
+    font-family: Syne;
+    font-size: 24px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 32px !important;
+    padding-top: 8px;
+    padding-bottom: 16px;
+}
+.sideBar-container__txt{
+    font-family: PT Mono !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+}
+
+.backHomepage{
+    text-align: right;
+    color: #0055D4 !important;
+    font-family: 'Syne', sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 32px !important;
+    text-decoration-line: underline !important;
+    display: flex !important;
+    justify-content: flex-end;
+    cursor: pointer;
+}
