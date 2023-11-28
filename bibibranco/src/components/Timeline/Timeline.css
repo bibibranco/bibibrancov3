@@ -1,0 +1,35 @@
+.container-timeline-wrapper{
+    margin-top: 80px;
+    margin-bottom: 80px;
+    
+}
+.container-timeline-wrapper__text{
+    text-align: center;
+}
+.container-inner-timeline{
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-timeline-wrapper__icon_wrapper{
+    margin-top: 16px;
+    text-align: center;
+    color: #DCEAFF !important;
+    font-family: 'Syne', sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    .container-timeline-wrapper__icon_wrapper__txt{
+        display: block;
+    }
+    @media (max-width: 450px) {
+        text-align: left;
+        margin-left: -32px;
+    }
+
+}
+.container-timeline-wrapper__icon-timeline{
+    margin:auto;
+}

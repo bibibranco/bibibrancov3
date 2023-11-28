@@ -1,0 +1,40 @@
+.outer-container-timeline{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 4fr 1fr 4fr;
+    margin-top: 8px;
+    @media (max-width: 450px) {
+        grid-template-columns: 1fr 1fr 4fr;
+    }
+}
+.container-timeline{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.icon-timeline{
+    color: #FFF;
+    height: 32px;
+    width: 32px;
+    margin-bottom: 14px;
+
+}
+.stroke-timeline{
+    width: 2px;
+    height: 238px;
+    background-color: #FFF;
+}
+.sideClassTimeline_1{
+    visibility: hidden;
+    @media (max-width: 450px) {
+        visibility: visible;
+    }
+}
+.toggle_visibility{
+    @media (max-width: 450px) {
+        margin-left: -300px;
+        visibility: hidden;
+    }
+}
+
+

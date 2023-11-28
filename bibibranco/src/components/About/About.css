@@ -1,6 +1,8 @@
 .containerAboutMe {
-gap: 8px;
-font-family: 'Syne' !important;
+    gap: 8px;
+    font-family: 'Syne' !important;
+    text-align: center;
+
 }
 
 .contentAboutMe {
