@@ -1,0 +1,49 @@
+.containerAboutMe {
+gap: 8px;
+font-family: 'Syne' !important;
+}
+
+.contentAboutMe {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+
+.contentAboutMe img {
+    max-width: 336px;
+}
+
+.contentAboutMe h1 {
+font-size: 24px !important;
+font-style: normal;
+font-weight: 700 !important;
+line-height: 24px;
+}
+
+.sectionAboutMe {
+    font-size: 24px;
+    font-family: 'Syne' !important;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: left;
+gap: 32px;
+flex: 1 0 0;
+align-self: stretch;
+}
+
+li {
+    color: #DCEAFF;
+    display: flex;
+    justify-content: space-between;
+   list-style-type: none;
+   flex-wrap: wrap;
+   gap: 16px;
+}
+

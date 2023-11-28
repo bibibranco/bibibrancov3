@@ -1,6 +1,6 @@
 .containerGetInTouch {
 display: flex;
-width: 400px;
+max-width: 400px;
 padding: 24px;
 flex-direction: column;
 align-items: flex-end;
@@ -41,3 +41,8 @@ a {
 
 }
 
+
+.wrapGetInTouch {
+    display: flex;
+    justify-content: center;
+}

@@ -8,6 +8,8 @@ function Contact() {
 
   return (
     <>
+
+    <div className='wrapGetInTouch'>
     <div className='containerGetInTouch'>
 
     <SectionTitle type="secondary" text="get in touch">
@@ -17,10 +19,11 @@ function Contact() {
 
       <div className='linkFooter'>
         <a href='https://www.linkedin.com/in/bibibranco/' target='_blank'>linkedin<ArrowSquareOut size={24}/></a> 
-        <a href='mailto: oi@bibibran.co' target='_blank'>oi@bibibran.co<At size={24} /> </a>
+        <a href='mailto: oi@bibibran.co' target='_blank'>oi@bibibran.co<At size={24}/> </a>
 
       </div>
 
+    </div>
     </div>
     </>
   )
