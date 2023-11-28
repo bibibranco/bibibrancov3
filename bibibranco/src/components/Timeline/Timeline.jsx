@@ -3,6 +3,7 @@ import SectionTitle from '../SectionTitle/SectionTitle'
 import './Timeline.css' 
 import starIcon from '../../assets/star.svg'
 import TimelineCard from './TimelineCard/TimelineCard'
+import { Link } from 'react-router-dom';
 
 function Timeline() {
 
@@ -13,8 +14,12 @@ function Timeline() {
         <SectionTitle  text="count me in for"></SectionTitle>
       </div>
       <div className='container-inner-timeline'>
-        <TimelineCard imgUrl="/img01.jpg" title="crafting" description="lorem ipsum dolor sit amer" type="right" />
-        <TimelineCard imgUrl="/img01.jpg" title="interface" description="lorem ipsum dolor sit amet" type="left" />
+        <Link to="/project/1">
+          <TimelineCard imgUrl="/img01.jpg" title="product design" description="lorem ipsum dolor sit amer" type="right" />
+        </Link>
+        <Link to="/project/2">
+          <TimelineCard imgUrl="/img01.jpg" title="crafting" description="lorem ipsum dolor sit amet" type="left" />
+        </Link>
         <TimelineCard imgUrl="/img01.jpg" title="interface" description="lorem ipsum dolor sit amet" type="right" />
         <TimelineCard imgUrl="/img01.jpg" title="interface" description="lorem ipsum dolor sit amet" type="left" />
       </div>
