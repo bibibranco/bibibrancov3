@@ -28,6 +28,10 @@
         text-align: left;
         margin-left: -32px;
     }
+    @media (max-width: 375px) {
+        text-align: left;
+        margin-left: -56px;
+    }
 
 }
 .container-timeline-wrapper__icon-timeline{
