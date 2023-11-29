@@ -12,7 +12,17 @@ h1{
 .container-main-text__div{
     border-bottom: 2px solid #DCEAFF;
     padding-bottom: 48px;
+    width: 100%;
 }
 .container-main-text__anim{
     background: rgba(220, 234, 255, 0.10);
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 56px !important;
+        line-height: 64px !important;
+    }
+    
+
 }

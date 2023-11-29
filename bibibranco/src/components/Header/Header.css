@@ -1,3 +1,14 @@
 .container-header{
     margin-bottom: 64px;
 }
+
+@media (max-width: 480px) {
+    .container-header{
+    height: 40px;
+    }
+
+    img {
+    height: 32px;
+    }
+    
+}

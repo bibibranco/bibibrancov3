@@ -20,7 +20,7 @@ const MainText = () => {
     <>
       <div className='container-main-text'>
         <div className='container-main-text__div'>
-          <h1 className='container-main-text__text'>Hey there! I'm Bibi <br/> Branco and I 
+          <h1 className='container-main-text__text'>Hey there! I'm Bibi Branco  <br/> and I&nbsp;
             <motion.span  className='container-main-text__anim'
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}

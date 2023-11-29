@@ -12,17 +12,30 @@
     gap: 32px;
     align-self: stretch;
     flex-wrap: wrap;
+
+    @media (max-width: 450px) {
+    flex-direction: column;
+    gap: 0px;
+    }
 }
 
 .contentAboutMe img {
     max-width: 336px;
+    height: auto;
+
+    @media (max-width: 450px) {
+    max-width: 50%;
+    padding-top: 16px;
+}
 }
 
 .contentAboutMe h1 {
 font-size: 24px !important;
 font-style: normal;
 font-weight: 700 !important;
-line-height: 24px;
+line-height: 24px !important;
+@media (max-width: 450px) {
+    padding-top: 16px;}
 }
 
 .sectionAboutMe {
@@ -38,14 +51,30 @@ align-items: left;
 gap: 32px;
 flex: 1 0 0;
 align-self: stretch;
+@media (max-width: 450px) {
+
+    gap: 16px;
+    }
+}
+
+ul {
+    color: #DCEAFF;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+    @media (max-width: 450px) {
+        flex-direction: column;
+        gap: 16px;
+        }
 }
 
 li {
-    color: #DCEAFF;
-    display: flex;
-    justify-content: space-between;
-   list-style-type: none;
-   flex-wrap: wrap;
-   gap: 16px;
+    list-style-type: none;
+    max-width: calc(33.33% - 32px);
+    align-self: stretch;
+    width: -webkit-fill-available;
+    @media (max-width: 450px) {
+        max-width: 100%;
+        }
 }
-

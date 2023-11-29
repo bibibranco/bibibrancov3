@@ -51,8 +51,16 @@ body{
 	margin: 48px 80px;
 }
 
+
 .section {
 	color: #DCEAFF;
 	font-size: 32px;
 	line-height: 40px;
+}
+
+@media (max-width: 480px) {
+    body{
+    margin: 40px 24px;
+    }
+    
 }
