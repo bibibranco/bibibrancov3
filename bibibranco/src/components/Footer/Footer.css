@@ -1,7 +1,7 @@
 pre {
     font-family: 'Syne' !important;
     color: #DCEAFF;
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 pre a {
@@ -13,5 +13,5 @@ pre a {
     display: flex;
     margin-top: 40px;
     justify-content: left;
-    line-height: 24px;
+    line-height: 16px;
 }

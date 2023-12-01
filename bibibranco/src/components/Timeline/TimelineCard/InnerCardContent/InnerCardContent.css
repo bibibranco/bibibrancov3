@@ -29,6 +29,9 @@
     background-position: center;
     width: 400px;
     height: 200px;
+    @media (max-width: 450px) {
+        width:100%;
+    }
 }
 
 .inner-card-content-container__secondary{

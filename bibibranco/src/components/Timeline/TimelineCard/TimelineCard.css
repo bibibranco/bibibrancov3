@@ -4,7 +4,7 @@
     grid-template-columns: 4fr 1fr 4fr;
     margin-top: 8px;
     @media (max-width: 450px) {
-        grid-template-columns: 24px 1fr 4fr;
+        grid-template-columns: 0px 32px 4fr;
         /* see if thats actually necessary later */
         max-width: 450px;
     }
