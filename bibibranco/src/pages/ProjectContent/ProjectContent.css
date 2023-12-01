@@ -3,6 +3,11 @@
     padding-left: 16px;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 450px) {
+        padding-left: 0px;
+        
+      }
 }
 .project-content__img{
     background-color: red;

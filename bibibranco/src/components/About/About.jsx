@@ -34,7 +34,7 @@ function About() {
 
         <ul>
 
-          <li><Experience text1='Graphic Design Degree' text2='2017 – 2022' text3='bachalor’s degree @ Universidade Federal de Pelotas'></Experience></li>
+          <li><Experience text1='Graphic Design' text2='2017 – 2022' text3='bachalor’s degree @ Universidade Federal de Pelotas'></Experience></li>
           <li><Experience text1='ITP Camp' text2='june 2023' text3='NYU summer program'></Experience></li>
           <li><Experience text1='Programming For All' text2='2020' text3='@Le Wagon'></Experience></li>
 

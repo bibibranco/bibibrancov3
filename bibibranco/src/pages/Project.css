@@ -3,6 +3,11 @@
 }
 .project-container-wrapper{
     margin: 40px 80px;
+
+    @media (max-width: 450px) {
+      margin: 0px 0px;
+      
+    }
 }
 .project-header-container{
     background-color: #0055D4;
@@ -13,6 +18,16 @@
     height: 80vh;
     display: flex;
     padding: 40px;
+
+    @media (max-width: 450px) {
+      flex-direction: column;
+      height: fit-content;
+      width: auto;
+      padding: 16px;
+      gap: 24px;
+      
+    }
+    
 }
 .project-body-container__content{
     display: flex;
@@ -20,6 +35,12 @@
     overflow: scroll;
     overflow-x: hidden;
     padding-right: 24px;
+
+    @media (max-width: 450px) {
+      overflow: hidden;
+      padding-right: 0px;
+      
+    }
 }
 
 ::-webkit-scrollbar {

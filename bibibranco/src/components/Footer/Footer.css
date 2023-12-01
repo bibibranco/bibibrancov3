@@ -1,0 +1,17 @@
+pre {
+    font-family: 'Syne' !important;
+    color: #DCEAFF;
+    font-size: 12px;
+}
+
+pre a {
+    color: #DCEAFF;
+    text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    margin-top: 40px;
+    justify-content: left;
+    line-height: 24px;
+}
