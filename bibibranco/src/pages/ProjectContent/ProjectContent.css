@@ -11,18 +11,18 @@
 }
 .project-content__img{
     width: 100%;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
 }
 
 .project-content__img-desc{
-    text-align: right;
-    font-family: 'PT Mono', monospace !important;
-    font-size: 12px !important;
-    font-style: normal !important;
+    text-align: left;
+    font-family: 'Syne', sans-serif !important;
+    font-size: 32px !important;
     font-weight: 400 !important;
-    line-height: 16px !important;
-    padding-top: 8px;
+    line-height: 48px !important;
+    padding-top: 48px !important;
 }
 
 .project-content__text{
