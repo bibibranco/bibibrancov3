@@ -1,17 +1,17 @@
-pre {
-    font-family: 'Syne' !important;
-    color: #DCEAFF;
-    font-size: 12px !important;
-}
 
-pre a {
+.footer a {
     color: #DCEAFF;
     text-decoration: underline;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .footer {
     display: flex;
-    margin-top: 40px;
-    justify-content: left;
+    margin-top: 80px;
+    justify-content: center;
     line-height: 16px;
+    font-family: 'Syne' !important;
+    color: #DCEAFF;
+    font-size: 12px !important;
 }
