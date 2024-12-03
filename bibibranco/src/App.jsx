@@ -5,7 +5,8 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import HeroSection from './components/HeroSection/HeroSection'
 import Timeline from './components/Timeline/Timeline'
-
+import Projects from './components/Latest Projects/Project/Projects'
+import ProjectSection from './components/Latest Projects/ProjectSection'
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <div>
         <Header></Header>
         <HeroSection></HeroSection>
+        <ProjectSection></ProjectSection>
         <Timeline></Timeline>
         <About></About>
         <Contact></Contact>
