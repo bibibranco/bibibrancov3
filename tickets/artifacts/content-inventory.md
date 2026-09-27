@@ -111,6 +111,9 @@ Source for PORT-303 `profile.ts` and PORT-008 copy.
 - AI Figma plugin that generates SQL (Itaú internal tool)
 - momoGood platform (employee giving)
 - Tatango AI messaging workflows
+- **momoProto**: momoGood's prototype hub, with clickable React prototypes under one app and a shared design-system contract that every prototype has to follow (checked by an automated `ds:check` gate). Shows prototyping in code at team scale. Started May 2026.
+- **Product image generation tools**: _Bibi to add a one-line description, the tools used, and the outcome._
+- **momoGood design system**: tokens, primitives and type ramp shared by the platform and the prototypes. _Bibi to confirm scope and ownership._
 
 **Positioning shift for PORT-002/008:** the old site says "UI/UX + crafting". The new material points to AI-native product design and prototyping in code. The hero lines and bio should reflect that.
 
@@ -179,7 +182,7 @@ Sizes are the original files. Anything over about 200 KB needs optimizing (PORT-
 - LP3 / C3: the Medium and LinkedIn links still work
 
 **Decisions for PORT-003/004:**
-- Which §7a work becomes case studies (NDA check)
+- Which §7a work becomes case studies (NDA check). Candidates: 5 from roles + momoProto, image generation tools, design system. Likely too many for launch, so pick 3–4 flagship case studies and list the rest as short entries on `/work`
 - T5: where "sharing knowledge" goes
 - P1.5: keep "other projects" or not
 - Low-res timeline thumbnails
