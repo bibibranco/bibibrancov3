@@ -20,9 +20,9 @@ There is no CI today; the repo is `bibibranco/bibibrancov3` on GitHub.
 - Later extended with tests (PORT-505).
 
 ## Acceptance criteria
-- [ ] Workflow runs on a test PR and shows all steps green.
+- [x] Workflow runs on a test PR and shows all steps green. _(PR #6)_
 - [ ] A deliberate type error makes the workflow fail.
-- [ ] Runtime under 3 minutes with caching.
+- [x] Runtime under 3 minutes with caching. _(21s)_
 
 ## Notes / links
 - Implementation notes:
