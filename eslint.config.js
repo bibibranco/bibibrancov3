@@ -23,8 +23,9 @@ export default defineConfig([
     },
   },
   {
-    // Route files export `Route` next to their components; the router plugin handles their HMR.
-    files: ['src/routes/**/*.tsx'],
+    // Route files export `Route` next to their components (the router plugin handles their HMR);
+    // shadcn components export their cva variants.
+    files: ['src/routes/**/*.tsx', 'src/components/ui/**/*.tsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
   prettier,
