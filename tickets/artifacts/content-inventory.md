@@ -50,7 +50,7 @@ Paths are relative to `bibibranco/src/` unless noted.
 | # | Location | Current value | Status | Notes |
 |---|---|---|---|---|
 | T1 | `components/Timeline/Timeline.jsx` | Section title "count me in for" | decide | Nice phrase; keep if the section survives PORT-003/005 |
-| T2 | same | **product design** — "I've been working on end-to-end UI/UX projects for the last 5 years" → `/project/1` | verify | "5 years" is stale (started 2018 per About → 8+ years) |
+| T2 | same | **product design** — "I've been working on end-to-end UI/UX projects for the last 5 years" → `/project/1` | rewrite | Use "8+ years of experience" (confirmed) |
 | T3 | same | **crafting** — "playing around with woodworking, glass cutting and circuits since I was a child" → `/project/2` | keep | |
 | T4 | same | **data viz** — "creating spreadsheets and turning the collected data into visual assets is one of my passions" → `/project/3` | keep | Same sentence is reused as the data viz case-study description (P3.2) |
 | T5 | same | **sharing knowledge** — "talking about my passions and curiosities with other people keeps me moving" (no link) | decide | No destination. Link to talks/workshops, or keep as text? |
@@ -61,7 +61,7 @@ Paths are relative to `bibibranco/src/` unless noted.
 | # | Project | Current value | Status | Notes |
 |---|---|---|---|---|
 | P1.1 | 1 · product design | Title "product design" | decide | Bundles 3 projects; split per PORT-003 |
-| P1.2 | same | Description: "I’ve been working with end-to-end user experience design for the last five years, creating and collaborating with global companies such as Itau Unibanco, Melhor Envio, and AEDIT. …" | rewrite | "five years" stale; "Itau" → "Itaú"; add momoGood to the company list |
+| P1.2 | same | Description: "I’ve been working with end-to-end user experience design for the last five years, creating and collaborating with global companies such as Itau Unibanco, Melhor Envio, and AEDIT. …" | rewrite | "five years" → "8+ years" (confirmed); "Itau" → "Itaú"; add momoGood to the company list |
 | P1.3 | same · **AEDIT** | "Being the sole designer leading a complete= application redesign, my responsbilities ranged from …" | rewrite | Typos: "complete=", "responsbilities". Becomes case study `aedit` |
 | P1.4 | same · **Thomé** | "Covid-19 affected the way kids access education … final project for my Design undergrad …" | keep | Becomes case study `thome` |
 | P1.5 | same · **other projects** | "I have also designed experiences for real life applications, experimental workshops, …" | decide | Generic; drop or fold into About |
@@ -177,7 +177,7 @@ Sizes are the original files. Anything over about 200 KB needs optimizing (PORT-
 
 **Facts for Bibi to confirm:**
 - ~~A3: current role and title at Itaú~~ Done: left Dec 2025, now at momoGood (§7a)
-- T2 / P1.2: how to state experience. Suggestion: "8+ years in design" (since Agência Ursa, 2018) or "6+ years in product design" (since Melhor Envio, 2020)
+- ~~T2 / P1.2: how to state experience~~ Done: **"8+ years of experience"** (since Agência Ursa, 2018)
 - A10: projects or talks since 2023, beyond the roles in §7a
 - LP3 / C3: the Medium and LinkedIn links still work
 
