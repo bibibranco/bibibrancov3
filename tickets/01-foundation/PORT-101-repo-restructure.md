@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | — |
-| Status | todo |
+| Status | review (blocked on the Vercel root-directory change before merge) |
 
 ## User story
 As the **developer**, I want the new app at the repo root with the old one parked in `legacy/` so that I can build fresh while still referencing the old code and content.
@@ -22,9 +22,9 @@ Current root: `bibibranco/` (the actual app), plus stray `package-lock.json` (em
 - Short note at top of `legacy/README.md`: "Reference only — deleted in PORT-506."
 
 ## Acceptance criteria
-- [ ] `legacy/` contains the old app and still runs with `npm i && npm run dev` inside it.
-- [ ] Repo root has no leftover files from the old layout.
-- [ ] Done in its own PR/commit so history is easy to follow.
+- [x] `legacy/` contains the old app and still runs with `npm i && npm run dev` inside it.
+- [x] Repo root has no leftover files from the old layout.
+- [x] Done in its own PR/commit so history is easy to follow.
 
 ## Out of scope
 - Scaffolding the new app (PORT-102).
