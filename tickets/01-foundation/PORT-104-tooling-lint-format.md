@@ -22,7 +22,7 @@ Legacy uses ESLint 8 legacy config (`.eslintrc.cjs`) and disables `react/prop-ty
 - Editor settings (`.vscode/settings.json` format on save, recommended extensions).
 
 ## Acceptance criteria
-- [ ] `npm run lint`, `npm run typecheck` and `npm run format:check` pass on a clean checkout.
+- [ ] `pnpm lint`, `pnpm typecheck` and `pnpm format:check` pass on a clean checkout.
 - [ ] Generated files (route tree, content-collections output) are ignored by lint/format.
 - [ ] Tailwind classes are auto-sorted on save.
 

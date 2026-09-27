@@ -13,7 +13,7 @@
 As **someone following an old link**, I want to land on the right new page instead of an error so that shared links keep working.
 
 ## Context
-Old URLs `/project/1`, `/project/2`, `/project/3` may be shared or indexed. The legacy app had no 404.
+Old URLs `/project/1`, `/project/2`, `/project/3` may be shared or indexed. The legacy app had no 404. Found on 2026-09-27: loading `https://www.bibibran.co/project/1` directly already returns a Vercel 404, because the legacy SPA has no rewrite. Old deep links have been broken on direct load all along; they only work when clicked from the home page.
 
 ## Scope
 - 404 page (design from PORT-007) linking to home and `/work`.

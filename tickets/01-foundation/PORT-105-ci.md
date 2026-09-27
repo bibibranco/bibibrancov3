@@ -16,7 +16,7 @@ As the **developer**, I want every PR checked automatically so that broken build
 There is no CI today; the repo is `bibibranco/bibibrancov3` on GitHub.
 
 ## Scope
-- `.github/workflows/ci.yml` on `pull_request` and push to `main`: install (npm ci, cached), `typecheck`, `lint`, `format:check`, `build`.
+- `.github/workflows/ci.yml` on `pull_request` and push to `main`: install (`pnpm install --frozen-lockfile`, cached), `typecheck`, `lint`, `format:check`, `build`.
 - Later extended with tests (PORT-505).
 
 ## Acceptance criteria
