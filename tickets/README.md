@@ -104,7 +104,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 
 | Ticket | Title | Type | Priority | Est. | Depends on | Status |
 |---|---|---|---|---|---|---|
-| [PORT-001](00-discovery-design/PORT-001-content-audit.md) | Content audit & inventory | content | P0 | S | — | todo |
+| [PORT-001](00-discovery-design/PORT-001-content-audit.md) | Content audit & inventory | content | P0 | S | — | review |
 | [PORT-002](00-discovery-design/PORT-002-goals-audience-metrics.md) | Goals, audience & success metrics | design | P0 | S | — | todo |
 | [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | todo |
 | [PORT-004](00-discovery-design/PORT-004-visual-direction.md) | Visual direction & moodboard | design | P0 | M | PORT-002 | todo |

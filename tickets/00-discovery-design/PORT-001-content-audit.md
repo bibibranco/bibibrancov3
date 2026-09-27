@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | — |
-| Status | todo |
+| Status | review |
 
 ## User story
 As **Bibi (site owner)**, I want a full inventory of what the current site says and shows so that I can decide what to keep, rewrite or drop before anything is redesigned.
@@ -31,13 +31,14 @@ Known issues already spotted: "Itaú Unibanco 2022 – present" and "last 5 year
 - Flag every external link and check it still resolves.
 
 ## Acceptance criteria
-- [ ] Every user-visible string from the files above is in the inventory.
-- [ ] Every image in `public/` and `src/assets/` is listed with status and intended use (or marked unused, e.g. `react.svg`, `vite.svg`, `shape.svg`).
-- [ ] Every external link is checked and marked live/dead.
-- [ ] Outdated facts and typos are flagged for PORT-008.
+- [x] Every user-visible string from the files above is in the inventory.
+- [x] Every image in `public/` and `src/assets/` is listed with status and intended use (or marked unused, e.g. `react.svg`, `vite.svg`, `shape.svg`).
+- [ ] Every external link is checked and marked live/dead. _(Medium and LinkedIn block automated checks; Bibi to open them manually.)_
+- [x] Outdated facts and typos are flagged for PORT-008.
 
 ## Out of scope
 - Rewriting copy (PORT-008).
 
 ## Notes / links
+- Inventory: [`tickets/artifacts/content-inventory.md`](../artifacts/content-inventory.md)
 - This inventory is the checklist used at launch (PORT-506) to confirm nothing was lost.
