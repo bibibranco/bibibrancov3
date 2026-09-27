@@ -61,7 +61,7 @@ Paths are relative to `bibibranco/src/` unless noted.
 | # | Project | Current value | Status | Notes |
 |---|---|---|---|---|
 | P1.1 | 1 · product design | Title "product design" | decide | Bundles 3 projects; split per PORT-003 |
-| P1.2 | same | Description: "I’ve been working with end-to-end user experience design for the last five years, creating and collaborating with global companies such as Itau Unibanco, Melhor Envio, and AEDIT. …" | verify | "five years" stale; "Itau" → "Itaú"; check the company list is current |
+| P1.2 | same | Description: "I’ve been working with end-to-end user experience design for the last five years, creating and collaborating with global companies such as Itau Unibanco, Melhor Envio, and AEDIT. …" | rewrite | "five years" stale; "Itau" → "Itaú"; add momoGood to the company list |
 | P1.3 | same · **AEDIT** | "Being the sole designer leading a complete= application redesign, my responsbilities ranged from …" | rewrite | Typos: "complete=", "responsbilities". Becomes case study `aedit` |
 | P1.4 | same · **Thomé** | "Covid-19 affected the way kids access education … final project for my Design undergrad …" | keep | Becomes case study `thome` |
 | P1.5 | same · **other projects** | "I have also designed experiences for real life applications, experimental workshops, …" | decide | Generic; drop or fold into About |
@@ -78,14 +78,41 @@ Paths are relative to `bibibranco/src/` unless noted.
 |---|---|---|---|---|
 | A1 | `components/About/About.jsx` | Section title "about me" | keep | |
 | A2 | same | Portrait `assets/me.png`, no alt | decide | New photo? Needs alt text either way |
-| A3 | same | Itaú Unibanco · 2022 – present · mid-level product designer | verify | Still there? Still mid-level? |
+| A3 | same | Itaú Unibanco · 2022 – present · mid-level product designer | rewrite | **Confirmed:** Product Designer, Jun 2022 – Dec 2025, São Paulo (remote). See §7a |
 | A4 | same | Melhor Envio · 2020 – 2022 · junior/mid-level product designer | keep | |
 | A5 | same | Agência Ursa · 2018 – 2020 · designer | keep | |
 | A6 | same | Graphic Design · 2017 – 2022 · "bachalor’s degree @ Universidade Federal de Pelotas" | rewrite | Typo: "bachalor’s" → "bachelor’s" |
 | A7 | same | ITP Camp · june 2023 · NYU summer program | keep | |
 | A8 | same | Programming For All · 2020 · @Le Wagon | keep | |
 | A9 | same | Headings "professional experience", "education" are `h1`s | — | Structural fix in PORT-407 |
-| A10 | — | Anything since 2023 (new roles, projects, talks) is missing | verify | Bibi to list what to add |
+| A10 | — | Anything since 2023 (new roles, projects, talks) is missing | rewrite | **New role:** momoGood, Product Designer, Dec 2025 – present. See §7a. Still to add: projects or talks since 2023 |
+
+## 7a. Updated experience (from LinkedIn, 2026-09-27)
+
+Source for PORT-303 `profile.ts` and PORT-008 copy.
+
+**momoGood** · Product Designer · Full-time · Dec 2025 – present · United States (remote)
+- Designing and helping build the momoGood platform from the ground up: new ways for employees to discover nonprofits and contribute through donations, volunteering and workplace giving programs.
+- Working across the momoGood ecosystem, including Tatango, integrating AI into core messaging workflows to improve campaign creation, performance insights and decision-making.
+- Designing AI-powered experiences where intelligence is embedded in workflows, reducing manual analysis or prompt-based interaction.
+- Leading product discovery and UX strategy for new features, with product and engineering from early exploration to shipped functionality.
+- Prototyping concepts through design, code and experimentation to validate ideas faster.
+
+**Itaú Unibanco** · Product Designer · Full-time · Jun 2022 – Dec 2025 · São Paulo (remote)
+- Led the redesign of the credit card annuity experience: how customers understand, choose and manage fees and benefits in the app.
+- Designed the credit card upgrade/downgrade experience between card tiers, with clearer benefits and costs.
+- Contributed to strategy on unifying the credit card benefits ecosystem.
+- Worked on credit card experiences used by millions of customers, with PMs, engineers and data teams from discovery to delivery.
+- Built internal AI-powered Figma plugins that generate complex SQL queries, so designers and product teams get insights without data engineering support.
+
+**Possible new case studies** (decide in PORT-003; check what you're allowed to show under NDA):
+- Itaú credit card annuity redesign
+- Itaú card upgrade/downgrade flow
+- AI Figma plugin that generates SQL (Itaú internal tool)
+- momoGood platform (employee giving)
+- Tatango AI messaging workflows
+
+**Positioning shift for PORT-002/008:** the old site says "UI/UX + crafting". The new material points to AI-native product design and prototyping in code. The hero lines and bio should reflect that.
 
 ## 8. Contact
 
@@ -146,12 +173,13 @@ Sizes are the original files. Anything over about 200 KB needs optimizing (PORT-
 **Typos to fix:** "complete=", "responsbilities", "made piece" → "made peace", "bachalor’s" → "bachelor’s", "everyday" → "every day", "Itau" → "Itaú", "and I" → "and me".
 
 **Facts for Bibi to confirm:**
-- A3: current role and title at Itaú
-- T2 / P1.2: years of experience
-- A10: anything new since 2023
+- ~~A3: current role and title at Itaú~~ Done: left Dec 2025, now at momoGood (§7a)
+- T2 / P1.2: how to state experience. Suggestion: "8+ years in design" (since Agência Ursa, 2018) or "6+ years in product design" (since Melhor Envio, 2020)
+- A10: projects or talks since 2023, beyond the roles in §7a
 - LP3 / C3: the Medium and LinkedIn links still work
 
 **Decisions for PORT-003/004:**
+- Which §7a work becomes case studies (NDA check)
 - T5: where "sharing knowledge" goes
 - P1.5: keep "other projects" or not
 - Low-res timeline thumbnails
