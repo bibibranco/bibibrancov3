@@ -115,7 +115,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-101](01-foundation/PORT-101-repo-restructure.md) | Repo restructure | eng | P0 | S | — | review |
 | [PORT-102](01-foundation/PORT-102-scaffold-tanstack-start.md) | Scaffold TanStack Start | eng | P0 | M | PORT-101 | review |
 | [PORT-103](01-foundation/PORT-103-tailwind-shadcn-fonts.md) | Tailwind v4, shadcn & fonts | eng | P0 | S | PORT-102, PORT-004 | todo |
-| [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | todo |
+| [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | review |
 | [PORT-105](01-foundation/PORT-105-ci.md) | CI on pull requests | eng | P1 | S | PORT-104 | todo |
 | [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | todo |
 | [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | todo |

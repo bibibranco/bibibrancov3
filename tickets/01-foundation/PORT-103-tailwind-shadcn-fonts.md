@@ -20,11 +20,13 @@ Legacy: one CSS file per component + a CSS reset in `legacy/src/index.css`; Goog
 - `shadcn init` (base-ui flavour), `components.json`, `src/lib/utils.ts` with `cn()`.
 - Install the fonts chosen in PORT-004 via `@fontsource-variable/*` (self-hosted, no Google Fonts request).
 - `lucide-react` for icons (replaces Phosphor).
+- `prettier-plugin-tailwindcss` with `tailwindStylesheet` pointing at the app CSS (carried over from PORT-104).
 
 ## Acceptance criteria
 - [ ] A Tailwind utility class and a shadcn `Button` render correctly on the placeholder page.
 - [ ] Fonts load from the app bundle (no request to fonts.googleapis.com or unpkg in the Network tab).
 - [ ] `cn()` merges conflicting classes correctly.
+- [ ] Tailwind classes are auto-sorted by Prettier on save.
 
 ## Out of scope
 - Real tokens (PORT-201).
