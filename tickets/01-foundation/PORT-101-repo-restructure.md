@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | — |
-| Status | review (blocked on the Vercel root-directory change before merge) |
+| Status | review |
 
 ## User story
 As the **developer**, I want the new app at the repo root with the old one parked in `legacy/` so that I can build fresh while still referencing the old code and content.
@@ -30,4 +30,5 @@ Current root: `bibibranco/` (the actual app), plus stray `package-lock.json` (em
 - Scaffolding the new app (PORT-102).
 
 ## Notes / links
-- **Production risk:** the existing Vercel project most likely has its root directory set to `bibibranco/`. Before merging, change it to `legacy/` in the Vercel dashboard (or pause its Git deploys), or the next push to `main` breaks the live site.
+- ✅ 2026-09-27: the existing Vercel project's Root Directory is now `legacy`.
+- **Production risk (resolved):** the existing Vercel project most likely has its root directory set to `bibibranco/`. Before merging, change it to `legacy/` in the Vercel dashboard (or pause its Git deploys), or the next push to `main` breaks the live site.
