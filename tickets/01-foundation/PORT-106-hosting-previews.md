@@ -7,13 +7,13 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-102 |
-| Status | in progress (new Vercel project to be created in the dashboard) |
+| Status | done |
 
 ## User story
 As **Bibi**, I want every branch deployed to a preview URL so that I can review work on real devices and share it for feedback.
 
 ## Context
-Production `bibibran.co` is live on **Vercel** today, served by an existing Vercel project that builds the legacy app. DNS is managed at **Namecheap**. The repo has no `vercel.json`, so the old project's settings (root directory, framework preset) live in the Vercel dashboard only.
+Production `bibibran.co` is live on **Vercel** today, served by an existing Vercel project that builds the legacy app. The domain is registered at **Namecheap**; its DNS runs on Vercel's nameservers (`ns1/ns2.vercel-dns.com`). The repo has no `vercel.json`, so the old project's settings (root directory, framework preset) live in the Vercel dashboard only.
 
 ## Scope
 - Write down the existing Vercel project's name and settings (root directory, build command) in the Notes below.
@@ -22,16 +22,18 @@ Production `bibibran.co` is live on **Vercel** today, served by an existing Verc
 - Staging URL recorded in `tickets/README.md`.
 
 ## Acceptance criteria
-- [ ] Opening a PR produces a preview URL.
-- [ ] The preview serves prerendered HTML (view-source shows content).
-- [ ] The live site on `bibibran.co` is untouched until launch (still served by the old Vercel project).
-- [ ] The new project's `*.vercel.app` URL is recorded in `tickets/README.md`.
+- [x] Opening a PR produces a preview URL.
+- [x] The preview serves prerendered HTML (view-source shows content).
+- [x] The live site on `bibibran.co` is untouched until launch (still served by the old Vercel project).
+- [x] The new project's `*.vercel.app` URL is recorded in `tickets/README.md`.
 
 ## Out of scope
 - Domain cutover (PORT-506).
 
 ## Notes / links
 - Current host: Vercel. Existing project **`bibibrancov3`** (team `bibibrancos-projects`), root directory `legacy`, as shown by the Vercel bot on PR #7. It also builds a preview of the *legacy* app for every PR, so those preview links do not show the new app.
-- DNS provider: Namecheap. No DNS changes are needed in this ticket.
-- `vercel.json` at the repo root sets the new project's build: `pnpm build`, output `dist/client` (the prerendered static HTML), no framework preset, clean URLs. The old project reads its config from `legacy/`, so this file does not affect it.
-- Dashboard steps (needs Bibi's account): Add New → Project → import `bibibranco/bibibrancov3` → name e.g. `bibibranco-v4` → Root Directory `./` → Framework Preset "Other" (`vercel.json` overrides build settings) → Deploy. Do **not** add a domain.
+- DNS: registrar is Namecheap, but the nameservers are Vercel's, so records are managed in Vercel. No DNS changes are needed in this ticket.
+- `vercel.json` at the repo root sets the new project's build: `pnpm build`, output `dist/client` (the prerendered static HTML), no framework preset, clean URLs.
+- The root `vercel.json` **is** also applied to the old project, even with its root directory set to `legacy`: after #8 its builds failed (`pnpm install --frozen-lockfile` on an npm app). `legacy/vercel.json` (Vite, `npm ci`, `npm run build`, output `dist`) now pins the old project's build; verified on PR #10. Production was never affected, because a failed build doesn't replace the live deployment.
+- New project: **`bibibrancov3-legacy`** (despite the name, it builds the **v4** app at the repo root), production branch `main`, no custom domain. Staging URL: https://bibibrancov3-legacy.vercel.app. Deployment Protection is on for preview URLs (Vercel login required); the production `*.vercel.app` alias is public.
+- Verified on PR #10: both projects post a preview; the v4 preview serves prerendered HTML (`<h1>Bibi Branco</h1>` in the response), the legacy preview serves the old SPA; `www.bibibran.co` is still on `bibibrancov3`.
