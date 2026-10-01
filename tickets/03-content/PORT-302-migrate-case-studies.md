@@ -27,7 +27,7 @@ Legacy project content (see PORT-001 inventory):
 ## Acceptance criteria
 - [ ] Every legacy project is either migrated or explicitly dropped in PORT-001.
 - [ ] Every image has meaningful alt text (no "Project 1").
-- [ ] All MDX files pass schema validation in `npm run build`.
+- [ ] All MDX files pass schema validation in `pnpm build`.
 
 ## Out of scope
 - New photography.

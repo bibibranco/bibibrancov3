@@ -113,11 +113,11 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-007](00-discovery-design/PORT-007-hifi-designs-motion.md) | Hi-fi designs & motion spec | design | P0 | L | PORT-006, PORT-008 | todo |
 | [PORT-008](00-discovery-design/PORT-008-copy-refresh.md) | Copy refresh | content | P0 | M | PORT-001, PORT-002, PORT-003 | todo |
 | [PORT-101](01-foundation/PORT-101-repo-restructure.md) | Repo restructure | eng | P0 | S | — | review |
-| [PORT-102](01-foundation/PORT-102-scaffold-tanstack-start.md) | Scaffold TanStack Start | eng | P0 | M | PORT-101 | todo |
-| [PORT-103](01-foundation/PORT-103-tailwind-shadcn-fonts.md) | Tailwind v4, shadcn & fonts | eng | P0 | S | PORT-102, PORT-004 | todo |
-| [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | todo |
-| [PORT-105](01-foundation/PORT-105-ci.md) | CI on pull requests | eng | P1 | S | PORT-104 | todo |
-| [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | todo |
+| [PORT-102](01-foundation/PORT-102-scaffold-tanstack-start.md) | Scaffold TanStack Start | eng | P0 | M | PORT-101 | review |
+| [PORT-103](01-foundation/PORT-103-tailwind-shadcn-fonts.md) | Tailwind v4, shadcn & fonts | eng | P0 | S | PORT-102, PORT-004 | in progress |
+| [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | review |
+| [PORT-105](01-foundation/PORT-105-ci.md) | CI on pull requests | eng | P1 | S | PORT-104 | review |
+| [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | in progress |
 | [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | todo |
 | [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | todo |
 | [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | todo |

@@ -17,11 +17,11 @@ Legacy has no tests. The site is mostly static, so tests should be few and high-
 
 ## Scope
 - Vitest: content helpers (`getAdjacentProjects`, draft filtering, sort order), date formatting, `track()` helper.
-- Playwright (against `npm run build && preview`): every route returns 200 and has an `h1`; legacy redirects; 404; mobile menu opens/closes with keyboard; `/work?tag=` filter; axe check per route (with PORT-503).
+- Playwright (against `pnpm build && pnpm preview`): every route returns 200 and has an `h1`; legacy redirects; 404; mobile menu opens/closes with keyboard; `/work?tag=` filter; axe check per route (with PORT-503).
 - Add `test` and `test:e2e` scripts and run both in CI (extend PORT-105).
 
 ## Acceptance criteria
-- [ ] `npm test` and `npm run test:e2e` pass locally and in CI.
+- [ ] `pnpm test` and `pnpm test:e2e` pass locally and in CI.
 - [ ] Adding a new MDX project is automatically covered by the route smoke test (routes derived from content, not hardcoded).
 - [ ] CI stays under 6 minutes.
 

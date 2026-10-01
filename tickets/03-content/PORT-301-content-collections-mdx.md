@@ -23,7 +23,7 @@ Legacy content is a JS array (`projetos` in `legacy/src/pages/Project.jsx`) with
 - Helpers in `src/lib/content.ts`: `getAllProjects()`, `getFeaturedProjects()`, `getProjectBySlug()`, `getAdjacentProjects()`; drafts excluded in production.
 
 ## Acceptance criteria
-- [ ] A file with invalid frontmatter fails `npm run build` with a readable error.
+- [ ] A file with invalid frontmatter fails `pnpm build` with a readable error.
 - [ ] A sample MDX renders all custom blocks.
 - [ ] Helpers are fully typed from the schema (no `any`).
 - [ ] Drafts show in dev and are excluded from production build.
