@@ -20,7 +20,7 @@ The current site (`bibibranco/`, moving to `legacy/`) is a 2023 Vite + React 18 
 | Content | MDX via content-collections + zod schema | `content/work/*.mdx` |
 | Motion | `motion` | Reduced motion respected everywhere |
 | Quality | ESLint flat + Prettier, Vitest, Playwright + axe, GitHub Actions | |
-| Hosting | Vercel (new project; old one serves prod until launch) | Preview deploy per PR · staging: https://bibibrancov3-legacy.vercel.app · domain registered at Namecheap, DNS on Vercel nameservers |
+| Hosting | Vercel (new project; old one serves prod until launch) | Preview deploy per PR · staging: https://bibibranco-v4.vercel.app · domain registered at Namecheap, DNS on Vercel nameservers |
 | Analytics | GA4 `G-KR5JD1GYC2` (kept for data continuity) | |
 
 ## Milestones
