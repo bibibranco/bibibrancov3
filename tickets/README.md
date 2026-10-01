@@ -117,7 +117,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-103](01-foundation/PORT-103-tailwind-shadcn-fonts.md) | Tailwind v4, shadcn & fonts | eng | P0 | S | PORT-102, PORT-004 | in progress |
 | [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | review |
 | [PORT-105](01-foundation/PORT-105-ci.md) | CI on pull requests | eng | P1 | S | PORT-104 | review |
-| [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | todo |
+| [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | in progress |
 | [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | todo |
 | [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | todo |
 | [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | todo |

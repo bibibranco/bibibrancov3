@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-102 |
-| Status | todo |
+| Status | in progress (new Vercel project to be created in the dashboard) |
 
 ## User story
 As **Bibi**, I want every branch deployed to a preview URL so that I can review work on real devices and share it for feedback.
@@ -31,5 +31,7 @@ Production `bibibran.co` is live on **Vercel** today, served by an existing Verc
 - Domain cutover (PORT-506).
 
 ## Notes / links
-- Current host: Vercel (existing project: _name TBD_)
+- Current host: Vercel. Existing project **`bibibrancov3`** (team `bibibrancos-projects`), root directory `legacy`, as shown by the Vercel bot on PR #7. It also builds a preview of the *legacy* app for every PR, so those preview links do not show the new app.
 - DNS provider: Namecheap. No DNS changes are needed in this ticket.
+- `vercel.json` at the repo root sets the new project's build: `pnpm build`, output `dist/client` (the prerendered static HTML), no framework preset, clean URLs. The old project reads its config from `legacy/`, so this file does not affect it.
+- Dashboard steps (needs Bibi's account): Add New → Project → import `bibibranco/bibibrancov3` → name e.g. `bibibranco-v4` → Root Directory `./` → Framework Preset "Other" (`vercel.json` overrides build settings) → Deploy. Do **not** add a domain.
