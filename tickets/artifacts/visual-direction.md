@@ -40,10 +40,11 @@ WCAG ratios checked 2026-10-17. Hex values are starting points; PORT-006 turns t
 ## Type
 | Role | Face | Package | Notes |
 |---|---|---|---|
-| Display + body | **Syne** | `@fontsource-variable/syne` | Variable 400–800. Display at 700–800 with tight tracking; body at 400 |
+| Display | **Syne** | `@fontsource-variable/syne` | Variable 400–800. Headings only, at 700–800 with tight tracking. Bibi ruled it out for long body text (2026-10-17) |
+| Body | **Atkinson Hyperlegible Next** | `@fontsource-variable/atkinson-hyperlegible-next` | Variable 200–800. Chosen over Instrument Sans and Hanken Grotesk (moodboard) because it's built for legibility, which matters on saturated blue and supports the WCAG goal. Body at 400, ~17px, 1.6 line height |
 | Mono | **JetBrains Mono** | `@fontsource-variable/jetbrains-mono` | Labels, metadata, nav, specs, code. Replaces PT Mono, which has no variable build |
 
-Both are self-hosted through fontsource, so there's no Google Fonts request. This is the input for PORT-103.
+All three are self-hosted through fontsource, so there's no Google Fonts request. This is the input for PORT-103.
 
 ## Imagery, layout, motion
 - **Imagery:** duotone photos (blue + ice) for thumbnails and covers, so the old low-res assets and new screenshots look like one set. Case-study body images stay in full colour.
@@ -54,17 +55,16 @@ Both are self-hosted through fontsource, so there's no Google Fonts request. Thi
 ## Legacy elements
 | Element | Decision | Notes |
 |---|---|---|
-| Logo (`legacy/src/assets/logo.svg`) | **keep, redraw** | Same wordmark idea, redrawn to match Syne and turned into an accessible home link (H1) |
+| Logo (`legacy/src/assets/logo.svg`) | **keep as is** | The v3 file unchanged: "bibi" followed by the bar that covers "branco". Only fix: make it a home link with the accessible name "Bibi Branco" (H1) |
 | `#0055D4` | **keep** | Full-page background |
-| Syne | **keep** | Display and body, now self-hosted as a variable font |
+| Syne | **keep, display only** | Self-hosted as a variable font. Body text uses a separate sans |
 | PT Mono | **swap** | → JetBrains Mono |
 | Star motif | **keep** | Main motif in Star yellow: section markers, favourites, the hero |
 
 ## Mitigations for PORT-006 and PORT-007
 1. **Readability:** case-study body copy sits on a Deep reading column (13:1) with a ~65ch measure and 1.6 line height. Blue stays the frame around it.
-2. **Reskin risk:** the redrawn logo, new type scale, duotone imagery and motion need to look clearly new next to v3. Do a side-by-side check at PORT-007 sign-off.
+2. **Reskin risk:** with the logo, blue and Syne all kept, the new type scale, body face, duotone imagery and motion need to look clearly new next to v3. Do a side-by-side check at PORT-007 sign-off.
 3. **Seniority:** case-study summary blocks (role, team, timeline, outcome) stay calm. Mono metadata, no decoration.
 
 ## Open for PORT-006
-- Is Syne at 400 comfortable for long body text, or should body use a quieter sans? Test with a real case study before locking tokens.
 - Light theme: offer one or not?

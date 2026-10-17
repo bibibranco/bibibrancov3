@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Atkinson+Hyperlegible+Next:wght@200..800&family=Instrument+Sans:wght@400..700&family=Hanken+Grotesk:wght@300..700&display=swap">
 <style>
 /* Layout: a short page header, then three full-width specimen bands. Each band renders one direction in its own palette and type. */
 :root {
@@ -143,6 +143,7 @@ section.pick { padding-block: 56px 72px; }
   <p class="lede">Each band below is a working specimen of one direction, set in its real palette and typefaces. They answer the PORT-002 brief: a professional presence for design and engineering peers and for makers, where the build itself shows that Bibi designs and builds. Pick one; PORT-006 then turns it into tokens.</p>
   <nav class="legend" aria-label="Directions">
     <a href="#a">A · Blue, evolved</a>
+    <a href="#body">A · body face</a>
     <a href="#b">B · Lab notebook</a>
     <a href="#c">C · Workshop</a>
     <a href="#pick">Compare &amp; recommendation</a>
@@ -159,7 +160,7 @@ section.pick { padding-block: 56px 72px; }
     </div>
 
     <div class="specimen" role="img" aria-label="Direction A home page mock-up">
-      <div class="mock-nav"><span>bibi branco</span><ul><li>work</li><li>about</li><li>say hi</li></ul></div>
+      <div class="mock-nav"><svg width="132" height="24" viewBox="0 0 220 40" role="img" aria-label="Bibi Branco" style="fill:var(--a-fg)"><path d="M2 32.43V6.41498H6.955V16.01C8.435 14.1 10.545 13.125 12.765 13.125C17.56 13.125 21.11 16.87 21.11 23.03C21.11 29.19 17.52 32.895 12.765 32.895C10.505 32.895 8.435 31.88 6.955 30.01V32.43H2ZM11.205 28.49C14.09 28.49 16 26.305 16 23.03C16 19.755 14.09 17.53 11.205 17.53C9.605 17.53 7.775 18.465 6.955 19.715V26.385C7.775 27.595 9.605 28.49 11.205 28.49Z"/><path d="M24.345 8.59999C24.345 6.95999 25.71 5.67499 27.31 5.67499C28.91 5.67499 30.275 6.95999 30.275 8.59999C30.275 10.24 28.95 11.565 27.31 11.565C25.67 11.565 24.345 10.24 24.345 8.59999ZM24.855 32.43V13.595H29.81V32.435H24.855V32.43Z"/><path d="M34.72 32.43V6.41498H39.675V16.01C41.155 14.1 43.265 13.125 45.485 13.125C50.28 13.125 53.83 16.87 53.83 23.03C53.83 29.19 50.24 32.895 45.485 32.895C43.225 32.895 41.155 31.88 39.675 30.01V32.43H34.72ZM43.925 28.49C46.81 28.49 48.72 26.305 48.72 23.03C48.72 19.755 46.81 17.53 43.925 17.53C42.325 17.53 40.495 18.465 39.675 19.715V26.385C40.495 27.595 42.325 28.49 43.925 28.49Z"/><path d="M57.065 8.59999C57.065 6.95999 58.43 5.67499 60.03 5.67499C61.63 5.67499 62.995 6.95999 62.995 8.59999C62.995 10.24 61.67 11.565 60.03 11.565C58.39 11.565 57.065 10.24 57.065 8.59999ZM57.575 32.43V13.595H62.53V32.435H57.575V32.43Z"/><path d="M217.935 2H76.3V38.045H217.935V2Z"/></svg><ul><li>work</li><li>about</li><li>say hi</li></ul></div>
       <div class="mock-hero">
         <h3>I design products, <em>prototype</em> them in code <svg class="star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 7.25 21.56 0l-.34 9.18 8.85-1.93L24 14.07l8 4.3-8.97 1.26 3.41 8.51-7.66-4.88L16 32l-2.78-8.74-7.66 4.88 3.41-8.51L0 18.37l8-4.3-6.07-6.82 8.85 1.93L10.44 0z"/></svg> and build things with my hands.</h3>
         <p>product designer at momoGood · 8+ years · são paulo</p>
@@ -180,7 +181,7 @@ section.pick { padding-block: 56px 72px; }
       <div class="panel"><h4>Type</h4>
         <p><b style="font:700 20px Syne">Syne</b>: display (variable, 400–800)</p>
         <p><b style="font:500 15px 'JetBrains Mono'">JetBrains Mono</b>: body accents, labels, metadata. Replaces PT Mono, which has no variable build.</p>
-        <p>Body copy in Syne at 400. It works, but long case studies get tiring on saturated blue.</p>
+        <p><b style="font:400 16px 'Atkinson Hyperlegible Next'">Atkinson Hyperlegible Next</b>: body text. Syne is for display only.</p>
       </div>
       <div class="panel"><h4>Imagery · layout · motion</h4>
         <ul>
@@ -192,9 +193,9 @@ section.pick { padding-block: 56px 72px; }
       </div>
       <div class="panel"><h4>Legacy elements</h4>
         <div class="decisions">
-          <div><span>Logo</span><span>keep</span><span>Redrawn wordmark</span></div>
+          <div><span>Logo</span><span>keep</span><span>v3 file as is, “branco” covered</span></div>
           <div><span>#0055D4</span><span>keep</span><span>Full background</span></div>
-          <div><span>Syne</span><span>keep</span><span>Display and body</span></div>
+          <div><span>Syne</span><span>keep</span><span>Display only</span></div>
           <div><span>PT Mono</span><span>swap</span><span>JetBrains Mono</span></div>
           <div><span>Star</span><span>keep</span><span>Main motif</span></div>
         </div>
@@ -202,6 +203,28 @@ section.pick { padding-block: 56px 72px; }
     </div>
   </div>
 </section>
+
+<section class="dir" id="body" aria-labelledby="body-title" style="background:var(--a-deep);color:var(--a-fg)">
+  <div class="wrap">
+    <div class="dir-head">
+      <span class="tag" style="color:var(--a-pop);font-family:'JetBrains Mono',monospace">Direction A · body face</span>
+      <h2 id="body-title" style="font:700 clamp(28px,4vw,44px)/1.05 Syne,sans-serif;letter-spacing:-.02em">Syne for headings, a quieter sans for reading</h2>
+      <p style="color:var(--a-muted)">The same case-study paragraph under a Syne heading, in each candidate. The top half is on the Deep reading column; the strip below is on blue. All three are variable fontsource packages.</p>
+    </div>
+    <div class="grid">
+      <div class="panel bodyc" style="--f:'Atkinson Hyperlegible Next'"><h4>1 · Atkinson Hyperlegible Next · ★ chosen</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>Built for low-vision readers by the Braille Institute. Tells I/l/1 and 0/O apart clearly.</p></div></div>
+      <div class="panel bodyc" style="--f:'Instrument Sans'"><h4>2 · Instrument Sans</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>Slightly geometric, so it echoes Syne's shapes without fighting them. Has a width axis.</p></div></div>
+      <div class="panel bodyc" style="--f:'Hanken Grotesk'"><h4>3 · Hanken Grotesk</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>A neutral, warm grotesk. The safest choice: it disappears and lets Syne lead.</p></div></div>
+    </div>
+  </div>
+</section>
+<style>
+#body .panel h4 { color: var(--a-pop); font-family: "JetBrains Mono", monospace; }
+.bodyc .bc { padding: 18px; display: grid; gap: 10px; border: 1px solid #ffffff22; border-bottom: 0; border-radius: 6px 6px 0 0; }
+.bodyc .bc.blue { background: var(--a-bg); border-radius: 0 0 6px 6px; border-bottom: 1px solid #ffffff22; }
+.bodyc h5 { margin: 0; font: 700 22px/1.1 Syne, sans-serif; letter-spacing: -.01em; text-wrap: balance; }
+.bodyc p { margin: 0; font-family: var(--f), system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--a-fg); }
+</style>
 
 <!-- B -->
 <section class="dir" id="b" aria-labelledby="b-title">
