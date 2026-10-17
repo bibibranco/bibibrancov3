@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-401, PORT-003, PORT-106 |
-| Status | todo |
+| Status | in progress |
 
 ## User story
 As **someone following an old link**, I want to land on the right new page instead of an error so that shared links keep working.
@@ -24,6 +24,13 @@ Old URLs `/project/1`, `/project/2`, `/project/3` may be shared or indexed. The 
 - [ ] `curl -I <preview>/project/1` returns 301 to the mapped page (repeat for 2 and 3).
 - [ ] `curl -I <preview>/nope` returns 404 and shows the custom page.
 - [ ] 404 page has `noindex`.
+
+## Notes / links
+- `src/routes/404.tsx` renders `NotFound` and is prerendered to `dist/client/404.html` (`pages` in `vite.config.ts`). It needs a real route because prerendering stops on any non-200 response. Vercel serves `404.html` with a 404 status for unmatched paths.
+- `NotFound` renders `<meta name="robots" content="noindex">`, which React hoists into `<head>`. That covers `404.html`, unknown URLs on the dev server and client-side navigation, and a future `notFound()` from `/work/$slug`.
+- Redirects live in `vercel.json` with `statusCode: 301` (`permanent: true` would send 308). `/project/:id` comes last as the catch-all.
+- `/work#work` only scrolls once PORT-405 adds the `work` group id.
+- The 404 layout is still the PORT-401 placeholder. Restyle it when PORT-007 delivers the design.
 
 ## Out of scope
 - Redirects for URLs that never existed.
