@@ -126,7 +126,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | todo |
 | [PORT-303](03-content/PORT-303-profile-data.md) | Typed profile data (experience, education, interests) | eng | P1 | S | PORT-008 | todo |
 | [PORT-304](03-content/PORT-304-image-pipeline.md) | Image pipeline | eng | P1 | M | PORT-301 | todo |
-| [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | todo |
+| [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | review |
 | [PORT-402](04-pages/PORT-402-home-hero.md) | Home: hero | eng | P0 | M | PORT-401, PORT-204, PORT-007 | todo |
 | [PORT-403](04-pages/PORT-403-home-featured-work.md) | Home: featured work | eng | P0 | M | PORT-301, PORT-202, PORT-302 | todo |
 | [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | todo |

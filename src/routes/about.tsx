@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Container, Section } from '@/components/ui/layout'
+import { seo } from '@/lib/seo'
 
 // Stub so the nav can link here; PORT-407 builds the page.
 export const Route = createFileRoute('/about')({
-  head: () => ({ meta: [{ title: 'About · Bibi Branco' }] }),
+  head: () => ({ meta: seo({ title: 'About' }) }),
   component: About,
 })
 

@@ -1,7 +1,9 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import { NotFound } from '@/components/site/not-found'
 import { SiteFooter } from '@/components/site/site-footer'
 import { SiteHeader, SkipLink } from '@/components/site/site-header'
+import { seo, themeColor } from '@/lib/seo'
 import appCss from '@/styles.css?url'
 
 export const Route = createRootRoute({
@@ -9,12 +11,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Bibi Branco' },
+      { name: 'theme-color', content: themeColor },
+      ...seo(),
     ],
     links: [{ rel: 'stylesheet', href: appCss }],
   }),
   shellComponent: RootDocument,
   component: RootLayout,
+  notFoundComponent: NotFound,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
