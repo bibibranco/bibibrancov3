@@ -17,7 +17,7 @@ Old URLs `/project/1`, `/project/2`, `/project/3` may be shared or indexed. The 
 
 ## Scope
 - 404 page (design from PORT-007) linking to home and `/work`.
-- Host-level 301 redirects (e.g. `vercel.json` `redirects`) using the table from PORT-003.
+- Host-level 301 redirects (e.g. `vercel.json` `redirects`) using the table from PORT-003 ([`sitemap.md` §4](../artifacts/sitemap.md#4-legacy-redirects-input-for-port-409)).
 - Host serves the prerendered 404 with a real 404 status.
 
 ## Acceptance criteria

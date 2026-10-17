@@ -17,14 +17,12 @@ There is no index page today; projects are only reachable from home cards.
 
 ## Scope
 - Route `src/routes/work/index.tsx` listing all non-draft projects with `ProjectCard` (reuse from PORT-403).
-- Tag filter stored in the URL: `validateSearch` with zod for `?tag=` so filtered views are shareable and typed.
-- Empty state for a tag with no projects.
+- Two groups, **Work** and **Craft** (`category` in the schema), each a section with an `id` (`#work`, `#craft`) for deep links. No filters (PORT-003, [`sitemap.md`](../artifacts/sitemap.md)).
 - Page meta title/description.
 
 ## Acceptance criteria
-- [ ] `/work?tag=crafting` shows only crafting projects and survives a reload.
-- [ ] An unknown tag falls back to "all" without crashing.
-- [ ] Filter controls are keyboard-accessible and expose the selected state (`aria-pressed` or radio group).
+- [ ] `/work#work` and `/work#craft` land on the right group.
+- [ ] Each group is a labelled section (`<section aria-labelledby>`) with an `h2`.
 - [ ] Unfiltered page is prerendered.
 
 ## Out of scope

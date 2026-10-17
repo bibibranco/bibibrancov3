@@ -17,7 +17,7 @@ Legacy `ProjectSection.jsx` hardcodes two cards (Busca Resgatados, Rato Túlio) 
 
 ## Scope
 - Section listing `getFeaturedProjects()` sorted by `order`.
-- `ProjectCard`: cover, title, summary, tags; the whole card is one real link to `/work/$slug` (or `externalUrl` if the project has no page, marked as external).
+- `ProjectCard`: cover, title, summary, tags; the whole card is one real link to `/work/$slug`. Every project has its own page (PORT-003); projects with `externalUrl` link out from their page, not from the card.
 - "See all work" link to `/work`.
 
 ## Acceptance criteria
