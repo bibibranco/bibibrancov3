@@ -26,5 +26,12 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 - [ ] Rotation is paused/static with reduced motion and is not announced on every change.
 - [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse).
 
+## Notes / links
+- **Hero copy (draft, 2026-10-17)**, from [`copy.md`](../artifacts/copy.md#hero-home):
+  - h1: "Whatever works. And sometimes whatever doesn't."
+  - Subline: "Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways."
+- The new copy has **no rotating words**. If PORT-007 drops rotation, remove the `RotatingText` scope item and its acceptance criterion. If PORT-007 keeps it, the likely candidate is the word list in the subline.
+- The h1 doesn't include the name, so the logo's accessible name and the page `<title>` have to carry "Bibi Branco".
+
 ## Out of scope
 - Other home sections.

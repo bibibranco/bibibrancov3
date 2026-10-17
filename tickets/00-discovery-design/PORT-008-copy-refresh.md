@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | M |
 | Depends on | PORT-001, PORT-002, PORT-003 |
-| Status | todo |
+| Status | in progress |
 
 ## User story
 As a **visitor**, I want up-to-date, well-written copy so that I trust the information and understand what Bibi does today.
@@ -34,3 +34,7 @@ Flagged in PORT-001: stale dates/roles (Itaú "2022 – present", "mid-level pro
 
 ## Notes / links
 - Copy is delivered in a doc, then moved into MDX/TS data in PORT-302/PORT-303.
+- Copy doc: [`tickets/artifacts/copy.md`](../artifacts/copy.md).
+- **Hero (2026-10-17):** Bibi's draft, with suggested edits still open in the copy doc:
+  > **Whatever works. And sometimes whatever doesn't.**
+  > Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways.
