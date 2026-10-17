@@ -30,7 +30,7 @@ flowchart TD
 | `/` | First impression + routing | Hero · Featured work (4) · "count me in for" interests · Short about · Contact CTA | Scan featured work, get in touch |
 | `/work` | Every project | **Work** group, then **Craft** group, each sorted by `order` | Read a case study |
 | `/work/$slug` | One project | Summary block (role, timeline, team, outcome) · body · links (live prototype, repo, external post) · prev/next in the same group · contact CTA | Read a case study, see how Bibi prototypes |
-| `/about` | Background | Long bio · Experience · Education · Talks & teaching · Contact CTA | Recruiter scan: current role, 8+ years |
+| `/about` | Background | Long bio · Experience · Education · Talks & teaching · Contact CTA | Background and facts: current role, 8+ years |
 | 404 | Lost visitors | Message · links to `/` and `/work` (`noindex`) | — |
 
 ## 2. Navigation
