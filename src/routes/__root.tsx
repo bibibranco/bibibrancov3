@@ -1,5 +1,6 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import { Analytics } from '@/components/site/analytics'
 import { NotFound } from '@/components/site/not-found'
 import { SiteFooter } from '@/components/site/site-footer'
 import { SiteHeader, SkipLink } from '@/components/site/site-header'
@@ -45,6 +46,7 @@ function RootLayout() {
         <Outlet />
       </main>
       <SiteFooter />
+      <Analytics />
     </>
   )
 }

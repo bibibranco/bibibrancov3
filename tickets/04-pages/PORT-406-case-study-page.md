@@ -22,6 +22,7 @@ Legacy `Project.jsx` + `SideBar.jsx` + `ProjectContent.jsx`: sidebar with title/
 - Prev/next project navigation (`getAdjacentProjects()`).
 - Per-page `head()` with title, description, canonical, OG (image from PORT-501).
 - All slugs prerendered.
+- Analytics (PORT-502): `track('case_study_view', …)` once per view, `track('case_study_read', …)` once at 75% scroll, `track('prototype_click', …)` on live/repo links. Helpers are in `src/lib/analytics.ts`.
 
 ## Acceptance criteria
 - [ ] Every MDX project has a prerendered page at `/work/<slug>`.
