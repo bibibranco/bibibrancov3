@@ -35,4 +35,5 @@ Low-fi wireframes at 375px and 1440px for:
 ## Notes / links
 - Wireframes canvas: https://claude.ai/artifact/H3VKFT1fZvBeRwbSU9AVd3 (private). Notes, content blocks, SEO evaluation and the featured-work direction are in [`wireframes.md`](../artifacts/wireframes.md).
 - The "Work index (with filter state)" scope item is replaced by Work/Craft group anchors (PORT-003).
-- Still open: criterion 3 (outside review), and redrawing the Home artboards with the A + C featured section.
+- Home artboards redrawn with the A + C featured section and the SEO hero (2026-10-17).
+- Still open: criterion 3 (outside review).

@@ -18,6 +18,10 @@ Replaces HE1 and HE2. Status: **draft from Bibi, 2026-10-17**.
 - Add a small mono meta line under the subline so first-time visitors see the role straight away. For example: `product designer at momoGood · são paulo`.
 - Optionally add one maker word to the list so the craft side is visible (e.g. "…prototypes, things with screws, experiments").
 
+**Hero structure, from the PORT-005 SEO review (2026-10-17):**
+- h1: a small mono line "Bibi Branco, product designer" (first span), then "Whatever works. And sometimes whatever doesn't."
+- Meta line: `at momoGood · previously Itaú · são paulo` (this covers the "role line" suggestion above).
+
 **Notes:**
 - The hero no longer uses rotating words, unlike v3's "I … create stuff / build interfaces / …". Whether any rotation stays is a PORT-007 call; see PORT-402.
 - The h1 doesn't include Bibi's name. The name has to be clear nearby: the logo's accessible name "Bibi Branco", the page `<title>`, and the meta line.
