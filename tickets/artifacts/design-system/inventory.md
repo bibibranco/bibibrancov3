@@ -22,6 +22,9 @@ Every component in the PORT-005 wireframes, with its variants and states. **Focu
 | SectionHeading | h2 · h3 | — | — | 202 |
 | Image | column · full-bleed · polaroid crop | loading (no layout shift) · loaded | Required `alt` | 202/304 |
 | Container / Section | — | — | `container-max`, `fluid-gutter`, `fluid-section` | 202 |
+| NotebookGrid | blue (desk) · card (reading column) · paper | — | A background utility, not an element. Never behind small text on blue | 201/202 |
+| MarginNote | margin (≥ lg) · inline (< lg) | — | `<aside>`, `note` style; not interactive (a link inside one follows TextLink) | 406 |
+| FigureLabel | — | — | "fig. N", numbered in order per case study | 301/406 |
 
 ## Home
 | Component | Variants | States | Focus / notes | → |
@@ -39,8 +42,9 @@ Every component in the PORT-005 wireframes, with its variants and states. **Focu
 | GroupJumpLinks | Work · Craft | default · hover · focus | Ring | 405 |
 | ProjectCard | grid (desktop) · row (mobile) | default · hover · focus | The whole card is one link; ring | 405 |
 | BackLink | "← Work" | default · hover · focus | Ring | 406 |
-| Summary | — | — | `<dl>` on `card` | 406 |
-| Figure | column · full | — | Caption in `caption` style | 301/406 |
+| Summary | — | — | `<dl>` on `card`; timeline dates in `2026.05` form | 406 |
+| ReadingColumn | with margin (≥ lg) · single (< lg) | — | `card` + NotebookGrid card; text at `measure` | 406 |
+| Figure | column · full | — | FigureLabel + caption in `caption` style | 301/406 |
 | ImagePair | — | stacks < 360px | — | 301 |
 | Quote | — | — | `<blockquote>` + `<cite>` | 301 |
 | Stats | 2–4 items | — | NDA-cleared numbers only | 301 |

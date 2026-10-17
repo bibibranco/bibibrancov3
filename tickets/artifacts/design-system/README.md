@@ -20,6 +20,8 @@ Playful but sharper (brief §5). Friendly without filler, specific beats generic
 | Terminal prompt | `terminal-muted` | deep | 7.6:1 |
 | Hover fill text | `accent-foreground` | `accent` | 7.5:1 |
 | Error text | `destructive` | blue | 4.9:1 |
+| Text over the reading-column grid | `card-foreground` / `muted-foreground` | `grid-line-card-major` on deep | 10.2:1 / 8.8:1 |
+| Text over the paper grid | `paper-foreground` / `paper-muted` | `grid-line-paper` | 12.7:1 / 5.5:1 |
 
 Rules:
 - **One star per view.** `star` is the only accent: a primary button, the star, sticky notes, focus. Never yellow body text.
@@ -44,6 +46,18 @@ All three are self-hosted through fontsource (`@fontsource-variable/*`, installe
 ## The desk
 Featured work is "bits and pieces on my desk": each **fragment** of a project is drawn as an **object**, and the fragment type picks the object. Objects use `paper`, `sticky` or `terminal` surfaces, `radius-none`, `shadow-object`, and a `tilt-*` rotation set by hand per breakpoint. On hover or focus an object lifts (`shadow-object-lift`, `duration-base`, `ease-out`) and comes to the top (`z-object-focus`). See **Components → DeskObject**.
 
+## The notebook (from direction B)
+A little of direction B's squared notebook structure, kept underneath the blue identity:
+
+- **Squared grid.** Lines one `grid-cell` (24px) apart. That equals the column gutter, so the grid lines up with the 12-column layout. It's drawn as a CSS background (two `linear-gradient`s), never as an image.
+  - **Reading column** (`card`): `grid-line-card`, with every 4th line in `grid-line-card-major`. The case study reads like a notebook page.
+  - **Desk section** (blue): `grid-line`, so the objects lie on squared paper. No text under 24px may sit directly on the blue grid: small text stays inside objects, and the "Everything, tidy →" link goes below the grid band.
+  - **Paper:** `grid-line-paper` on the notebook-page desk object and the 404 sheet.
+  - **Not** on the hero, `/work`, `/about` or the footer. They stay plain blue, so the grid stays special.
+- **Margin notes.** On desktop (≥ lg), the case study gets a `margin-width` column to the right of the text column. Notes there use the `note` style in `muted-foreground`, with a 1px `border` rule on the left, and hold the facts: figure numbers, specs, dates, small asides. Below lg, a note sits inline after its paragraph. A note is an `<aside>`, so the main text never depends on it.
+- **Figure labels.** Figures are numbered in order, "fig. 1", "fig. 2", in the `label` style before the caption. Margin notes can point to them.
+- **Dates** use the notebook form `2026.05` in `meta`/`note` (the dated log from direction B), for example on `/work` rows and the summary timeline.
+
 ## Motion
 Motion is sparing. The hero star rotates once per `duration-star`. Objects lift, and links grow their underline. Everything that moves stops under `prefers-reduced-motion`, and nothing waits at `opacity: 0`. The full spec comes in PORT-007 and PORT-204.
 
@@ -65,6 +79,7 @@ Lucide icons, at a 1.5px stroke, in `currentColor`. The only brand marks are the
 | `ease-*` | `--ease-*` | `ease-out` |
 | `breakpoint-*` | `--breakpoint-*` | `md:` |
 | `duration-*`, `tilt-*`, `z-*`, `size` | plain custom properties (`--tilt-2`) | `rotate-(--tilt-2)` |
+| `grid-line*` + `grid-cell` / `grid-major` | `--color-grid-line*`, `--grid-cell` | `@utility bg-notebook` / `bg-notebook-card` / `bg-notebook-paper` |
 | `space-N` | Tailwind default `--spacing: 0.25rem` | `p-4`, `gap-6` |
 
 ## Legacy elements
