@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KitchenSinkRouteImport } from './routes/[_]kitchen-sink'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KitchenSinkRoute = KitchenSinkRouteImport.update({
+  id: '/_kitchen-sink',
+  path: '/_kitchen-sink',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/_kitchen-sink': typeof KitchenSinkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/_kitchen-sink': typeof KitchenSinkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_kitchen-sink': typeof KitchenSinkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/_kitchen-sink'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/_kitchen-sink'
+  id: '__root__' | '/' | '/_kitchen-sink'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KitchenSinkRoute: typeof KitchenSinkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_kitchen-sink': {
+      id: '/_kitchen-sink'
+      path: '/_kitchen-sink'
+      fullPath: '/_kitchen-sink'
+      preLoaderRoute: typeof KitchenSinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KitchenSinkRoute: KitchenSinkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
