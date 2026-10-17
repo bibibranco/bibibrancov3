@@ -1,5 +1,7 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import { SiteFooter } from '@/components/site/site-footer'
+import { SiteHeader, SkipLink } from '@/components/site/site-header'
 import appCss from '@/styles.css?url'
 
 export const Route = createRootRoute({
@@ -12,6 +14,7 @@ export const Route = createRootRoute({
     links: [{ rel: 'stylesheet', href: appCss }],
   }),
   shellComponent: RootDocument,
+  component: RootLayout,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -25,5 +28,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  )
+}
+
+function RootLayout() {
+  return (
+    <>
+      <SkipLink />
+      <SiteHeader />
+      {/* tabIndex lets the skip link move focus here; main itself shows no ring. */}
+      <main id="main" tabIndex={-1} className="focus-visible:outline-none">
+        <Outlet />
+      </main>
+      <SiteFooter />
+    </>
   )
 }

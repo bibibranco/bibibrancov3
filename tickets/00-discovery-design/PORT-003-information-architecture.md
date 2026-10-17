@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-001, PORT-002 |
-| Status | review |
+| Status | done |
 
 ## User story
 As a **visitor**, I want a predictable site structure with readable URLs so that I can find work and background info quickly and share specific pages.
@@ -26,7 +26,7 @@ Proposed sitemap to validate:
 - Primary nav items and footer links.
 
 ## Acceptance criteria
-- [ ] Sitemap diagram approved, covering every page and nav entry.
+- [x] Sitemap diagram approved, covering every page and nav entry. _(Bibi, 2026-10-17.)_
 - [x] Slug naming rule written (lowercase, kebab-case, stable).
 - [x] Every item in the PORT-001 inventory has a home in the new IA or is explicitly dropped.
 - [x] Legacy redirect table finalized (input for PORT-409).

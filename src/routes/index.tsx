@@ -1,18 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { buttonVariants } from '@/components/ui/button'
+import { Container, Section } from '@/components/ui/layout'
 
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return (
-    <main className="mx-auto my-16 w-[min(42rem,calc(100%-2rem))] space-y-4">
-      <h1 className="font-heading text-3xl font-bold">Bibi Branco</h1>
-      <p className="text-muted-foreground">Portfolio v4 is under construction.</p>
-      <p className="font-mono text-sm text-muted-foreground">product designer · são paulo</p>
-      <a className={buttonVariants()} href="mailto:oi@bibibran.co">
-        Say hi
-      </a>
-    </main>
+    <Section>
+      <Container className="flex flex-col gap-4">
+        <h1 className="m-0 font-heading text-h1">Bibi Branco</h1>
+        <p className="m-0 text-muted-foreground">Portfolio v4 is under construction.</p>
+      </Container>
+    </Section>
   )
 }
