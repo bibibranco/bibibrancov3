@@ -106,7 +106,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 |---|---|---|---|---|---|---|
 | [PORT-001](00-discovery-design/PORT-001-content-audit.md) | Content audit & inventory | content | P0 | S | — | review |
 | [PORT-002](00-discovery-design/PORT-002-goals-audience-metrics.md) | Goals, audience & success metrics | design | P0 | S | — | review |
-| [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | review |
+| [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | done |
 | [PORT-004](00-discovery-design/PORT-004-visual-direction.md) | Visual direction & moodboard | design | P0 | M | PORT-002 | review |
 | [PORT-005](00-discovery-design/PORT-005-wireframes.md) | Mobile-first wireframes | design | P0 | M | PORT-003 | todo |
 | [PORT-006](00-discovery-design/PORT-006-design-tokens-inventory.md) | Design tokens & component inventory | design | P0 | M | PORT-004, PORT-005 | review |
@@ -120,7 +120,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | done |
 | [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | review |
 | [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | review |
-| [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | todo |
+| [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | review |
 | [PORT-204](02-design-system/PORT-204-motion-primitives.md) | Motion primitives | eng | P1 | S | PORT-201, PORT-007 | todo |
 | [PORT-301](03-content/PORT-301-content-collections-mdx.md) | Content collections, MDX & project schema | eng | P0 | M | PORT-102, PORT-005 | todo |
 | [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | todo |

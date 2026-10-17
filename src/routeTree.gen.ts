@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as KitchenSinkRouteImport } from './routes/[_]kitchen-sink'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as WorkIndexRouteImport } from './routes/work/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +24,49 @@ const KitchenSinkRoute = KitchenSinkRouteImport.update({
   path: '/_kitchen-sink',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/work/',
+  path: '/work/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/_kitchen-sink': typeof KitchenSinkRoute
+  '/about': typeof AboutRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/_kitchen-sink': typeof KitchenSinkRoute
+  '/about': typeof AboutRoute
+  '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_kitchen-sink': typeof KitchenSinkRoute
+  '/about': typeof AboutRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/_kitchen-sink'
+  fullPaths: '/' | '/_kitchen-sink' | '/about' | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/_kitchen-sink'
-  id: '__root__' | '/' | '/_kitchen-sink'
+  to: '/' | '/_kitchen-sink' | '/about' | '/work'
+  id: '__root__' | '/' | '/_kitchen-sink' | '/about' | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   KitchenSinkRoute: typeof KitchenSinkRoute
+  AboutRoute: typeof AboutRoute
+  WorkIndexRoute: typeof WorkIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KitchenSinkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/': {
+      id: '/work/'
+      path: '/work'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KitchenSinkRoute: KitchenSinkRoute,
+  AboutRoute: AboutRoute,
+  WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

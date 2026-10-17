@@ -22,7 +22,7 @@ const placeholder =
 
 function KitchenSink() {
   return (
-    <main>
+    <div>
       <Container className="pt-section">
         <h1 className="m-0 font-heading text-h1">Kitchen sink</h1>
         <p className="mt-3 max-w-measure text-muted-foreground">
@@ -126,6 +126,6 @@ function KitchenSink() {
           </div>
         </Container>
       </Section>
-    </main>
+    </div>
   )
 }
