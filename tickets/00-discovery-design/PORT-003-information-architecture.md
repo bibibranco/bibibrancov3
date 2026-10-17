@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-001, PORT-002 |
-| Status | todo |
+| Status | review |
 
 ## User story
 As a **visitor**, I want a predictable site structure with readable URLs so that I can find work and background info quickly and share specific pages.
@@ -27,12 +27,14 @@ Proposed sitemap to validate:
 
 ## Acceptance criteria
 - [ ] Sitemap diagram approved, covering every page and nav entry.
-- [ ] Slug naming rule written (lowercase, kebab-case, stable).
-- [ ] Every item in the PORT-001 inventory has a home in the new IA or is explicitly dropped.
-- [ ] Legacy redirect table finalized (input for PORT-409).
+- [x] Slug naming rule written (lowercase, kebab-case, stable).
+- [x] Every item in the PORT-001 inventory has a home in the new IA or is explicitly dropped.
+- [x] Legacy redirect table finalized (input for PORT-409).
 
 ## Out of scope
 - Visual layout (PORT-005).
 
 ## Notes / links
-- Decide whether external-only projects (Busca Resgatados → Medium) get a full case study or a short page with the outbound link.
+- Decide whether external-only projects (Busca Resgatados → Medium) get a full case study or a short page with the outbound link. **Decided: short page + outbound link.**
+- Output: [`tickets/artifacts/sitemap.md`](../artifacts/sitemap.md), drafted 2026-10-17. Waiting for Bibi to approve the sitemap (first criterion).
+- Changes from the proposed sitemap: `/work` has two groups (Work, Craft) instead of tag filters; there are no talk/notes pages at launch; `/project/1` → `/work#work`.
