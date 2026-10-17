@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | PORT-102, PORT-004 |
-| Status | in progress (fonts wait on PORT-004) |
+| Status | review |
 
 ## User story
 As the **developer**, I want the same styling stack as my other projects so that I move fast and reuse patterns I know.
@@ -24,7 +24,7 @@ Legacy: one CSS file per component + a CSS reset in `legacy/src/index.css`; Goog
 
 ## Acceptance criteria
 - [x] A Tailwind utility class and a shadcn `Button` render correctly on the placeholder page.
-- [ ] Fonts load from the app bundle (no request to fonts.googleapis.com or unpkg in the Network tab). _(Pending PORT-004. A system font stack is in place until then.)_
+- [x] Fonts load from the app bundle (no request to fonts.googleapis.com or unpkg in the Network tab). _(The built CSS points `@font-face` at `/assets/*.woff2`, and `dist/` has no Google Fonts or unpkg URLs.)_
 - [x] `cn()` merges conflicting classes correctly.
 - [x] Tailwind classes are auto-sorted by Prettier on save.
 
@@ -36,6 +36,7 @@ Legacy: one CSS file per component + a CSS reset in `legacy/src/index.css`; Goog
   - `prettier-plugin-tailwindcss` with `tailwindStylesheet: ./src/styles.css`.
 - `cn()` now comes from shadcn's `cn` package (github.com/shadcn-ui/cn), which replaces clsx + tailwind-merge. `src/lib/utils.ts` re-exports it for `@/lib/utils` imports.
 - `shadcn init` added Geist. I removed it, because the typefaces are decided in PORT-004.
+- Fonts (2026-10-17): imported in `src/styles.css`. `--font-heading` is Syne Variable (headings only), `--font-sans` is Atkinson Hyperlegible Next Variable (body), and `--font-mono` is JetBrains Mono Variable. The placeholder page uses all three.
 - The react-refresh lint rule is off for `src/components/ui/**`, since shadcn files export their cva variants.
 
 ## Out of scope
