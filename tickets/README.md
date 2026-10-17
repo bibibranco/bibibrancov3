@@ -107,7 +107,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-001](00-discovery-design/PORT-001-content-audit.md) | Content audit & inventory | content | P0 | S | — | review |
 | [PORT-002](00-discovery-design/PORT-002-goals-audience-metrics.md) | Goals, audience & success metrics | design | P0 | S | — | review |
 | [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | todo |
-| [PORT-004](00-discovery-design/PORT-004-visual-direction.md) | Visual direction & moodboard | design | P0 | M | PORT-002 | todo |
+| [PORT-004](00-discovery-design/PORT-004-visual-direction.md) | Visual direction & moodboard | design | P0 | M | PORT-002 | review |
 | [PORT-005](00-discovery-design/PORT-005-wireframes.md) | Mobile-first wireframes | design | P0 | M | PORT-003 | todo |
 | [PORT-006](00-discovery-design/PORT-006-design-tokens-inventory.md) | Design tokens & component inventory | design | P0 | M | PORT-004, PORT-005 | todo |
 | [PORT-007](00-discovery-design/PORT-007-hifi-designs-motion.md) | Hi-fi designs & motion spec | design | P0 | L | PORT-006, PORT-008 | todo |

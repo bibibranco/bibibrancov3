@@ -43,3 +43,4 @@ Legacy: one CSS file per component + a CSS reset in `legacy/src/index.css`; Goog
 
 ## Notes / links
 - If PORT-004 is not finished yet, install fonts later; everything else can proceed.
+- PORT-004 picked **Syne** (`@fontsource-variable/syne`) for display and body, and **JetBrains Mono** (`@fontsource-variable/jetbrains-mono`) for mono. See [`visual-direction.md`](../artifacts/visual-direction.md).

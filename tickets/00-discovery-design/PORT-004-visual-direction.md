@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | M |
 | Depends on | PORT-002 |
-| Status | todo |
+| Status | review |
 
 ## User story
 As **Bibi**, I want a new visual direction that reflects who I am now so that the portfolio itself shows my design skill.
@@ -22,13 +22,14 @@ Current identity: saturated blue background `#0055D4`, light-blue text `#DCEAFF`
 - Pick one direction.
 
 ## Acceptance criteria
-- [ ] 2–3 directions presented with references.
-- [ ] One direction chosen with written reasoning tied to PORT-002 goals.
-- [ ] Keep/drop decision recorded for logo, `#0055D4`, Syne, PT Mono, star motif.
-- [ ] Chosen fonts are available as `@fontsource-variable/*` packages or self-hostable (input for PORT-103).
+- [x] 2–3 directions presented with references.
+- [x] One direction chosen with written reasoning tied to PORT-002 goals.
+- [x] Keep/drop decision recorded for logo, `#0055D4`, Syne, PT Mono, star motif.
+- [x] Chosen fonts are available as `@fontsource-variable/*` packages or self-hostable (input for PORT-103).
 
 ## Out of scope
 - Final tokens (PORT-006), page designs (PORT-007).
 
 ## Notes / links
 - Check colour contrast of any candidate palette early (WCAG AA 4.5:1 for body text).
+- **Decision: Direction A, Blue, evolved.** Record: [`visual-direction.md`](../artifacts/visual-direction.md). Moodboard: [`visual-direction-moodboard.html`](../artifacts/visual-direction-moodboard.html), published at https://claude.ai/artifact/BabEiHywATyyDvXHariDAF.
