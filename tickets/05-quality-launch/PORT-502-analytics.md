@@ -18,7 +18,7 @@ Legacy: gtag snippet in `legacy/index.html` with ID `G-KR5JD1GYC2` plus `legacy/
 ## Scope
 - Load gtag with the **same** measurement ID (keeps historical data) from the root route, production only.
 - `send_page_view: false` in config; send `page_view` from a TanStack Router `onResolved` subscription (one per navigation, including the first).
-- `track(event, params)` helper for the PORT-002 events (`outbound_click`, `contact_click`, `case_study_view`, …), used by `TextLink` external links and `ContactCta`.
+- `track(event, params)` helper for the PORT-002 events (`case_study_view`, `case_study_read`, `prototype_click`, `contact_click`, `outbound_click`), used by `TextLink` external links and `ContactCta`. Events and params are defined in [`brief.md` §4](../artifacts/brief.md#4-success-metrics).
 - Decide on a consent banner (not legally required for everyone, but note it); document the decision.
 
 ## Acceptance criteria
