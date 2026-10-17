@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | S |
 | Depends on | — |
-| Status | todo |
+| Status | review |
 
 ## User story
 As **Bibi**, I want clearly written goals and target audiences for the site so that every design and content decision can be checked against them.
@@ -21,12 +21,12 @@ The current site mixes a personal "hey there" tone with case studies but has no 
 - Tone of voice principles (keep the playful lower-case voice? how casual?).
 
 ## Acceptance criteria
-- [ ] Brief lists primary goal and audiences, and top tasks per audience.
-- [ ] Metrics list maps each metric to a concrete GA4 event name and parameters (input for PORT-502).
-- [ ] Tone of voice has 3–5 do/don't examples (input for PORT-008).
+- [x] Brief lists primary goal and audiences, and top tasks per audience.
+- [x] Metrics list maps each metric to a concrete GA4 event name and parameters (input for PORT-502).
+- [x] Tone of voice has 3–5 do/don't examples (input for PORT-008).
 
 ## Out of scope
 - Implementing analytics (PORT-502).
 
 ## Notes / links
-- Output lives in `tickets/artifacts/brief.md` or the Figma cover page.
+- Output: [`tickets/artifacts/brief.md`](../artifacts/brief.md). Drafted 2026-10-17 from an interview with Bibi; waiting on Bibi's review.
