@@ -12,6 +12,8 @@ export default defineConfig({
         enabled: true,
         crawlLinks: true,
         failOnError: true,
+        // Dev-only routes (PORT-202 kitchen sink) return not-found in production.
+        filter: ({ path }) => !path.startsWith('/_'),
       },
     }),
     viteReact(),
