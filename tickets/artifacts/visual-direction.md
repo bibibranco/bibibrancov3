@@ -66,5 +66,5 @@ All three are self-hosted through fontsource, so there's no Google Fonts request
 2. **Reskin risk:** with the logo, blue and Syne all kept, the new type scale, body face, duotone imagery and motion need to look clearly new next to v3. Do a side-by-side check at PORT-007 sign-off.
 3. **Seniority:** case-study summary blocks (role, team, timeline, outcome) stay calm. Mono metadata, no decoration.
 
-## Open for PORT-006
-- Light theme: offer one or not?
+## Decided in PORT-006
+- Light theme: no. One theme (Blue). See [`design-system/README.md`](design-system/README.md).
