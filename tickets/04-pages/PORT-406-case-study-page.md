@@ -29,5 +29,8 @@ Legacy `Project.jsx` + `SideBar.jsx` + `ProjectContent.jsx`: sidebar with title/
 - [ ] Headings are in order (single `h1`, no skipped levels).
 - [ ] Matches PORT-007 on all breakpoints.
 
+## Notes / links
+- From PORT-006: the body sits on a deep reading column with the notebook grid (`bg-notebook-card`), plus a `margin-width` column of `<MarginNote>`s on desktop (inline below lg) and numbered "fig. N" labels. See `tickets/artifacts/design-system/README.md`, "The notebook".
+
 ## Out of scope
 - Comments, likes, view counts.

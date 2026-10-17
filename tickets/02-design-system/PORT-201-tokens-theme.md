@@ -18,7 +18,8 @@ Legacy colours and sizes are hardcoded per CSS file (e.g. `#0055D4`, `#DCEAFF`, 
 ## Scope
 - Map PORT-006 variables to CSS custom properties + `@theme` in `src/styles/app.css` (colours, fonts, type scale, radius, shadows, easing/duration).
 - Wire shadcn semantic vars (`--background`, `--foreground`, `--primary`, …) to the tokens.
-- Dark theme only if PORT-006 decided on one (with `prefers-color-scheme` + no flash on load).
+- ~~Dark theme only if PORT-006 decided on one.~~ PORT-006 decided on **one theme (Blue)**: delete the shadcn `.dark` block and the `dark` custom variant.
+- Source: [`tickets/artifacts/design-system/tokens.json`](../artifacts/design-system/tokens.json). The mapping table is in that folder's README.
 - Base layer: body font, text colour, selection colour, focus-visible ring.
 
 ## Acceptance criteria
