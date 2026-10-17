@@ -1,0 +1,359 @@
+<title>bibibran.co directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Atkinson+Hyperlegible+Next:wght@200..800&family=Instrument+Sans:wght@400..700&family=Hanken+Grotesk:wght@300..700&display=swap">
+<style>
+/* Layout: a short page header, then three full-width specimen bands. Each band renders one direction in its own palette and type. */
+:root {
+  --bg: #f5f5f2;
+  --fg: #17171a;
+  --muted: #5d5d66;
+  --line: #d9d9d4;
+  --chip: #ffffff;
+  --sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Direction tokens are fixed: each band commits to its own look in either theme. */
+  --a-bg: #0055d4; --a-fg: #dceaff; --a-muted: #c7daff; --a-pop: #ffe45c; --a-deep: #0a1f4d;
+  --b-bg: #f7f7f3; --b-fg: #1a1814; --b-muted: #5f5b53; --b-ink: #0055d4; --b-grid: #e3e4dc;
+  --c-bg: #e9dfcc; --c-fg: #1e1b16; --c-muted: #5e5546; --c-pop: #ff6a1a; --c-pop-text: #9a3412; --c-cut: #d4c6ab;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #141416; --fg: #ececee; --muted: #a2a2ad; --line: #2c2c31; --chip: #1d1d21; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #141416; --fg: #ececee; --muted: #a2a2ad; --line: #2c2c31; --chip: #1d1d21; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); }
+.wrap { max-width: 1120px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.page { padding-block: 48px 32px; display: grid; gap: 12px; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 600 clamp(28px, 4vw, 40px)/1.1 var(--sans); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.lede { max-width: 64ch; color: var(--muted); margin: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.legend a { font: 500 13px/1 var(--mono); color: var(--fg); text-decoration: none; border: 1px solid var(--line); background: var(--chip); padding: 8px 12px; border-radius: 999px; }
+.legend a:hover, .legend a:focus-visible { border-color: var(--fg); outline: none; }
+
+section.dir { padding-block: 56px; }
+.dir .wrap { display: grid; gap: 40px; }
+.dir-head { display: grid; gap: 8px; }
+.dir-head .tag { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.dir-head h2 { margin: 0; text-wrap: balance; }
+.dir-head p { margin: 0; max-width: 62ch; }
+
+.specimen { border-radius: 4px; overflow: hidden; }
+.mock-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 16px 24px; }
+.mock-nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.mock-hero { padding: 40px 24px 48px; display: grid; gap: 20px; }
+.mock-hero h3 { margin: 0; text-wrap: balance; }
+.mock-hero p { margin: 0; max-width: 54ch; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.panel { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.panel h4 { margin: 0; font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.panel p, .panel li { margin: 0; font-size: 15px; }
+.panel ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.swatches { display: grid; gap: 8px; }
+.sw { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; font: 13px/1.3 var(--mono); }
+.sw i { width: 36px; height: 36px; border-radius: 3px; display: block; }
+.sw b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.decisions { display: grid; gap: 6px; font-size: 15px; }
+.decisions div { display: grid; grid-template-columns: 7.5em 4.5em 1fr; gap: 8px; }
+.decisions span:nth-child(2) { font: 600 12px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ---------- A: Blue, evolved ---------- */
+#a { background: var(--a-bg); color: var(--a-fg); }
+#a .dir-head h2 { font: 700 clamp(32px, 5vw, 52px)/1 "Syne", sans-serif; letter-spacing: -.02em; }
+#a .tag, #a .panel h4 { color: var(--a-pop); font-family: "JetBrains Mono", monospace; }
+#a .dir-head p, #a .panel p, #a .panel li { color: var(--a-muted); }
+#a .specimen { background: var(--a-deep); border: 1px solid #ffffff22; }
+#a .mock-nav { font: 500 14px/1 "JetBrains Mono", monospace; border-bottom: 1px solid #ffffff1f; }
+#a .mock-hero h3 { font: 800 clamp(36px, 7vw, 76px)/.95 "Syne", sans-serif; letter-spacing: -.03em; color: var(--a-fg); }
+#a .mock-hero h3 em { font-style: normal; color: var(--a-pop); }
+#a .mock-hero p { color: var(--a-muted); font-family: "JetBrains Mono", monospace; font-size: 15px; }
+#a .star { width: 28px; height: 28px; fill: var(--a-pop); display: inline-block; vertical-align: middle; animation: spin 14s linear infinite; }
+#a .decisions span:nth-child(2) { color: var(--a-pop); }
+.a-card { display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid #ffffff2a; border-radius: 18px; overflow: hidden; max-width: 360px; }
+.a-card .img { aspect-ratio: 16/10; background: repeating-linear-gradient(135deg, #1a3f8f 0 12px, #16357a 12px 24px); display: grid; place-items: center; font: 12px "JetBrains Mono", monospace; color: var(--a-muted); }
+.a-card div:last-child { padding: 14px 16px; font: 700 18px/1.2 "Syne", sans-serif; }
+
+/* ---------- B: Lab notebook ---------- */
+#b { background: var(--b-bg); color: var(--b-fg);
+  background-image: linear-gradient(var(--b-grid) 1px, transparent 1px), linear-gradient(90deg, var(--b-grid) 1px, transparent 1px);
+  background-size: 24px 24px; }
+#b .dir-head h2 { font: 400 clamp(32px, 5vw, 54px)/1.02 "Newsreader", serif; letter-spacing: -.015em; }
+#b .dir-head h2 em { color: var(--b-ink); }
+#b .tag, #b .panel h4 { color: var(--b-ink); font-family: "Geist Mono", monospace; }
+#b .dir-head p, #b .panel p, #b .panel li { color: var(--b-muted); font-family: "Geist", sans-serif; }
+#b .specimen { background: var(--b-bg); border: 1px solid var(--b-fg); }
+#b .mock-nav { font: 500 14px/1 "Geist", sans-serif; border-bottom: 1px solid var(--b-fg); }
+#b .mock-nav b { font: 500 20px/1 "Newsreader", serif; font-style: italic; }
+#b .mock-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 200px); align-items: end; }
+#b .mock-hero h3 { font: 350 clamp(34px, 6.4vw, 70px)/1 "Newsreader", serif; letter-spacing: -.02em; }
+#b .mock-hero h3 em { font-style: italic; color: var(--b-ink); }
+#b .mock-hero p { font-family: "Geist", sans-serif; color: var(--b-muted); grid-column: 1; }
+#b .note { grid-column: 2; grid-row: 1 / span 2; font: 12px/1.5 "Geist Mono", monospace; color: var(--b-muted); border-left: 1px solid var(--b-ink); padding-left: 12px; }
+#b .note b { color: var(--b-ink); font-weight: 500; }
+#b .decisions span:nth-child(2) { color: var(--b-ink); }
+.b-entry { display: grid; grid-template-columns: 5.5em 1fr; gap: 12px; border-top: 1px solid var(--b-fg); padding-top: 12px; max-width: 420px; }
+.b-entry span { font: 12px/1.6 "Geist Mono", monospace; color: var(--b-muted); font-variant-numeric: tabular-nums; }
+.b-entry strong { font: 500 22px/1.15 "Newsreader", serif; display: block; }
+.b-entry small { font: 13px/1.4 "Geist", sans-serif; color: var(--b-muted); }
+
+/* ---------- C: Workshop ---------- */
+#c { background: var(--c-bg); color: var(--c-fg); }
+#c .dir-head h2 { font: 800 clamp(32px, 5vw, 56px)/.98 "Bricolage Grotesque", sans-serif; letter-spacing: -.03em; font-variation-settings: "opsz" 96; }
+#c .tag, #c .panel h4 { color: var(--c-pop-text); font-family: "JetBrains Mono", monospace; }
+#c .dir-head p, #c .panel p, #c .panel li { color: var(--c-muted); font-family: "Bricolage Grotesque", sans-serif; }
+#c .specimen { background: var(--c-fg); color: var(--c-bg); }
+#c .mock-nav { font: 500 13px/1 "JetBrains Mono", monospace; border-bottom: 1px dashed #e9dfcc55; text-transform: uppercase; letter-spacing: .06em; }
+#c .mock-hero h3 { font: 800 clamp(36px, 7vw, 80px)/.92 "Bricolage Grotesque", sans-serif; letter-spacing: -.04em; font-variation-settings: "opsz" 96; }
+#c .mock-hero h3 span { background: var(--c-pop); color: var(--c-fg); padding: 0 .12em; }
+#c .mock-hero p { font: 14px/1.6 "JetBrains Mono", monospace; color: #d9ceb8; }
+#c .decisions span:nth-child(2) { color: var(--c-pop-text); }
+.c-tag { display: inline-grid; gap: 4px; background: var(--c-bg); color: var(--c-fg); padding: 12px 14px 12px 28px; position: relative; font: 12px/1.3 "JetBrains Mono", monospace; clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%); max-width: 320px; }
+.c-tag::before { content: ""; position: absolute; left: 12px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: var(--c-fg); }
+.c-tag strong { font: 700 18px/1.1 "Bricolage Grotesque", sans-serif; }
+
+/* ---------- Decision ---------- */
+section.pick { padding-block: 56px 72px; }
+.pick .wrap { display: grid; gap: 20px; }
+.pick h2 { margin: 0; font: 600 28px/1.15 var(--sans); }
+.pick p { margin: 0; max-width: 68ch; }
+.compare { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--chip); }
+.compare table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+.compare th, .compare td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare th { font: 500 12px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.compare tr:last-child td { border-bottom: 0; }
+.rec { border-left: 3px solid var(--fg); padding-left: 16px; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #a .star { animation: none; } }
+@media (max-width: 560px) {
+  #b .mock-hero { grid-template-columns: 1fr; }
+  #b .note { grid-column: 1; grid-row: auto; }
+  .decisions div { grid-template-columns: 6.5em 4em 1fr; }
+}
+</style>
+
+<header class="page wrap">
+  <span class="eyebrow">PORT-004 · Visual direction · decided 2026-10-17: Direction A</span>
+  <h1>Three directions for bibibran.co v4</h1>
+  <p class="lede">Each band below is a working specimen of one direction, set in its real palette and typefaces. They answer the PORT-002 brief: a professional presence for design and engineering peers and for makers, where the build itself shows that Bibi designs and builds. Pick one; PORT-006 then turns it into tokens.</p>
+  <nav class="legend" aria-label="Directions">
+    <a href="#a">A · Blue, evolved</a>
+    <a href="#body">A · body face</a>
+    <a href="#b">B · Lab notebook</a>
+    <a href="#c">C · Workshop</a>
+    <a href="#pick">Compare &amp; recommendation</a>
+  </nav>
+</header>
+
+<!-- A -->
+<section class="dir" id="a" aria-labelledby="a-title">
+  <div class="wrap">
+    <div class="dir-head">
+      <span class="tag">Direction A · continuity · ★ chosen</span>
+      <h2 id="a-title">Blue, evolved</h2>
+      <p>Keep the v3 blue as the whole canvas, sharpen everything on top of it. Loud, recognisable, unmistakably the same person. A yellow star becomes the only accent.</p>
+    </div>
+
+    <div class="specimen" role="img" aria-label="Direction A home page mock-up">
+      <div class="mock-nav"><svg width="132" height="24" viewBox="0 0 220 40" role="img" aria-label="Bibi Branco" style="fill:var(--a-fg)"><path d="M2 32.43V6.41498H6.955V16.01C8.435 14.1 10.545 13.125 12.765 13.125C17.56 13.125 21.11 16.87 21.11 23.03C21.11 29.19 17.52 32.895 12.765 32.895C10.505 32.895 8.435 31.88 6.955 30.01V32.43H2ZM11.205 28.49C14.09 28.49 16 26.305 16 23.03C16 19.755 14.09 17.53 11.205 17.53C9.605 17.53 7.775 18.465 6.955 19.715V26.385C7.775 27.595 9.605 28.49 11.205 28.49Z"/><path d="M24.345 8.59999C24.345 6.95999 25.71 5.67499 27.31 5.67499C28.91 5.67499 30.275 6.95999 30.275 8.59999C30.275 10.24 28.95 11.565 27.31 11.565C25.67 11.565 24.345 10.24 24.345 8.59999ZM24.855 32.43V13.595H29.81V32.435H24.855V32.43Z"/><path d="M34.72 32.43V6.41498H39.675V16.01C41.155 14.1 43.265 13.125 45.485 13.125C50.28 13.125 53.83 16.87 53.83 23.03C53.83 29.19 50.24 32.895 45.485 32.895C43.225 32.895 41.155 31.88 39.675 30.01V32.43H34.72ZM43.925 28.49C46.81 28.49 48.72 26.305 48.72 23.03C48.72 19.755 46.81 17.53 43.925 17.53C42.325 17.53 40.495 18.465 39.675 19.715V26.385C40.495 27.595 42.325 28.49 43.925 28.49Z"/><path d="M57.065 8.59999C57.065 6.95999 58.43 5.67499 60.03 5.67499C61.63 5.67499 62.995 6.95999 62.995 8.59999C62.995 10.24 61.67 11.565 60.03 11.565C58.39 11.565 57.065 10.24 57.065 8.59999ZM57.575 32.43V13.595H62.53V32.435H57.575V32.43Z"/><path d="M217.935 2H76.3V38.045H217.935V2Z"/></svg><ul><li>work</li><li>about</li><li>say hi</li></ul></div>
+      <div class="mock-hero">
+        <h3>I design products, <em>prototype</em> them in code <svg class="star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 7.25 21.56 0l-.34 9.18 8.85-1.93L24 14.07l8 4.3-8.97 1.26 3.41 8.51-7.66-4.88L16 32l-2.78-8.74-7.66 4.88 3.41-8.51L0 18.37l8-4.3-6.07-6.82 8.85 1.93L10.44 0z"/></svg> and build things with my hands.</h3>
+        <p>product designer at momoGood · 8+ years · são paulo</p>
+        <div class="a-card"><div class="img">[ momoProto cover ]</div><div>momoProto: one hub for every prototype</div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel"><h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><i style="background:var(--a-bg);outline:1px solid #ffffff44"></i><span>Blue #0055D4</span><b>bg</b></div>
+          <div class="sw"><i style="background:var(--a-fg)"></i><span>Ice #DCEAFF</span><b>5.3:1</b></div>
+          <div class="sw"><i style="background:var(--a-muted)"></i><span>Mist #C7DAFF</span><b>4.6:1</b></div>
+          <div class="sw"><i style="background:var(--a-pop)"></i><span>Star #FFE45C</span><b>5.1:1</b></div>
+          <div class="sw"><i style="background:var(--a-deep);outline:1px solid #ffffff44"></i><span>Deep #0A1F4D</span><b>dark</b></div>
+        </div>
+      </div>
+      <div class="panel"><h4>Type</h4>
+        <p><b style="font:700 20px Syne">Syne</b>: display (variable, 400–800)</p>
+        <p><b style="font:500 15px 'JetBrains Mono'">JetBrains Mono</b>: body accents, labels, metadata. Replaces PT Mono, which has no variable build.</p>
+        <p><b style="font:400 16px 'Atkinson Hyperlegible Next'">Atkinson Hyperlegible Next</b>: body text. Syne is for display only.</p>
+      </div>
+      <div class="panel"><h4>Imagery · layout · motion</h4>
+        <ul>
+          <li>Photos duotoned to blue and ice, so mixed sources look like one set</li>
+          <li>Rounded cards, big type, generous blue space</li>
+          <li>Motion: playful. The star spins, words rotate in the hero</li>
+          <li>Refs: v3 itself, Spotify Wrapped type, risograph posters</li>
+        </ul>
+      </div>
+      <div class="panel"><h4>Legacy elements</h4>
+        <div class="decisions">
+          <div><span>Logo</span><span>keep</span><span>v3 file as is, “branco” covered</span></div>
+          <div><span>#0055D4</span><span>keep</span><span>Full background</span></div>
+          <div><span>Syne</span><span>keep</span><span>Display only</span></div>
+          <div><span>PT Mono</span><span>swap</span><span>JetBrains Mono</span></div>
+          <div><span>Star</span><span>keep</span><span>Main motif</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dir" id="body" aria-labelledby="body-title" style="background:var(--a-deep);color:var(--a-fg)">
+  <div class="wrap">
+    <div class="dir-head">
+      <span class="tag" style="color:var(--a-pop);font-family:'JetBrains Mono',monospace">Direction A · body face</span>
+      <h2 id="body-title" style="font:700 clamp(28px,4vw,44px)/1.05 Syne,sans-serif;letter-spacing:-.02em">Syne for headings, a quieter sans for reading</h2>
+      <p style="color:var(--a-muted)">The same case-study paragraph under a Syne heading, in each candidate. The top half is on the Deep reading column; the strip below is on blue. All three are variable fontsource packages.</p>
+    </div>
+    <div class="grid">
+      <div class="panel bodyc" style="--f:'Atkinson Hyperlegible Next'"><h4>1 · Atkinson Hyperlegible Next · ★ chosen</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>Built for low-vision readers by the Braille Institute. Tells I/l/1 and 0/O apart clearly.</p></div></div>
+      <div class="panel bodyc" style="--f:'Instrument Sans'"><h4>2 · Instrument Sans</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>Slightly geometric, so it echoes Syne's shapes without fighting them. Has a width axis.</p></div></div>
+      <div class="panel bodyc" style="--f:'Hanken Grotesk'"><h4>3 · Hanken Grotesk</h4><div class="bc"><h5>Card fees, without the fine print</h5><p>Millions of customers pay an annual fee they barely understand. I redesigned how they see, compare and manage it, working with product, engineering and data from discovery to delivery.</p></div><div class="bc blue"><p>A neutral, warm grotesk. The safest choice: it disappears and lets Syne lead.</p></div></div>
+    </div>
+  </div>
+</section>
+<style>
+#body .panel h4 { color: var(--a-pop); font-family: "JetBrains Mono", monospace; }
+.bodyc .bc { padding: 18px; display: grid; gap: 10px; border: 1px solid #ffffff22; border-bottom: 0; border-radius: 6px 6px 0 0; }
+.bodyc .bc.blue { background: var(--a-bg); border-radius: 0 0 6px 6px; border-bottom: 1px solid #ffffff22; }
+.bodyc h5 { margin: 0; font: 700 22px/1.1 Syne, sans-serif; letter-spacing: -.01em; text-wrap: balance; }
+.bodyc p { margin: 0; font-family: var(--f), system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--a-fg); }
+</style>
+
+<!-- B -->
+<section class="dir" id="b" aria-labelledby="b-title">
+  <div class="wrap">
+    <div class="dir-head">
+      <span class="tag">Direction B · editorial</span>
+      <h2 id="b-title">Lab notebook, <em>in blue ink</em></h2>
+      <p>The site as a working notebook: graph paper, a literary serif for ideas, a clean sans for reading, mono margin notes for the facts. The v3 blue survives as the ink colour, so it's still recognisably Bibi without shouting.</p>
+    </div>
+
+    <div class="specimen" role="img" aria-label="Direction B home page mock-up">
+      <div class="mock-nav"><b>Bibi Branco</b><ul><li>Work</li><li>Notes</li><li>About</li><li>Say hi</li></ul></div>
+      <div class="mock-hero">
+        <h3>I design products, <em>prototype them in code</em> and build things with my hands.</h3>
+        <p>Product designer at momoGood. 8+ years, most recently at Itaú. Currently into AI-native workflows and 3D-printed costumes. (Sample copy; final copy comes from PORT-008.)</p>
+        <div class="note"><b>fig. 1</b><br>Rato Túlio: material, layer height, board, print hours. (Placeholder specs; real ones come from PORT-302.)</div>
+      </div>
+      <div style="padding:0 24px 32px"><div class="b-entry"><span>2026.05</span><div><strong>momoProto</strong><small>A prototype hub with a design-system contract every prototype has to pass.</small></div></div></div>
+    </div>
+
+    <div class="grid">
+      <div class="panel"><h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><i style="background:var(--b-bg);outline:1px solid var(--b-fg)"></i><span>Paper #F7F7F3</span><b>bg</b></div>
+          <div class="sw"><i style="background:var(--b-fg)"></i><span>Graphite #1A1814</span><b>16.5:1</b></div>
+          <div class="sw"><i style="background:var(--b-muted)"></i><span>Pencil #5F5B53</span><b>6.3:1</b></div>
+          <div class="sw"><i style="background:var(--b-ink)"></i><span>Ink #0055D4</span><b>6.0:1</b></div>
+          <div class="sw"><i style="background:var(--b-grid);outline:1px solid var(--b-fg)"></i><span>Grid #E3E4DC</span><b>deco</b></div>
+        </div>
+        <p>Dark mode: graphite page, paper text, ink lifted to #7FA8FF (7.6:1).</p>
+      </div>
+      <div class="panel"><h4>Type</h4>
+        <p><b style="font:400 22px Newsreader;font-style:italic">Newsreader</b>: display and pull quotes (variable, optical sizes)</p>
+        <p><b style="font:500 15px Geist">Geist</b>: body and UI</p>
+        <p><b style="font:500 14px 'Geist Mono'">Geist Mono</b>: dates, specs, figure notes</p>
+      </div>
+      <div class="panel"><h4>Imagery · layout · motion</h4>
+        <ul>
+          <li>Photos at full colour, numbered as figures with mono captions</li>
+          <li>Wide margins holding annotations; a dated log for the work list</li>
+          <li>Motion: quiet. Ink-underline links, figures that settle in, no loops</li>
+          <li>Refs: field notebooks, Bret Victor's essays, Are.na, MIT Press covers</li>
+        </ul>
+      </div>
+      <div class="panel"><h4>Legacy elements</h4>
+        <div class="decisions">
+          <div><span>Logo</span><span>drop</span><span>Name set in Newsreader italic</span></div>
+          <div><span>#0055D4</span><span>keep</span><span>Ink accent and links</span></div>
+          <div><span>Syne</span><span>drop</span><span>Too loud for long reads</span></div>
+          <div><span>PT Mono</span><span>swap</span><span>Geist Mono</span></div>
+          <div><span>Star</span><span>keep</span><span>Small mark for favourites</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C -->
+<section class="dir" id="c" aria-labelledby="c-title">
+  <div class="wrap">
+    <div class="dir-head">
+      <span class="tag">Direction C · maker</span>
+      <h2 id="c-title">Workshop</h2>
+      <p>Plywood, shop tags and safety orange. Every project gets a build sheet with real specs, and digital work gets the same treatment as a costume or a stool. The most fun direction, and the hardest to make feel senior.</p>
+    </div>
+
+    <div class="specimen" role="img" aria-label="Direction C home page mock-up">
+      <div class="mock-nav"><span>BB/ workshop</span><ul><li>Builds</li><li>About</li><li>Say hi</li></ul></div>
+      <div class="mock-hero">
+        <h3>I design products, prototype them <span>in code</span> and build things with my hands.</h3>
+        <p>product designer @ momoGood · 8+ yrs · tools: figma, react, a bandsaw</p>
+        <div class="c-tag"><span>BUILD 014 · 2026 · REACT + TS</span><strong>momoProto</strong><span>prototype hub · ds:check gate</span></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel"><h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><i style="background:var(--c-bg);outline:1px solid var(--c-fg)"></i><span>Plywood #E9DFCC</span><b>bg</b></div>
+          <div class="sw"><i style="background:var(--c-fg)"></i><span>Shop black #1E1B16</span><b>13:1</b></div>
+          <div class="sw"><i style="background:var(--c-muted)"></i><span>Sawdust #5E5546</span><b>5.6:1</b></div>
+          <div class="sw"><i style="background:var(--c-pop-text)"></i><span>Rust #9A3412 (text)</span><b>5.5:1</b></div>
+          <div class="sw"><i style="background:var(--c-pop)"></i><span>Safety #FF6A1A (fills)</span><b>fill</b></div>
+        </div>
+        <p>Safety orange is only 3.9:1 on plywood, so it's for fills and highlights. Text uses rust.</p>
+      </div>
+      <div class="panel"><h4>Type</h4>
+        <p><b style="font:800 20px 'Bricolage Grotesque'">Bricolage Grotesque</b>: display and body (variable, optical sizes)</p>
+        <p><b style="font:500 14px 'JetBrains Mono'">JetBrains Mono</b>: specs, tags, build numbers</p>
+      </div>
+      <div class="panel"><h4>Imagery · layout · motion</h4>
+        <ul>
+          <li>Process photos, cut-out objects, exploded diagrams</li>
+          <li>Tag-shaped labels, dashed cut lines, spec tables in every project</li>
+          <li>Motion: mechanical. Snappy, stepped, tags swing on hover</li>
+          <li>Refs: Teenage Engineering, IKEA manuals, McMaster-Carr, shop pegboards</li>
+        </ul>
+      </div>
+      <div class="panel"><h4>Legacy elements</h4>
+        <div class="decisions">
+          <div><span>Logo</span><span>drop</span><span>“BB/” stamp</span></div>
+          <div><span>#0055D4</span><span>drop</span><span>Orange takes over</span></div>
+          <div><span>Syne</span><span>drop</span><span>Bricolage</span></div>
+          <div><span>PT Mono</span><span>swap</span><span>JetBrains Mono</span></div>
+          <div><span>Star</span><span>drop</span><span>—</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pick" id="pick" aria-labelledby="pick-title">
+  <div class="wrap">
+    <span class="eyebrow">Against the PORT-002 brief</span>
+    <h2 id="pick-title">How they compare</h2>
+    <div class="compare">
+      <table>
+        <thead><tr><th scope="col">Brief need</th><th scope="col">A · Blue, evolved</th><th scope="col">B · Lab notebook</th><th scope="col">C · Workshop</th></tr></thead>
+        <tbody>
+          <tr><td>Design/eng peers</td><td>Memorable, but reads as "personal site"</td><td>Strong: process, notes and code fit naturally</td><td>Good for prototypes framed as builds</td></tr>
+          <tr><td>Makers</td><td>Neutral</td><td>Good: build specs live as margin notes</td><td>Strongest</td></tr>
+          <tr><td>Recruiters (secondary)</td><td>Fine on home, tiring on long case studies</td><td>Strongest: calm, easy to read</td><td>Risky: playfulness can read as junior</td></tr>
+          <tr><td>Site as a showcase</td><td>Low novelty, since it's close to v3</td><td>Craft shows in type and detail</td><td>High visual impact</td></tr>
+          <tr><td>Personal record / notes</td><td>No natural home for writing</td><td>Built for it: a dated log</td><td>Build numbers work as an archive</td></tr>
+          <tr><td>Long-form readability</td><td>Weak (saturated background)</td><td>Strong</td><td>OK</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rec"><b>Decision: A, Blue, evolved</b> (Bibi, 2026-10-17). The identity is kept for continuity and recognition. The readability risk is handled with a Deep reading column on case-study pages (see visual-direction.md).</p>
+    <p class="rec" style="opacity:.7"><b>Original recommendation: B, Lab notebook.</b> It serves both primary audiences without losing the secondary one. Case studies, code prototypes and craft builds all fit one "experiments and notes" frame, and it gives "share knowledge" a home. The v3 blue and the star carry over as ink and a small mark, so the identity changes without starting from nothing. From C, borrow the spec tables for craft projects.</p>
+  </div>
+</section>
