@@ -1,5 +1,6 @@
 import { EventEmitter } from 'node:events'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 import { createBuilder } from '@content-collections/core'
 
@@ -35,6 +36,22 @@ const emitter = {
 
 const builder = await createBuilder(path.resolve('content-collections.ts'), undefined, emitter)
 await builder.build()
+
+// Links from src/content/profile.ts into case studies must point at a project that ships in this
+// build (drafts are gone in production). A render-time check isn't enough: the error boundary
+// catches it and the page still prerenders.
+const load = (file: string) => import(pathToFileURL(path.resolve(file)).href)
+const { allProjects } = await load('.content-collections/generated/index.js')
+const { interests } = await load('src/content/profile.ts')
+const slugs = new Set(allProjects.map((project: { slug: string }) => project.slug))
+for (const interest of interests) {
+  const slug = interest.link?.to === '/work/$slug' ? interest.link.params.slug : undefined
+  if (slug && !slugs.has(slug)) {
+    errors.push(
+      `profile.ts: interest "${interest.label}" links to /work/${slug}, which isn't a project`,
+    )
+  }
+}
 
 if (errors.length > 0) {
   console.error(`\nContent build failed:\n\n${errors.join('\n\n')}\n`)

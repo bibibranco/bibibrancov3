@@ -24,13 +24,15 @@ type Education = {
 }
 
 /**
- * Where an interest links. Pages with hashes are typed against the routes that exist; project
- * slugs follow sitemap §3 and become typed `/work/$slug` links when PORT-406 adds the route.
+ * Where an interest links: a typed route, with a hash or a case-study slug. A slug that doesn't
+ * match a project throws on the home page, so the prerender (and the build) fails.
  */
 type InterestLink =
-  { to: '/work'; hash: 'work' | 'craft' } | { to: '/about'; hash: 'talks' } | { project: string }
+  | { to: '/work'; hash: 'work' | 'craft' }
+  | { to: '/about'; hash: 'talks' }
+  | { to: '/work/$slug'; params: { slug: string } }
 
-type Interest = { label: string; line: string; link: InterestLink }
+type Interest = { label: string; line: string; link?: InterestLink }
 
 type Social = {
   /** Matches the analytics `channel` / `method` names (src/lib/analytics.ts). */
@@ -123,12 +125,12 @@ const interests: Interest[] = [
   {
     label: 'crafting',
     line: 'playing around with woodworking, glass cutting and circuits since I was a child',
-    link: { project: 'woodworking' },
+    link: { to: '/work/$slug', params: { slug: 'woodworking' } },
   },
   {
     label: 'data viz',
     line: 'turning spreadsheets and collected data into visual things is one of my passions',
-    link: { project: 'itp-mapping' },
+    link: { to: '/work/$slug', params: { slug: 'itp-mapping' } },
   },
   {
     label: 'sharing knowledge',
