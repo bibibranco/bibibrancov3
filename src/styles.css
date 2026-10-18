@@ -256,6 +256,14 @@
   background-size: var(--grid-cell) var(--grid-cell);
 }
 
+/* "fig. N" before a caption, numbered in order per case study (MdxContent resets `fig`). */
+@utility fig-label {
+  counter-increment: fig;
+  &::before {
+    content: 'fig. ' counter(fig);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

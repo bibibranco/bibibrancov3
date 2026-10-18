@@ -2,10 +2,14 @@ import { defineConfig } from 'vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import contentCollections from '@content-collections/vite'
 
 export default defineConfig({
   resolve: { tsconfigPaths: true },
   plugins: [
+    // Generates `content-collections` from content/work/*.mdx. `pnpm build` runs the CLI first,
+    // because only the CLI fails on invalid frontmatter; this plugin logs it and carries on.
+    contentCollections(),
     tanstackStart({
       // Every page ships as static HTML so crawlers and link previews see real content.
       prerender: {
