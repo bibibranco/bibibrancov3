@@ -27,7 +27,7 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 - [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse). _Not met: 2.9s, see Notes. Moved to PORT-504._
 
 ## Notes / links
-- **Hero copy (final, 2026-10-18)** from [`copy.md`](../artifacts/copy.md#hero-home): "I started with design. Got a little carried away." The h1's small first line carries the name ("Bibi Branco, product designer").
+- **Hero copy (final, 2026-10-18)** from [`copy.md`](../artifacts/copy.md#hero-home): "Design, and other incidents." with the subline "8+ years of product design, data, code, and questionable experiments." (replaces "I started with design. Got a little carried away.") The h1's small first line carries the name ("Bibi Branco, product designer").
 - Built in `src/components/home/hero.tsx`:
   - "8+" comes from `yearsOfExperience`.
   - "at momoGood · previously Itaú" comes from `person.company` and the previous `experience` entry.

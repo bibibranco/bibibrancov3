@@ -106,11 +106,10 @@ function Hero() {
             <span className="mb-4 block font-mono text-caption font-normal tracking-normal text-muted-foreground">
               {person.name}, {person.role.toLowerCase()}
             </span>
-            I started with design. Got a little carried away.
+            Design, and other incidents.
           </h1>
           <p className="m-0 max-w-[34em] text-lead">
-            I'm a product designer with {yearsOfExperience}+ years of experience, a growing toolbox,
-            and a tendency to learn things the hard way. Usually on purpose.
+            {yearsOfExperience}+ years of product design, data, code, and questionable experiments.
           </p>
           <p className="m-0 font-mono text-caption text-muted-foreground">
             at {person.company}
