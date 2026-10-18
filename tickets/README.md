@@ -73,7 +73,7 @@ flowchart LR
     P409[409 404 + redirects]
   end
   subgraph E5[E5 Quality & Launch]
-    P501[501 SEO] & P502[502 GA4] & P503[503 a11y] & P504[504 Perf] & P505[505 Tests] --> P506[506 Launch]
+    P501[501 SEO] & P502[502 GA4] & P503[503 a11y] & P504[504 Perf] & P505[505 Tests] & P507[507 Final content] --> P506[506 Launch]
   end
   P103 --> P201
   P004 --> P103
@@ -96,6 +96,8 @@ flowchart LR
   E4 --> P504
   E4 --> P505
   P409 --> P506
+  P302 --> P507
+  P303 --> P507
 ```
 
 ## Status board
@@ -123,7 +125,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | review |
 | [PORT-204](02-design-system/PORT-204-motion-primitives.md) | Motion primitives | eng | P1 | S | PORT-201, PORT-007 | todo |
 | [PORT-301](03-content/PORT-301-content-collections-mdx.md) | Content collections, MDX & project schema | eng | P0 | M | PORT-102, PORT-005 | review |
-| [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | todo |
+| [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | review |
 | [PORT-303](03-content/PORT-303-profile-data.md) | Typed profile data (experience, education, interests) | eng | P1 | S | PORT-008 | review |
 | [PORT-304](03-content/PORT-304-image-pipeline.md) | Image pipeline | eng | P1 | M | PORT-301 | review |
 | [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | review |
@@ -140,7 +142,8 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |
 | [PORT-504](05-quality-launch/PORT-504-performance-budget.md) | Performance budget | eng | P1 | S | E4 complete, PORT-304 | todo |
 | [PORT-505](05-quality-launch/PORT-505-testing.md) | Automated tests | eng | P1 | M | PORT-105, PORT-301, E4 complete | todo |
-| [PORT-506](05-quality-launch/PORT-506-launch.md) | Launch & legacy cleanup | eng | P0 | S | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505 | todo |
+| [PORT-506](05-quality-launch/PORT-506-launch.md) | Launch & legacy cleanup | eng | P0 | S | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505, PORT-507 | todo |
+| [PORT-507](05-quality-launch/PORT-507-final-content-pass.md) | Final content pass before launch | content | P0 | M | PORT-302, PORT-303, PORT-008 | todo |
 ## Conventions
 - **IDs**: `PORT-0xx` discovery/design, `1xx` foundation, `2xx` design system, `3xx` content, `4xx` pages, `5xx` quality/launch.
 - **New tickets**: copy [`_TEMPLATE.md`](_TEMPLATE.md) into the right epic folder, take the next free number, and add a row to the status board.

@@ -6,7 +6,7 @@
 | Type | eng |
 | Priority | P0 |
 | Estimate | S |
-| Depends on | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505 |
+| Depends on | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505, PORT-507 |
 | Status | todo |
 
 ## User story
@@ -16,7 +16,7 @@ As **Bibi**, I want the new site live on my domain with nothing lost so that I c
 Production domain is `bibibran.co`, currently attached to the old Vercel project. DNS is at Namecheap. The old app sits in `legacy/` since PORT-101.
 
 ## Scope
-- Pre-launch checklist: PORT-001 inventory fully accounted for; all E5 acceptance criteria met; final content proofread.
+- Pre-launch checklist: PORT-001 inventory fully accounted for; all E5 acceptance criteria met; final content pass done (PORT-507).
 - In Vercel, move `bibibran.co` and `www.bibibran.co` from the old project to the new one (keep today's setup: `www.bibibran.co` is primary and the apex redirects to it); HTTPS verified.
 - Namecheap: confirm the records still point at Vercel (use the values Vercel's domain panel shows). Moving a domain between Vercel projects normally needs no DNS change. Leave the email (MX) records for `oi@bibibran.co` alone.
 - Post-launch: verify redirects and GA on production; submit sitemap in Google Search Console.
