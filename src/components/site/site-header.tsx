@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Logo } from '@/components/brand/logo'
 import { Container } from '@/components/ui/layout'
 import { buttonVariants } from '@/components/ui/button'
+import { person } from '@/content/profile'
 import { contactHref, navItems } from './nav'
 
 // Links stay unstyled until hover; the current page gets a thick underline (and aria-current from Link).
@@ -28,7 +29,7 @@ function HomeLink({ onClick }: { onClick?: () => void }) {
   return (
     <Link
       to="/"
-      aria-label="Bibi Branco, home"
+      aria-label={`${person.name}, home`}
       className="inline-flex min-h-tap items-center text-foreground"
       onClick={onClick}
     >
