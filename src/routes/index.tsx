@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { Desk } from '@/components/home/desk'
 import { Hero } from '@/components/home/hero'
 import { Interests } from '@/components/home/interests'
 import { pageHead, personJsonLd } from '@/lib/seo'
@@ -15,6 +16,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <Desk />
       <Interests />
     </>
   )
