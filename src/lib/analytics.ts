@@ -10,7 +10,7 @@ const productionHosts = ['bibibran.co', 'www.bibibran.co']
 const debugParam = 'ga_debug'
 const debugStorageKey = 'ga-debug'
 
-type Location = 'hero' | 'footer' | 'case_study' | 'about'
+type Location = 'hero' | 'home' | 'footer' | 'case_study' | 'about'
 type Category = 'work' | 'craft'
 
 type Events = {

@@ -40,7 +40,7 @@ No targets yet. Collect a baseline for the first 8 weeks after launch, then set 
 | M1 | Case study views per session | Are people going beyond the home page? | `case_study_view` (on route load of `/work/$slug`) | `slug`, `category`: `work` \| `craft` |
 | M2 | Case study read rate (reads ÷ views) | Is the content worth reading? | `case_study_read` (once per view, at 75% scroll) | `slug`, `category` |
 | M3 | Prototype/code clicks | Does the "prototypes in code" story land? | `prototype_click` | `slug`, `destination`: `live` \| `repo` |
-| M4 | Contact clicks | Is the site bringing in conversations and opportunities? (primary goal) | `contact_click` | `method`: `email` \| `linkedin`, `location`: `hero` \| `footer` \| `case_study` \| `about` |
+| M4 | Contact clicks | Is the site bringing in conversations and opportunities? (primary goal) | `contact_click` | `method`: `email` \| `linkedin`, `location`: `hero` \| `home` \| `footer` \| `case_study` \| `about` |
 | M5 | Outbound clicks | Is the site feeding the wider presence? | `outbound_click` | `channel`: `linkedin` \| `medium`, `location` (same values as M4) |
 
 - Only LinkedIn and Medium count as tracked outbound channels. Other links (TikTok, GitHub, the v3 credit) aren't tracked unless they are a `prototype_click`.
