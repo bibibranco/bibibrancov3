@@ -8,7 +8,7 @@ test.describe('home hero', () => {
     await page.goto('/')
     const heading = page.getByRole('heading', { level: 1 })
     await expect(heading).toContainText('Bibi Branco, product designer')
-    await expect(heading).toContainText('I started with design. Got a little carried away.')
+    await expect(heading).toContainText('Design, and other incidents.')
     await expect(page.getByRole('link', { name: 'See my work' })).toHaveAttribute('href', '/work')
     await expect(page.getByRole('link', { name: 'Say hi' }).first()).toHaveAttribute(
       'href',

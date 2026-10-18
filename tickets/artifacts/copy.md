@@ -5,16 +5,16 @@ Working copy doc for v4. When a section is final, it moves into MDX/TS data (POR
 **Status per section:** **Bibi** = written by Bibi · **draft** = drafted by Claude 2026-10-18 for Bibi to edit · **final** = signed off. Text in [brackets] is a fact or decision still owed.
 
 ## Hero (home)
-Replaces HE1 and HE2. Status: **final, from Bibi (2026-10-18, PORT-007)**.
+Replaces HE1 and HE2. Status: **final, from Bibi (2026-10-18; replaces the PORT-007 line the same day)**.
 
-> **I started with design. Got a little carried away.**
-> I'm a product designer with 8+ years of experience, a growing toolbox, and a tendency to learn things the hard way. Usually on purpose.
+> **Design, and other incidents.**
+> 8+ years of product design, data, code, and questionable experiments.
 
 | Part | Copy |
 |---|---|
 | h1, small first line (mono) | Bibi Branco, product designer |
-| h1 | I started with design. Got a little carried away. |
-| Subline | I'm a product designer with 8+ years of experience, a growing toolbox, and a tendency to learn things the hard way. Usually on purpose. |
+| h1 | Design, and other incidents. |
+| Subline | 8+ years of product design, data, code, and questionable experiments. |
 | Meta line (mono) | at momoGood · previously Itaú |
 | Buttons | See my work · Say hi |
 
