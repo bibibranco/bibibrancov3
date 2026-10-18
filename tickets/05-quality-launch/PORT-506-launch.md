@@ -19,7 +19,7 @@ Production domain is `bibibran.co`, currently attached to the old Vercel project
 - Pre-launch checklist: PORT-001 inventory fully accounted for; all E5 acceptance criteria met; final content pass done (PORT-507).
 - In Vercel, move `bibibran.co` and `www.bibibran.co` from the old project to the new one (keep today's setup: `www.bibibran.co` is primary and the apex redirects to it); HTTPS verified.
 - Namecheap: confirm the records still point at Vercel (use the values Vercel's domain panel shows). Moving a domain between Vercel projects normally needs no DNS change. Leave the email (MX) records for `oi@bibibran.co` alone.
-- Post-launch: verify redirects and GA on production; submit sitemap in Google Search Console.
+- Post-launch: verify redirects and GA on production; submit sitemap in Google Search Console; check share cards in LinkedIn Post Inspector and opengraph.xyz (home + one case study) and the `Person` JSON-LD in Google's Rich Results Test (moved from PORT-501, which needs a public URL); check the favicon in Chrome, Safari and on an iOS home screen.
 - Remove `legacy/` in a separate PR; replace the Vite template `README.md` with a real one (stack, scripts, how to add a project, budget).
 - Delete the old Vercel project once the new one has been stable for a week. Until then, rollback = move the domain back to it.
 

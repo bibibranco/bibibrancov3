@@ -22,5 +22,6 @@ npm-debug.log*
 .DS_Store
 .idea/
 
-# generated image variants (PORT-304)
+# generated at build time (PORT-304, PORT-501)
 public/_img/
+public/sitemap.xml

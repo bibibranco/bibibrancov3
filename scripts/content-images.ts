@@ -91,5 +91,28 @@ async function processProjectImages(
   return Object.fromEntries(entries)
 }
 
-export { processProjectImages, IMAGE_FILE }
+/**
+ * 1200×630 JPEG share image (og:image) cropped from a project's cover. JPEG because some link
+ * previews (LinkedIn, WhatsApp) still skip WebP and AVIF. Named by content hash like the variants.
+ */
+async function processOgImage(directory: string, slug: string, src: string): Promise<string> {
+  const file = path.join(directory, slug, src)
+  const hash = createHash('sha256')
+    .update(await fs.readFile(file))
+    .digest('hex')
+    .slice(0, 8)
+  const url = `/_img/${slug}/og-${hash}.jpg`
+  const out = path.join(publicDir, url)
+  if (!(await exists(out))) {
+    await fs.mkdir(path.dirname(out), { recursive: true })
+    await sharp(file)
+      .autoOrient()
+      .resize({ width: 1200, height: 630, fit: 'cover', position: 'attention' })
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toFile(out)
+  }
+  return url
+}
+
+export { processProjectImages, processOgImage, IMAGE_FILE }
 export type { ResolvedImage }

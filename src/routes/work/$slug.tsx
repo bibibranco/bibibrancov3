@@ -30,6 +30,7 @@ export const Route = createFileRoute('/work/$slug')({
       description: project.summary,
       path: `/work/${project.slug}`,
       type: 'article',
+      image: { src: project.og, alt: project.cover.alt },
     })
   },
   component: CaseStudy,

@@ -17,7 +17,7 @@ import {
   yearsOfExperience,
 } from '@/content/profile'
 import { track } from '@/lib/analytics'
-import { pageHead } from '@/lib/seo'
+import { pageHead, personJsonLd } from '@/lib/seo'
 
 // Background for a recruiter scan (PORT-407): bio and portrait, then experience, education and
 // talks, all from src/content/profile.ts. One h1; every section is an h2 with h3 entries.
@@ -28,6 +28,7 @@ export const Route = createFileRoute('/about')({
       title: 'About',
       description: `Product designer with ${yearsOfExperience}+ years of experience, now at momoGood. Experience, education, talks and how to get in touch.`,
       path: '/about',
+      jsonLd: [personJsonLd()],
     }),
   component: About,
 })
