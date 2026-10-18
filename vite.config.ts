@@ -12,7 +12,12 @@ export default defineConfig({
         enabled: true,
         crawlLinks: true,
         failOnError: true,
+        // Dev-only routes (PORT-202 kitchen sink) return not-found in production.
+        filter: ({ path }) => !path.startsWith('/_'),
       },
+      // Prerendering stops on non-200 responses, so the 404 page has a real route.
+      // Vercel serves `404.html` with a 404 status for any path it can't match.
+      pages: [{ path: '/404', prerender: { outputPath: '/404.html', crawlLinks: false } }],
     }),
     viteReact(),
     tailwindcss(),

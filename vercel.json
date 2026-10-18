@@ -4,5 +4,27 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/client",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/project/1",
+      "destination": "/work#work",
+      "statusCode": 301
+    },
+    {
+      "source": "/project/2",
+      "destination": "/work/woodworking",
+      "statusCode": 301
+    },
+    {
+      "source": "/project/3",
+      "destination": "/work/itp-mapping",
+      "statusCode": 301
+    },
+    {
+      "source": "/project/:id",
+      "destination": "/work",
+      "statusCode": 301
+    }
+  ]
 }

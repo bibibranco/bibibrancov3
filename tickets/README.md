@@ -106,10 +106,10 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 |---|---|---|---|---|---|---|
 | [PORT-001](00-discovery-design/PORT-001-content-audit.md) | Content audit & inventory | content | P0 | S | — | review |
 | [PORT-002](00-discovery-design/PORT-002-goals-audience-metrics.md) | Goals, audience & success metrics | design | P0 | S | — | review |
-| [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | review |
+| [PORT-003](00-discovery-design/PORT-003-information-architecture.md) | Information architecture & sitemap | design | P0 | S | PORT-001, PORT-002 | done |
 | [PORT-004](00-discovery-design/PORT-004-visual-direction.md) | Visual direction & moodboard | design | P0 | M | PORT-002 | review |
 | [PORT-005](00-discovery-design/PORT-005-wireframes.md) | Mobile-first wireframes | design | P0 | M | PORT-003 | in progress |
-| [PORT-006](00-discovery-design/PORT-006-design-tokens-inventory.md) | Design tokens & component inventory | design | P0 | M | PORT-004, PORT-005 | todo |
+| [PORT-006](00-discovery-design/PORT-006-design-tokens-inventory.md) | Design tokens & component inventory | design | P0 | M | PORT-004, PORT-005 | review |
 | [PORT-007](00-discovery-design/PORT-007-hifi-designs-motion.md) | Hi-fi designs & motion spec | design | P0 | L | PORT-006, PORT-008 | todo |
 | [PORT-008](00-discovery-design/PORT-008-copy-refresh.md) | Copy refresh | content | P0 | M | PORT-001, PORT-002, PORT-003 | in progress |
 | [PORT-101](01-foundation/PORT-101-repo-restructure.md) | Repo restructure | eng | P0 | S | — | review |
@@ -118,15 +118,15 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-104](01-foundation/PORT-104-tooling-lint-format.md) | Linting, formatting & scripts | eng | P1 | S | PORT-102 | review |
 | [PORT-105](01-foundation/PORT-105-ci.md) | CI on pull requests | eng | P1 | S | PORT-104 | review |
 | [PORT-106](01-foundation/PORT-106-hosting-previews.md) | Hosting & preview deploys | eng | P0 | S | PORT-102 | done |
-| [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | todo |
-| [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | todo |
-| [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | todo |
+| [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | review |
+| [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | review |
+| [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | review |
 | [PORT-204](02-design-system/PORT-204-motion-primitives.md) | Motion primitives | eng | P1 | S | PORT-201, PORT-007 | todo |
 | [PORT-301](03-content/PORT-301-content-collections-mdx.md) | Content collections, MDX & project schema | eng | P0 | M | PORT-102, PORT-005 | todo |
 | [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | todo |
 | [PORT-303](03-content/PORT-303-profile-data.md) | Typed profile data (experience, education, interests) | eng | P1 | S | PORT-008 | todo |
 | [PORT-304](03-content/PORT-304-image-pipeline.md) | Image pipeline | eng | P1 | M | PORT-301 | todo |
-| [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | todo |
+| [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | review |
 | [PORT-402](04-pages/PORT-402-home-hero.md) | Home: hero | eng | P0 | M | PORT-401, PORT-204, PORT-007 | todo |
 | [PORT-403](04-pages/PORT-403-home-featured-work.md) | Home: featured work | eng | P0 | M | PORT-301, PORT-202, PORT-302 | todo |
 | [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | todo |
@@ -134,9 +134,9 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-406](04-pages/PORT-406-case-study-page.md) | Case study page `/work/$slug` | eng | P0 | L | PORT-301, PORT-302, PORT-304 | todo |
 | [PORT-407](04-pages/PORT-407-about-page.md) | About page `/about` | eng | P1 | M | PORT-303, PORT-202 | todo |
 | [PORT-408](04-pages/PORT-408-contact-cta.md) | Contact call-to-action | eng | P1 | S | PORT-303, PORT-202 | todo |
-| [PORT-409](04-pages/PORT-409-404-and-redirects.md) | 404 page & legacy redirects | eng | P0 | S | PORT-401, PORT-003, PORT-106 | todo |
+| [PORT-409](04-pages/PORT-409-404-and-redirects.md) | 404 page & legacy redirects | eng | P0 | S | PORT-401, PORT-003, PORT-106 | review |
 | [PORT-501](05-quality-launch/PORT-501-seo.md) | SEO, social previews & favicons | eng | P1 | M | PORT-401, PORT-406, PORT-007 | todo |
-| [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | todo |
+| [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | review |
 | [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |
 | [PORT-504](05-quality-launch/PORT-504-performance-budget.md) | Performance budget | eng | P1 | S | E4 complete, PORT-304 | todo |
 | [PORT-505](05-quality-launch/PORT-505-testing.md) | Automated tests | eng | P1 | M | PORT-105, PORT-301, E4 complete | todo |

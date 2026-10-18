@@ -5,130 +5,284 @@
 @import '@fontsource-variable/atkinson-hyperlegible-next';
 @import '@fontsource-variable/jetbrains-mono';
 
+/*
+ * Tokens from PORT-006 (tickets/artifacts/design-system/tokens.json). Names match the token
+ * names 1:1. One theme (Blue): there is no light or dark mode. The `dark` variant stays bound
+ * to a `.dark` class that is never set, so `dark:` classes in shadcn components never apply
+ * (Tailwind's default `dark:` would follow the OS setting).
+ */
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  /* Typefaces from PORT-004: Syne for headings only, Atkinson for body, JetBrains Mono for labels. */
-  --font-heading: 'Syne Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Atkinson Hyperlegible Next Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-foreground: var(--foreground);
-  --color-background: var(--background);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
-
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Brand */
+  --blue: #0055d4;
+  --ice: #dceaff;
+  --mist: #c7daff;
+  --star: #ffe45c;
+  --deep: #0a1f4d;
+  --paper: #f7f7f3;
+  --pencil: #4a5a7a;
+  --blue-shade: #0a4cbf;
+  --salmon: #ffd6d0;
+
+  /* Semantic (shadcn) */
+  --background: var(--blue);
+  --foreground: var(--ice);
+  --card: var(--deep);
+  --card-foreground: var(--ice);
+  --popover: var(--deep);
+  --popover-foreground: var(--ice);
+  --primary: var(--star);
+  --primary-foreground: var(--deep);
+  --secondary: var(--blue);
+  --secondary-foreground: var(--ice);
+  --muted: var(--blue-shade);
+  --muted-foreground: var(--mist);
+  --accent: var(--blue-shade);
+  --accent-foreground: #ffffff;
+  --destructive: var(--salmon);
+  --border: rgb(220 234 255 / 0.35);
+  --input: var(--ice);
+  --ring: var(--star);
+
+  /* Desk objects */
+  --paper-foreground: var(--deep);
+  --paper-muted: var(--pencil);
+  --sticky: var(--star);
+  --sticky-foreground: var(--deep);
+  --terminal: var(--deep);
+  --terminal-foreground: var(--ice);
+  --terminal-muted: #9db4dc;
+  --tape: rgb(220 234 255 / 0.7);
+  --selection: var(--star);
+
+  /* Notebook grid (from direction B) */
+  --grid-line: rgb(220 234 255 / 0.08);
+  --grid-line-card: rgb(220 234 255 / 0.06);
+  --grid-line-card-major: rgb(220 234 255 / 0.1);
+  --grid-line-paper: #e1e6ef;
+
+  /* Fluid sizes, 375px → 1440px */
+  --fluid-display: clamp(2.5rem, 5.26vw + 1.27rem, 6rem);
+  --fluid-h1: clamp(2.25rem, 3.38vw + 1.46rem, 4.5rem);
+  --fluid-h2: clamp(1.5rem, 1.13vw + 1.24rem, 2.25rem);
+  --fluid-h3: clamp(1.25rem, 0.56vw + 1.12rem, 1.625rem);
+  --fluid-lead: clamp(1.125rem, 0.38vw + 1.04rem, 1.375rem);
+  --fluid-gutter: clamp(1.25rem, 9.39vw - 0.95rem, 7.5rem);
+  --fluid-section: clamp(2.5rem, 5.26vw + 1.27rem, 6rem);
+
+  /* Spacing steps. Same values as Tailwind's 4px scale: space-4 = p-4, gap-4, … */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  /* Sizes */
+  --container-max: 1200px;
+  --measure: 65ch;
+  --tap-min: 44px;
+  --grid-cell: 24px;
+  --grid-major: 96px;
+  --margin-width: 200px;
+
+  /* Radius (shadcn components read --radius) */
+  --radius: 12px;
+  --radius-none: 0;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+  --duration-star: 14s;
+
+  /* Desk-object rotation */
+  --tilt-1: 1.5deg;
+  --tilt-2: 3deg;
+  --tilt-3: 5deg;
+  --tilt-max: 6deg;
+
+  /* Stacking */
+  --z-object-focus: 30;
+  --z-header: 40;
+  --z-menu: 50;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+@theme inline {
+  --font-heading: 'Syne Variable', Syne, ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono:
+    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-blue: var(--blue);
+  --color-ice: var(--ice);
+  --color-mist: var(--mist);
+  --color-star: var(--star);
+  --color-deep: var(--deep);
+  --color-paper: var(--paper);
+  --color-pencil: var(--pencil);
+  --color-blue-shade: var(--blue-shade);
+  --color-salmon: var(--salmon);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-paper-foreground: var(--paper-foreground);
+  --color-paper-muted: var(--paper-muted);
+  --color-sticky: var(--sticky);
+  --color-sticky-foreground: var(--sticky-foreground);
+  --color-terminal: var(--terminal);
+  --color-terminal-foreground: var(--terminal-foreground);
+  --color-terminal-muted: var(--terminal-muted);
+  --color-tape: var(--tape);
+  --color-selection: var(--selection);
+
+  --color-grid-line: var(--grid-line);
+  --color-grid-line-card: var(--grid-line-card);
+  --color-grid-line-card-major: var(--grid-line-card-major);
+  --color-grid-line-paper: var(--grid-line-paper);
+
+  /* Type styles: text-display, text-h1, … (family comes from font-heading / font-sans / font-mono) */
+  --text-display: var(--fluid-display);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 800;
+  --text-h1: var(--fluid-h1);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 800;
+  --text-h2: var(--fluid-h2);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 700;
+  --text-h3: var(--fluid-h3);
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 700;
+  --text-lead: var(--fluid-lead);
+  --text-lead--line-height: 1.45;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.5;
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.4;
+  --text-meta: 0.875rem;
+  --text-meta--line-height: 1.4;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.06em;
+  --text-label--font-weight: 500;
+  --text-code: 0.9375rem;
+  --text-code--line-height: 1.6;
+  --text-note: 0.875rem;
+  --text-note--line-height: 1.5;
+
+  /* Spacing: Tailwind's default 4px scale, plus fluid and fixed named steps */
+  --spacing-gutter: var(--fluid-gutter);
+  --spacing-section: var(--fluid-section);
+  --spacing-tap: var(--tap-min);
+  --spacing-margin: var(--margin-width);
+
+  /* max-w-content / max-w-measure (container-max would clash with max-w-max) */
+  --container-content: var(--container-max);
+  --container-measure: var(--measure);
+
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: var(--radius);
+  --radius-pill: 9999px;
+
+  --shadow-object: 0 2px 0 rgb(10 31 77 / 0.35), 0 14px 24px -12px rgb(10 31 77 / 0.55);
+  --shadow-object-lift: 0 4px 0 rgb(10 31 77 / 0.35), 0 24px 32px -14px rgb(10 31 77 / 0.6);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+/* Notebook grid backgrounds (PORT-006 "The notebook"). bg-notebook is for the desk section only. */
+@utility bg-notebook {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+}
+
+@utility bg-notebook-card {
+  background-image:
+    linear-gradient(var(--grid-line-card-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-card-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-line-card) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-card) 1px, transparent 1px);
+  background-size:
+    var(--grid-major) var(--grid-major),
+    var(--grid-major) var(--grid-major),
+    var(--grid-cell) var(--grid-cell),
+    var(--grid-cell) var(--grid-cell);
+}
+
+@utility bg-notebook-paper {
+  background-image:
+    linear-gradient(var(--grid-line-paper) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-paper) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+    @apply border-border;
   }
   html {
-    @apply font-sans;
+    @apply bg-background font-sans text-foreground;
+  }
+  body {
+    @apply bg-background text-body text-foreground antialiased;
+  }
+  ::selection {
+    background-color: var(--selection);
+    color: var(--deep);
+  }
+  /* One ring for everything: 3px star, 3px offset, always over blue. */
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

@@ -22,12 +22,16 @@ Legacy `Project.jsx` + `SideBar.jsx` + `ProjectContent.jsx`: sidebar with title/
 - Prev/next project navigation (`getAdjacentProjects()`).
 - Per-page `head()` with title, description, canonical, OG (image from PORT-501).
 - All slugs prerendered.
+- Analytics (PORT-502): `track('case_study_view', …)` once per view, `track('case_study_read', …)` once at 75% scroll, `track('prototype_click', …)` on live/repo links. Helpers are in `src/lib/analytics.ts`.
 
 ## Acceptance criteria
 - [ ] Every MDX project has a prerendered page at `/work/<slug>`.
 - [ ] `/work/does-not-exist` shows the 404 page with a 404 status on the host.
 - [ ] Headings are in order (single `h1`, no skipped levels).
 - [ ] Matches PORT-007 on all breakpoints.
+
+## Notes / links
+- From PORT-006: the body sits on a deep reading column with the notebook grid (`bg-notebook-card`), plus a `margin-width` column of `<MarginNote>`s on desktop (inline below lg) and numbered "fig. N" labels. See `tickets/artifacts/design-system/README.md`, "The notebook".
 
 ## Out of scope
 - Comments, likes, view counts.
