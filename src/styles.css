@@ -279,6 +279,11 @@
     z-index: var(--z-object-focus);
     box-shadow: var(--shadow-object-lift);
   }
+  /* Forced colours drop the paper, sticky and terminal surfaces; an edge keeps each object a
+     separate thing on the desk. */
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
   @media (prefers-reduced-motion: no-preference) {
     transition-property: translate, box-shadow;
     transition-duration: var(--duration-base);
