@@ -1,11 +1,13 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
+import { MdxContent } from '@/components/mdx/mdx-content'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardDescription, CardMedia, CardMeta, CardTitle } from '@/components/ui/card'
 import { Image } from '@/components/ui/image'
 import { Container, Section, SectionHeading } from '@/components/ui/layout'
 import { Tag } from '@/components/ui/tag'
 import { ExternalLink, TextLink } from '@/components/ui/text-link'
+import { getProjectBySlug } from '@/lib/content'
 
 // Dev-only gallery of the PORT-202 primitives. Production builds return not-found, and nothing
 // links here, so the prerender crawler never reaches it (keep it out of the sitemap in PORT-501).
@@ -126,6 +128,25 @@ function KitchenSink() {
           </div>
         </Container>
       </Section>
+
+      <MdxBlocks />
     </div>
+  )
+}
+
+// The draft sample project (content/work/sample.mdx) uses every PORT-301 block.
+function MdxBlocks() {
+  const sample = getProjectBySlug('sample')
+  return (
+    <Section aria-labelledby="ks-mdx">
+      <Container className="flex flex-col gap-6">
+        <SectionHeading id="ks-mdx">MDX blocks</SectionHeading>
+        {sample ? (
+          <MdxContent code={sample.mdx} />
+        ) : (
+          <p className="m-0">content/work/sample.mdx is missing.</p>
+        )}
+      </Container>
+    </Section>
   )
 }

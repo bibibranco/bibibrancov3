@@ -1,0 +1,98 @@
+---
+# Dev-only sample (PORT-301): every schema field, fragment type and MDX block. Rendered on
+# /_kitchen-sink. `draft: true` keeps it out of production builds.
+title: Sample project
+summary: A draft project that uses every field, fragment type and case-study block.
+year: 2026
+role: Product designer
+timeline: 2026.01 – 2026.03
+team: 1 designer, 2 engineers
+outcome: Every block renders
+category: work
+tags: [sample, mdx]
+cover:
+  src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Crect width='16' height='10' fill='%230a4cbf'/%3E%3C/svg%3E"
+  alt: A plain blue rectangle
+featured: false
+order: 999
+links:
+  live: https://example.com/
+  repo: https://github.com/
+  external: https://medium.com/
+fragments:
+  - type: code
+    lines: ['$ pnpm ds:check', '✓ every prototype passes the contract']
+  - type: quote
+    text: A sample quote.
+    cite: Someone
+  - type: stat
+    title: SAMPLE · RECEIPT
+    rows: [{ label: one, value: '1' }, { label: two, value: '2' }]
+    total: { label: TOTAL, value: '3' }
+  - type: spec
+    rows: [{ label: WOOD, value: pine }, { label: TIME, value: weekends }]
+  - type: image
+    object: print
+    image: { src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', alt: A blank screen }
+  - type: writing
+    object: clipping
+    source: MEDIUM · 2026.01
+    title: A sample headline
+  - type: sketch
+    image: { src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', alt: A blank page }
+draft: true
+---
+
+## Text
+
+A paragraph with an [internal link](/work), an [external link](https://example.com/) and a
+list:
+
+- one
+- two
+
+<Figure
+  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Crect width='16' height='10' fill='%230a4cbf'/%3E%3C/svg%3E"
+  alt="A plain blue rectangle"
+  caption="A column-width figure."
+/>
+
+<ImagePair
+  images={[
+    {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%230a4cbf'/%3E%3C/svg%3E",
+      alt: 'Before: a blue rectangle',
+    },
+    {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%23f7f7f3'/%3E%3C/svg%3E",
+      alt: 'After: a paper-white rectangle',
+    },
+  ]}
+  caption="Before and after."
+/>
+
+<Quote cite="Someone, in a retro">
+  A sample quote that is long enough to wrap onto a second line.
+</Quote>
+
+<Stats
+  items={[
+    { value: '3×', label: 'sample stat' },
+    { value: '42%', label: 'another one' },
+  ]}
+/>
+
+<Specs
+  caption="What it took"
+  rows={[
+    { label: 'Wood', value: 'pine offcuts' },
+    { label: 'Tools', value: 'saw, chisel' },
+  ]}
+/>
+
+<Figure
+  size="full"
+  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 1'%3E%3Crect width='2' height='1' fill='%230a4cbf'/%3E%3C/svg%3E"
+  alt="A wide blue rectangle"
+  caption="A full-bleed figure (the breakout lands in PORT-406)."
+/>
