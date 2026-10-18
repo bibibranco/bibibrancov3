@@ -100,7 +100,7 @@
   --duration-fast: 120ms;
   --duration-base: 200ms;
   --duration-slow: 400ms;
-  --duration-star: 14s;
+  --duration-star: 40s;
 
   /* Desk-object rotation */
   --tilt-1: 1.5deg;

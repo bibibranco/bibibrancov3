@@ -43,3 +43,4 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 
 ## Out of scope
 - Other home sections.
+- **Star speed:** Bibi found 14s per turn too fast, so `--duration-star` is now 40s (`styles.css`, `design-system/tokens.json`, canvas). A hero game is being designed as options first (PORT-410, pending).
