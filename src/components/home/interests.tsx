@@ -19,7 +19,7 @@ function InterestRow({ interest }: { interest: Interest }) {
         {interest.link && (
           <ArrowRight
             aria-hidden
-            className="size-[0.8em] transition-transform duration-(--duration-fast) ease-out group-hover:translate-x-1 motion-reduce:transition-none"
+            className="size-[0.8em] transition-transform duration-(--duration-fast) ease-out motion-safe:group-hover:translate-x-1"
           />
         )}
       </span>

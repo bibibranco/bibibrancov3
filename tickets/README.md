@@ -123,7 +123,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-201](02-design-system/PORT-201-tokens-theme.md) | Tokens in the Tailwind theme | eng | P0 | S | PORT-103, PORT-006 | review |
 | [PORT-202](02-design-system/PORT-202-core-primitives.md) | Core UI primitives | eng | P0 | M | PORT-201 | review |
 | [PORT-203](02-design-system/PORT-203-layout-shell.md) | Layout shell: header, nav, footer | eng | P0 | M | PORT-202, PORT-003 | review |
-| [PORT-204](02-design-system/PORT-204-motion-primitives.md) | Motion primitives | eng | P1 | S | PORT-201, PORT-007 | todo |
+| [PORT-204](02-design-system/PORT-204-motion-primitives.md) | Motion primitives | eng | P1 | S | PORT-201, PORT-007 | review |
 | [PORT-301](03-content/PORT-301-content-collections-mdx.md) | Content collections, MDX & project schema | eng | P0 | M | PORT-102, PORT-005 | review |
 | [PORT-302](03-content/PORT-302-migrate-case-studies.md) | Migrate case studies to MDX | content | P0 | L | PORT-301, PORT-008, PORT-304 | review |
 | [PORT-303](03-content/PORT-303-profile-data.md) | Typed profile data (experience, education, interests) | eng | P1 | S | PORT-008 | review |
