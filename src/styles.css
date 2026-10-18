@@ -4,6 +4,8 @@
 @import '@fontsource-variable/syne';
 @import '@fontsource-variable/atkinson-hyperlegible-next';
 @import '@fontsource-variable/jetbrains-mono';
+/* Sticky-note hand (PORT-007 canvas). Only fetched when a sticky note renders. */
+@import '@fontsource-variable/caveat';
 
 /*
  * Tokens from PORT-006 (tickets/artifacts/design-system/tokens.json). Names match the token
@@ -119,6 +121,7 @@
   --font-sans:
     'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui,
     sans-serif;
+  --font-hand: 'Caveat Variable', Caveat, cursive;
   --font-mono:
     'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
