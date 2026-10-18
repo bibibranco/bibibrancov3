@@ -64,7 +64,7 @@ flowchart LR
     P303[303 Profile data]
   end
   subgraph E4[E4 Pages]
-    P401[401 Root] --> P402[402 Hero]
+    P401[401 Root] --> P402[402 Hero] --> P410[410 Hero play]
     P403[403 Featured] --> P405[405 /work]
     P406[406 Case study]
     P404[404 Interests]
@@ -129,7 +129,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-303](03-content/PORT-303-profile-data.md) | Typed profile data (experience, education, interests) | eng | P1 | S | PORT-008 | review |
 | [PORT-304](03-content/PORT-304-image-pipeline.md) | Image pipeline | eng | P1 | M | PORT-301 | review |
 | [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | review |
-| [PORT-402](04-pages/PORT-402-home-hero.md) | Home: hero | eng | P0 | M | PORT-401, PORT-204, PORT-007 | todo |
+| [PORT-402](04-pages/PORT-402-home-hero.md) | Home: hero | eng | P0 | M | PORT-401, PORT-204, PORT-007 | review |
 | [PORT-403](04-pages/PORT-403-home-featured-work.md) | Home: featured work | eng | P0 | M | PORT-301, PORT-202, PORT-302 | todo |
 | [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | review |
 | [PORT-405](04-pages/PORT-405-work-index.md) | Work index `/work` | eng | P0 | M | PORT-301, PORT-403 | review |
@@ -137,6 +137,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-407](04-pages/PORT-407-about-page.md) | About page `/about` | eng | P1 | M | PORT-303, PORT-202 | review |
 | [PORT-408](04-pages/PORT-408-contact-cta.md) | Contact call-to-action | eng | P1 | S | PORT-303, PORT-202 | review |
 | [PORT-409](04-pages/PORT-409-404-and-redirects.md) | 404 page & legacy redirects | eng | P0 | S | PORT-401, PORT-003, PORT-106 | review |
+| [PORT-410](04-pages/PORT-410-hero-play.md) | Hero play: "carried away" | eng | P2 | M | PORT-402, PORT-204 | review |
 | [PORT-501](05-quality-launch/PORT-501-seo.md) | SEO, social previews & favicons | eng | P1 | M | PORT-401, PORT-406, PORT-007 | review |
 | [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | review |
 | [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |

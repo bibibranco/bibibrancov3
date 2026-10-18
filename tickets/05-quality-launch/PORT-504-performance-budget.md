@@ -26,5 +26,11 @@ The legacy site loads Google Fonts, the Phosphor icon script from unpkg (render-
 - [ ] No third-party requests other than GA in production.
 - [ ] Budget written in `README.md` so future changes can be checked against it.
 
+## Notes
+- **Home LCP baseline (2026-10-18, PORT-402):** 2.9s on Lighthouse 12.8 mobile, against local `vite preview`.
+  - The LCP element is the hero h1.
+  - Almost all of it is render delay (about 2.4s) behind the 114 KB main bundle. Fonts are already preloaded.
+  - Start here. When measuring, make sure the run is cold: a cached bundle once showed 2.1s.
+
 ## Out of scope
 - Edge caching tuning beyond host defaults.

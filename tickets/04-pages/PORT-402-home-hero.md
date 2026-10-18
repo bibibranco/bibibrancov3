@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | M |
 | Depends on | PORT-401, PORT-204, PORT-007 |
-| Status | todo |
+| Status | review |
 
 ## User story
 As a **first-time visitor**, I want to understand in 5 seconds who Bibi is and what they do so that I decide to keep scrolling.
@@ -17,21 +17,31 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 
 ## Scope
 - Build the hero per PORT-007 design using the PORT-008 copy.
-- `RotatingText` (from PORT-204): pauses on hover/focus and when the tab is hidden; static under reduced motion; screen readers get one full sentence (e.g. visually hidden list of all roles) rather than live-changing text.
+- ~~`RotatingText`~~: dropped, PORT-007 has no rotating words. The only hero motion is the spinning star (PORT-204).
 - Primary CTA(s) per design (e.g. "see work", "get in touch").
 
 ## Acceptance criteria
-- [ ] Matches PORT-007 at 375 / 768 / 1440.
-- [ ] Headline text is present in the prerendered HTML.
-- [ ] Rotation is paused/static with reduced motion and is not announced on every change.
-- [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse).
+- [x] Matches PORT-007 at 375 / 768 / 1440.
+- [x] Headline text is present in the prerendered HTML.
+- [x] ~~Rotation~~ The star is static with reduced motion and hidden from screen readers (no rotating text to announce).
+- [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse). _Not met: 2.9s, see Notes. Moved to PORT-504._
 
 ## Notes / links
-- **Hero copy (draft, 2026-10-17)**, from [`copy.md`](../artifacts/copy.md#hero-home):
-  - h1: "Whatever works. And sometimes whatever doesn't."
-  - Subline: "Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways."
-- The new copy has **no rotating words**. If PORT-007 drops rotation, remove the `RotatingText` scope item and its acceptance criterion. If PORT-007 keeps it, the likely candidate is the word list in the subline.
-- The h1 doesn't include the name, so the logo's accessible name and the page `<title>` have to carry "Bibi Branco".
+- **Hero copy (final, 2026-10-18)** from [`copy.md`](../artifacts/copy.md#hero-home): "I started with design. Got a little carried away." The h1's small first line carries the name ("Bibi Branco, product designer").
+- Built in `src/components/home/hero.tsx`:
+  - "8+" comes from `yearsOfExperience`.
+  - "at momoGood · previously Itaú" comes from `person.company` and the previous `experience` entry.
+  - The star (`<Star spinning />`) shows from lg, as on the canvas.
+- **Checked against the canvas:** the h1 is 329px tall at 1440 on both the build and `Main.dc.html`. Screenshots at 375, 768 and 1440 match the canvas layout.
+- **LCP (Lighthouse 12.8 mobile, local `vite preview`, 3 runs):**
+  - The LCP element is the h1. LCP is **2.9s** (score 0.95), so the < 2.5s criterion is not met.
+  - Correction (2026-10-18): an earlier note said 2.1s after the font preloads. That run got the main JS bundle (114 KB) from the browser cache (318 bytes transferred), so it skipped most of the script work. Re-measured cold, the same commit gives 2.9s, with or without the preloads.
+  - Where the time goes: TTFB about 0.45s, then about 2.4s of render delay. The fonts arrive early (preloaded), and preloading JetBrains Mono as well changes nothing, so the delay is main-thread JS before the h1's final paint. Fixing it (code-splitting, trimming the main bundle) belongs to PORT-504.
+  - The latin Syne and Atkinson preloads in `__root.tsx` stay: they're cheap and fetch the hero fonts with the CSS.
+- `e2e/home.spec.ts` checks:
+  - With JS off: the headline, the name and both CTAs are present.
+  - The star is `aria-hidden` and spins only without reduced motion.
+- **Star speed:** Bibi found 14s per turn too fast, so `--duration-star` is now 40s (`styles.css`, `design-system/tokens.json`, canvas). A hero game is being designed as options first (PORT-410, pending).
 
 ## Out of scope
 - Other home sections.

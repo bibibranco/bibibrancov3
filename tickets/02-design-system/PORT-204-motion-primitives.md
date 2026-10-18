@@ -31,7 +31,7 @@ Legacy uses `framer-motion` v10 for one fade (`MainText.jsx`) with no reduced-mo
 ## Notes
 - The PORT-007 motion spec needs no library, so `motion` isn't installed and there's no `MotionConfig`. Everything is CSS. Motion sits behind `motion-safe:` or `prefers-reduced-motion: no-preference`, and the global reduce rule in `styles.css` remains as a safety net.
 - Spec row → primitive:
-  - Hero star → `<Star spinning />` (`src/components/brand/star.tsx`), `motion-safe:animate-star` (14s linear, `--animate-star`).
+  - Hero star → `<Star spinning />` (`src/components/brand/star.tsx`), `motion-safe:animate-star` (40s linear, slowed from 14s in PORT-402, `--animate-star`).
   - Desk object → `desk-object` utility: 6px lift, `shadow-object-lift`, `z-object-focus` on hover or `:focus-within`. Tilt set with `rotate-*`. Tailwind emits it once PORT-403 uses it.
   - Text link, project card → `TextLink` (unchanged).
   - Button → the 1px press is now `motion-safe:`.
