@@ -6,6 +6,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import contentCollections from '@content-collections/vite'
+import { cn } from 'cn/vite'
 
 // Every case study is prerendered, whether or not another page links to it yet. `pnpm build`
 // generates the content (scripts/content-build.ts, drafts excluded) before Vite starts.
@@ -20,6 +21,8 @@ async function caseStudyPages(command: 'build' | 'serve') {
   )
   return allProjects.map((project) => ({ path: `/work/${project.slug}` }))
 }
+
+const cnContent = ['src/**/*.{ts,tsx}', 'content/**/*.mdx']
 
 export default defineConfig(async ({ command }) => ({
   resolve: { tsconfigPaths: true },
@@ -45,6 +48,10 @@ export default defineConfig(async ({ command }) => ({
         ...(await caseStudyPages(command)),
       ],
     }),
+    // Class-merge tables fitted to the classes in src/ and content/, with the @theme scales from
+    // styles.css, so `cn` ships a small engine instead of the whole Tailwind config (PORT-504).
+    // Rewrites src/lib/cn-tables.ts when a new class group appears; CI checks it's committed.
+    cn({ content: cnContent, css: 'src/styles.css', out: 'src/lib/cn-tables.ts' }),
     viteReact(),
     tailwindcss(),
   ],

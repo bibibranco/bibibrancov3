@@ -8,6 +8,7 @@ import { Container, Section, SectionHeading } from '@/components/ui/layout'
 import { Tag } from '@/components/ui/tag'
 import { ExternalLink, TextLink } from '@/components/ui/text-link'
 import { getProjectBySlug } from '@/lib/content'
+import { getProjectBody } from '@/lib/content-body'
 
 // Dev-only gallery of the PORT-202 primitives. Production builds return not-found, and nothing
 // links here, so the prerender crawler never reaches it (keep it out of the sitemap in PORT-501).
@@ -138,14 +139,15 @@ function KitchenSink() {
 // then every PORT-301 block.
 function MdxBlocks() {
   const sample = getProjectBySlug('sample')
+  const body = getProjectBody('sample')
   return (
     <Section aria-labelledby="ks-mdx">
       <Container className="flex flex-col gap-6">
         <SectionHeading id="ks-mdx">MDX blocks</SectionHeading>
-        {sample ? (
+        {sample && body ? (
           <>
             <Picture image={sample.cover} alt={sample.cover.alt} ratio="2/1" />
-            <MdxContent code={sample.mdx} images={sample.images} />
+            <MdxContent code={body.mdx} images={body.images} />
           </>
         ) : (
           <p className="m-0">content/work/sample.mdx is missing.</p>

@@ -11,6 +11,7 @@ import { Container } from '@/components/ui/layout'
 import { Tag } from '@/components/ui/tag'
 import { TextLink } from '@/components/ui/text-link'
 import { getAdjacentProjects, getProjectBySlug } from '@/lib/content'
+import { getProjectBody } from '@/lib/content-body'
 import { pageHead } from '@/lib/seo'
 import { useCaseStudyAnalytics } from '@/lib/use-case-study-analytics'
 
@@ -53,6 +54,7 @@ function CaseStudy() {
   const { slug } = Route.useParams()
   // The loader guarantees the slug exists.
   const project = getProjectBySlug(slug)!
+  const body = getProjectBody(slug)!
   const { prev, next } = getAdjacentProjects(slug)
   const readMarker = useRef<HTMLDivElement>(null)
   useCaseStudyAnalytics(project.slug, project.category, readMarker)
@@ -99,7 +101,7 @@ function CaseStudy() {
 
         <Container>
           <div className="relative bg-card bg-notebook-card px-5 py-10 text-card-foreground md:px-10 md:py-16 lg:px-16">
-            <MdxContent code={project.mdx} images={project.images} className={bodyLayout} />
+            <MdxContent code={body.mdx} images={body.images} className={bodyLayout} />
             {/* case_study_read fires when this reaches the viewport: 75% of the way down the body. */}
             <div
               ref={readMarker}

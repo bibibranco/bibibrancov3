@@ -1,28 +1,8 @@
-import { createCn } from 'cn/config'
+import { createCn } from 'cn/engine'
 
-// `cn` that knows the PORT-006 theme. Without this, tailwind-merge reads custom sizes like
-// `text-small` as colours, so cn('text-small', 'text-muted-foreground') dropped the font size.
-// Keep these lists in step with the @theme tokens in src/styles.css.
-export const cn = createCn({
-  extend: {
-    theme: {
-      text: [
-        'display',
-        'h1',
-        'h2',
-        'h3',
-        'lead',
-        'body',
-        'small',
-        'caption',
-        'meta',
-        'label',
-        'code',
-        'note',
-      ],
-      spacing: ['gutter', 'section', 'tap', 'margin'],
-      radius: ['pill', 'none'],
-      container: ['content', 'measure'],
-    },
-  },
-})
+import tables from './cn-tables'
+
+// `cn` on tables compiled for this project by the cn Vite plugin (vite.config.ts). They read the
+// @theme scales in src/styles.css, so cn('text-small', 'text-muted-foreground') keeps both: a
+// custom size isn't mistaken for a colour.
+export const cn = createCn(tables)
