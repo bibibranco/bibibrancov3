@@ -140,7 +140,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-410](04-pages/PORT-410-hero-play.md) | Hero play: "carried away" | eng | P2 | M | PORT-402, PORT-204 | review |
 | [PORT-501](05-quality-launch/PORT-501-seo.md) | SEO, social previews & favicons | eng | P1 | M | PORT-401, PORT-406, PORT-007 | review |
 | [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | review |
-| [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |
+| [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | review |
 | [PORT-504](05-quality-launch/PORT-504-performance-budget.md) | Performance budget | eng | P1 | S | E4 complete, PORT-304 | todo |
 | [PORT-505](05-quality-launch/PORT-505-testing.md) | Automated tests | eng | P1 | M | PORT-105, PORT-301, E4 complete | review |
 | [PORT-506](05-quality-launch/PORT-506-launch.md) | Launch & legacy cleanup | eng | P0 | S | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505, PORT-507 | todo |

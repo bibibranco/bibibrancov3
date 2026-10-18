@@ -61,7 +61,11 @@ function CaseStudy() {
     <>
       <article className="flex flex-col gap-section pb-section">
         <Container className="flex flex-col gap-6 pt-10 md:pt-16">
-          <TextLink to="/work" hash={project.category} className="self-start font-mono text-meta">
+          <TextLink
+            to="/work"
+            hash={project.category}
+            className="self-start py-0.5 font-mono text-meta"
+          >
             ← {project.category === 'work' ? 'Work' : 'Craft'}
           </TextLink>
           {/* Capped at 8vw so a long single word ("Woodworking") fits a 375px screen in the wide display
