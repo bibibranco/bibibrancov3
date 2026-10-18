@@ -1,12 +1,23 @@
 import type { ReactNode } from 'react'
 
-import { Image } from '@/components/ui/image'
+import { Picture } from '@/components/ui/image'
+import { useProjectImage } from '@/lib/project-images'
 
 // Case-study blocks from PORT-005 (wireframes.md, "Case-study content blocks"). Layout inside the
 // reading column (full-bleed breakout, margin notes) is PORT-406's job; these set content and
 // semantics. Figures are numbered "fig. N" by the `fig-label` utility; MdxContent resets the count.
 
+/** `src` is a file next to the project's MDX, like `./fig-1.jpg`. */
 type Img = { src: string; alt: string }
+
+// Rendered widths for `sizes`: the reading column tops out near 720px (65ch).
+const COLUMN = '(min-width: 768px) 720px, 100vw'
+const HALF_COLUMN = '(min-width: 768px) 360px, (min-width: 360px) 50vw, 100vw'
+
+function ProjectImage({ src, alt, sizes }: Img & { sizes: string }) {
+  const image = useProjectImage(src)
+  return <Picture image={image} alt={alt} sizes={sizes} className="w-full" />
+}
 
 function Caption({ children }: { children?: ReactNode }) {
   return (
@@ -26,7 +37,7 @@ type FigureProps = Img & {
 function Figure({ src, alt, caption, size = 'column' }: FigureProps) {
   return (
     <figure data-slot="figure" data-size={size} className="m-0 flex flex-col gap-2">
-      <Image src={src} alt={alt} className="w-full" />
+      <ProjectImage src={src} alt={alt} sizes={size === 'full' ? '100vw' : COLUMN} />
       <Caption>{caption}</Caption>
     </figure>
   )
@@ -40,7 +51,7 @@ function ImagePair({ images, caption }: ImagePairProps) {
     <figure data-slot="image-pair" className="m-0 flex flex-col gap-2">
       <div className="grid gap-3 min-[360px]:grid-cols-2">
         {images.map((image) => (
-          <Image key={image.src} src={image.src} alt={image.alt} className="w-full" />
+          <ProjectImage key={image.src} {...image} sizes={HALF_COLUMN} />
         ))}
       </div>
       <Caption>{caption}</Caption>

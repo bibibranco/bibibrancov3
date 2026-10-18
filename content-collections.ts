@@ -2,11 +2,17 @@ import { defineCollection, defineConfig } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
 import { z } from 'zod'
 
+import { IMAGE_FILE, processProjectImages, type ResolvedImage } from './scripts/content-images'
+
 // One MDX file per project in content/work. The file name is the slug (sitemap §3: lowercase
 // ASCII kebab-case, permanent once published), so there's no `slug` field to drift from it.
 
 const image = z.object({
-  src: z.string().min(1),
+  /** A file in the project's folder, content/work/<slug>/, written as `./cover.jpg`. */
+  src: z
+    .string()
+    .regex(/^\.\/[^/]+$/, 'use a file next to the MDX, like ./cover.jpg')
+    .regex(IMAGE_FILE),
   /** Required. Describe what's in the image, never "Project 1" (LP7). */
   alt: z.string(),
 })
@@ -96,8 +102,22 @@ const projects = defineCollection({
     }
     // The raw MDX source stays out of the bundle; only the compiled code ships.
     const { content, _meta, ...data } = document
+    const slug = _meta.path
     const mdx = await compileMDX(context, { content, _meta })
-    return { ...data, slug: _meta.path, mdx }
+
+    // Frontmatter images are resolved here, so a missing file fails the build. MDX body images
+    // resolve at render from `images` (MdxContent), and a missing one fails the prerender.
+    const images = await processProjectImages(context.collection.directory, slug)
+    const resolve = ({ src, alt }: z.infer<typeof image>): ResolvedImage & { alt: string } => {
+      const found = images[src]
+      if (!found) throw new Error(`${slug}.mdx: no image ${src} in content/work/${slug}/`)
+      return { ...found, alt }
+    }
+    const cover = resolve(data.cover)
+    const fragments = data.fragments.map((fragment) =>
+      'image' in fragment ? { ...fragment, image: resolve(fragment.image) } : fragment,
+    )
+    return { ...data, slug, cover, fragments, images, mdx }
   },
 })
 

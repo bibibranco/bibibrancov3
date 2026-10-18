@@ -11,8 +11,8 @@ outcome: Every block renders
 category: work
 tags: [sample, mdx]
 cover:
-  src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Crect width='16' height='10' fill='%230a4cbf'/%3E%3C/svg%3E"
-  alt: A plain blue rectangle
+  src: ./cover.jpg
+  alt: A blue gradient
 featured: false
 order: 999
 links:
@@ -33,13 +33,13 @@ fragments:
     rows: [{ label: WOOD, value: pine }, { label: TIME, value: weekends }]
   - type: image
     object: print
-    image: { src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', alt: A blank screen }
+    image: { src: ./before.jpg, alt: A dark blue gradient }
   - type: writing
     object: clipping
     source: MEDIUM · 2026.01
     title: A sample headline
   - type: sketch
-    image: { src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', alt: A blank page }
+    image: { src: ./after.jpg, alt: A yellow gradient }
 draft: true
 ---
 
@@ -51,21 +51,17 @@ list:
 - one
 - two
 
-<Figure
-  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Crect width='16' height='10' fill='%230a4cbf'/%3E%3C/svg%3E"
-  alt="A plain blue rectangle"
-  caption="A column-width figure."
-/>
+<Figure src="./cover.jpg" alt="A blue gradient" caption="A column-width figure." />
 
 <ImagePair
   images={[
     {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%230a4cbf'/%3E%3C/svg%3E",
-      alt: 'Before: a blue rectangle',
+      src: './before.jpg',
+      alt: 'Before: a dark blue gradient',
     },
     {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%23f7f7f3'/%3E%3C/svg%3E",
-      alt: 'After: a paper-white rectangle',
+      src: './after.jpg',
+      alt: 'After: a paper-white to yellow gradient',
     },
   ]}
   caption="Before and after."
@@ -92,7 +88,7 @@ list:
 
 <Figure
   size="full"
-  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 1'%3E%3Crect width='2' height='1' fill='%230a4cbf'/%3E%3C/svg%3E"
-  alt="A wide blue rectangle"
+  src="./wide.jpg"
+  alt="A wide blue gradient"
   caption="A full-bleed figure (the breakout lands in PORT-406)."
 />
