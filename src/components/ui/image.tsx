@@ -1,5 +1,6 @@
-import { cn } from 'cn'
 import type { ComponentProps } from 'react'
+
+import { cn } from '@/lib/utils'
 
 const ratios = {
   '16/10': 'aspect-[16/10]',

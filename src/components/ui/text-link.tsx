@@ -1,7 +1,8 @@
 import { createLink, type LinkComponent } from '@tanstack/react-router'
-import { cn } from 'cn'
 import { ArrowUpRight } from 'lucide-react'
 import type { ComponentProps } from 'react'
+
+import { cn } from '@/lib/utils'
 
 // Always underlined: ice and star are too close in lightness to tell links apart by colour (PORT-006).
 const textLinkClass =

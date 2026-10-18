@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from 'cn'
 import type { ComponentProps } from 'react'
+
+import { cn } from '@/lib/utils'
 
 // Static label (not interactive): mono, uppercase, like the PORT-006 `label` style.
 const tagVariants = cva(

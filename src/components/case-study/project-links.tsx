@@ -1,4 +1,3 @@
-import { cn } from 'cn'
 import { ArrowUpRight } from 'lucide-react'
 
 import { buttonVariants } from '@/components/ui/button'
@@ -56,7 +55,7 @@ function ProjectLinks({ project }: { project: Project }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={item.onClick}
-            className={cn(buttonVariants({ variant: index === 0 ? 'primary' : 'secondary' }))}
+            className={buttonVariants({ variant: index === 0 ? 'primary' : 'secondary' })}
           >
             {item.label}
             <ArrowUpRight aria-hidden />
