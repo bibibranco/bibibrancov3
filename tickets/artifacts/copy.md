@@ -23,6 +23,7 @@ Replaces HE1 and HE2. Status: **final, from Bibi (2026-10-18, PORT-007)**.
 - The name stays in the h1's small first line for name searches (PORT-005 SEO review), and the h1 uses the page-title size (36→72px), not display.
 - "8+" is written as text here; the build should use `yearsOfExperience` from `profile.ts`.
 - No rotating words (v3 had them); the only motion is the star (PORT-007 motion spec).
+- Hero play (PORT-410, option A): the star is a button that drops tools. Its label is "Drop a tool from the star". The status line reads "click the star. it has things to show you." (lg) or "tap the star…" (phones), then "3 things out · latest: a terminal". The clear button is "tidy up".
 
 ## Home: bits and pieces on my desk
 Replaces LP1, LP6, LP7. Status: **draft**. Layout is direction A + C from PR #17 ([`wireframes.md`](wireframes.md#direction-a--c-bits-and-pieces-on-my-desk-bibi-2026-10-17)): each project fragment is a desk object, and the fragment type picks the object.

@@ -42,6 +42,7 @@ No targets yet. Collect a baseline for the first 8 weeks after launch, then set 
 | M3 | Prototype/code clicks | Does the "prototypes in code" story land? | `prototype_click` | `slug`, `destination`: `live` \| `repo` |
 | M4 | Contact clicks | Is the site bringing in conversations and opportunities? (primary goal) | `contact_click` | `method`: `email` \| `linkedin`, `location`: `hero` \| `home` \| `footer` \| `case_study` \| `about` |
 | M5 | Outbound clicks | Is the site feeding the wider presence? | `outbound_click` | `channel`: `linkedin` \| `medium`, `location` (same values as M4) |
+| M6 | Hero plays | Does the hero game get used, and do players go on to the work? (PORT-410) | `hero_play` (first drop from the hero star per page view) | none |
 
 - Only LinkedIn and Medium count as tracked outbound channels. Other links (TikTok, GitHub, the v3 credit) aren't tracked unless they are a `prototype_click`.
 - A LinkedIn link used as a contact CTA sends `contact_click`; a LinkedIn link anywhere else sends `outbound_click`. Never send both for one click.

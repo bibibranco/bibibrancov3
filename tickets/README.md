@@ -64,7 +64,7 @@ flowchart LR
     P303[303 Profile data]
   end
   subgraph E4[E4 Pages]
-    P401[401 Root] --> P402[402 Hero]
+    P401[401 Root] --> P402[402 Hero] --> P410[410 Hero play]
     P403[403 Featured] --> P405[405 /work]
     P406[406 Case study]
     P404[404 Interests]
@@ -137,6 +137,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-407](04-pages/PORT-407-about-page.md) | About page `/about` | eng | P1 | M | PORT-303, PORT-202 | review |
 | [PORT-408](04-pages/PORT-408-contact-cta.md) | Contact call-to-action | eng | P1 | S | PORT-303, PORT-202 | review |
 | [PORT-409](04-pages/PORT-409-404-and-redirects.md) | 404 page & legacy redirects | eng | P0 | S | PORT-401, PORT-003, PORT-106 | review |
+| [PORT-410](04-pages/PORT-410-hero-play.md) | Hero play: "carried away" | eng | P2 | M | PORT-402, PORT-204 | review |
 | [PORT-501](05-quality-launch/PORT-501-seo.md) | SEO, social previews & favicons | eng | P1 | M | PORT-401, PORT-406, PORT-007 | review |
 | [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | review |
 | [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |
