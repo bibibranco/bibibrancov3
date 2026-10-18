@@ -40,7 +40,7 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 - `e2e/home.spec.ts` checks:
   - With JS off: the headline, the name and both CTAs are present.
   - The star is `aria-hidden` and spins only without reduced motion.
+- **Star speed:** Bibi found 14s per turn too fast, so `--duration-star` is now 40s (`styles.css`, `design-system/tokens.json`, canvas). A hero game is being designed as options first (PORT-410, pending).
 
 ## Out of scope
 - Other home sections.
-- **Star speed:** Bibi found 14s per turn too fast, so `--duration-star` is now 40s (`styles.css`, `design-system/tokens.json`, canvas). A hero game is being designed as options first (PORT-410, pending).
