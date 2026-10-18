@@ -6,3 +6,5 @@ tickets
 pnpm-lock.yaml
 src/routeTree.gen.ts
 .content-collections
+test-results
+playwright-report

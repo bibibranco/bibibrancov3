@@ -141,7 +141,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-502](05-quality-launch/PORT-502-analytics.md) | Analytics (GA4) | eng | P1 | S | PORT-401, PORT-002 | review |
 | [PORT-503](05-quality-launch/PORT-503-accessibility-audit.md) | Accessibility audit (WCAG 2.2 AA) | eng | P0 | M | E4 complete | todo |
 | [PORT-504](05-quality-launch/PORT-504-performance-budget.md) | Performance budget | eng | P1 | S | E4 complete, PORT-304 | todo |
-| [PORT-505](05-quality-launch/PORT-505-testing.md) | Automated tests | eng | P1 | M | PORT-105, PORT-301, E4 complete | todo |
+| [PORT-505](05-quality-launch/PORT-505-testing.md) | Automated tests | eng | P1 | M | PORT-105, PORT-301, E4 complete | review |
 | [PORT-506](05-quality-launch/PORT-506-launch.md) | Launch & legacy cleanup | eng | P0 | S | PORT-409, PORT-501, PORT-502, PORT-503, PORT-504, PORT-505, PORT-507 | todo |
 | [PORT-507](05-quality-launch/PORT-507-final-content-pass.md) | Final content pass before launch | content | P0 | M | PORT-302, PORT-303, PORT-008 | todo |
 ## Conventions
