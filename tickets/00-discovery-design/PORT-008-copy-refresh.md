@@ -35,6 +35,7 @@ Flagged in PORT-001: stale dates/roles (Itaú "2022 – present", "mid-level pro
 ## Notes / links
 - Copy is delivered in a doc, then moved into MDX/TS data in PORT-302/PORT-303.
 - Copy doc: [`tickets/artifacts/copy.md`](../artifacts/copy.md).
+- **2026-10-18:** Claude drafted every section except the case-study bodies: featured-work summaries, "count me in for", short and long bio, experience and education, contact CTA, footer, /work intro, 404 and meta titles and descriptions (all within the length limits). Facts still owed are in [brackets]: Melhor Envio and Agência Ursa one-liners, talks list. Case-study bodies wait on the NDA question and the PORT-005 template.
 - **Hero (2026-10-17):** Bibi's draft, with suggested edits still open in the copy doc:
   > **Whatever works. And sometimes whatever doesn't.**
   > Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways.
