@@ -7,7 +7,7 @@
 | Priority | P0 |
 | Estimate | M |
 | Depends on | PORT-401, PORT-204, PORT-007 |
-| Status | todo |
+| Status | review |
 
 ## User story
 As a **first-time visitor**, I want to understand in 5 seconds who Bibi is and what they do so that I decide to keep scrolling.
@@ -17,21 +17,29 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 
 ## Scope
 - Build the hero per PORT-007 design using the PORT-008 copy.
-- `RotatingText` (from PORT-204): pauses on hover/focus and when the tab is hidden; static under reduced motion; screen readers get one full sentence (e.g. visually hidden list of all roles) rather than live-changing text.
+- ~~`RotatingText`~~: dropped, PORT-007 has no rotating words. The only hero motion is the spinning star (PORT-204).
 - Primary CTA(s) per design (e.g. "see work", "get in touch").
 
 ## Acceptance criteria
-- [ ] Matches PORT-007 at 375 / 768 / 1440.
-- [ ] Headline text is present in the prerendered HTML.
-- [ ] Rotation is paused/static with reduced motion and is not announced on every change.
-- [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse).
+- [x] Matches PORT-007 at 375 / 768 / 1440.
+- [x] Headline text is present in the prerendered HTML.
+- [x] ~~Rotation~~ The star is static with reduced motion and hidden from screen readers (no rotating text to announce).
+- [x] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse).
 
 ## Notes / links
-- **Hero copy (draft, 2026-10-17)**, from [`copy.md`](../artifacts/copy.md#hero-home):
-  - h1: "Whatever works. And sometimes whatever doesn't."
-  - Subline: "Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways."
-- The new copy has **no rotating words**. If PORT-007 drops rotation, remove the `RotatingText` scope item and its acceptance criterion. If PORT-007 keeps it, the likely candidate is the word list in the subline.
-- The h1 doesn't include the name, so the logo's accessible name and the page `<title>` have to carry "Bibi Branco".
+- **Hero copy (final, 2026-10-18)** from [`copy.md`](../artifacts/copy.md#hero-home): "I started with design. Got a little carried away." The h1's small first line carries the name ("Bibi Branco, product designer").
+- Built in `src/components/home/hero.tsx`:
+  - "8+" comes from `yearsOfExperience`.
+  - "at momoGood · previously Itaú" comes from `person.company` and the previous `experience` entry.
+  - The star (`<Star spinning />`) shows from lg, as on the canvas.
+- **Checked against the canvas:** the h1 is 329px tall at 1440 on both the build and `Main.dc.html`. Screenshots at 375, 768 and 1440 match the canvas layout.
+- **LCP (Lighthouse 12.8 mobile, local `vite preview`, 3 runs):**
+  - The LCP element is the h1.
+  - Before: 2.9s, waiting on the Syne webfont.
+  - After preloading the latin Syne and Atkinson files in `__root.tsx`: 2.1s, performance score 0.98.
+- `e2e/home.spec.ts` checks:
+  - With JS off: the headline, the name and both CTAs are present.
+  - The star is `aria-hidden` and spins only without reduced motion.
 
 ## Out of scope
 - Other home sections.
