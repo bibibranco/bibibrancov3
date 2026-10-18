@@ -111,4 +111,21 @@ function Specs({ rows, caption }: SpecsProps) {
   )
 }
 
-export { Figure, ImagePair, Quote, Stats, Specs }
+type MarginNoteProps = { children: ReactNode }
+
+/**
+ * A fact or aside for the paragraph before it: in the margin column on desktop (≥ lg), inline
+ * below that. The main text must make sense without it.
+ */
+function MarginNote({ children }: MarginNoteProps) {
+  return (
+    <aside
+      data-slot="margin-note"
+      className="border-l border-border pl-3 text-note text-muted-foreground [&>p]:m-0"
+    >
+      {children}
+    </aside>
+  )
+}
+
+export { Figure, ImagePair, Quote, Stats, Specs, MarginNote }

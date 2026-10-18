@@ -5,6 +5,9 @@ import { person } from '@/content/profile'
 
 export const siteName = person.name
 
+/** Production origin. `www` is primary; the apex redirects to it (PORT-506). */
+export const siteUrl = 'https://www.bibibran.co'
+
 // Matches --blue in src/styles.css (browser UI colour on mobile).
 export const themeColor = '#0055d4'
 
@@ -25,4 +28,32 @@ export function seo({ title, description = defaultDescription }: SeoOptions = {}
     { title: title ? `${title} · ${siteName}` : defaultTitle },
     { name: 'description', content: description },
   ]
+}
+
+type PageHeadOptions = SeoOptions & {
+  /** Path from the site root, e.g. `/work/aedit`. Sets the canonical URL and og:url. */
+  path: string
+  /** `article` for case studies. */
+  type?: 'website' | 'article'
+}
+
+/**
+ * `head()` for a page with its own URL: title and description from `seo()`, plus canonical and
+ * Open Graph basics. The OG image comes in PORT-501.
+ */
+export function pageHead({ path, type = 'website', ...options }: PageHeadOptions) {
+  const meta = seo(options)
+  const url = `${siteUrl}${path}`
+  const title = meta[0]?.title ?? defaultTitle
+  return {
+    meta: [
+      ...meta,
+      { property: 'og:type', content: type },
+      { property: 'og:site_name', content: siteName },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: options.description ?? defaultDescription },
+      { property: 'og:url', content: url },
+    ],
+    links: [{ rel: 'canonical', href: url }],
+  }
 }
