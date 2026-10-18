@@ -100,7 +100,18 @@ const education: Education[] = [
 const yearsOfExperience =
   new Date().getFullYear() - Math.min(...experience.map((entry) => entry.start.year))
 
-// TODO: talks and workshops for /about#talks (copy.md "Talks & teaching").
+type Talk = { title: string; where: string; year: number; href?: string }
+
+// TODO: talks and workshops for /about#talks (copy.md "Talks & teaching"). /about leaves the
+// list out while it's empty.
+const talks: Talk[] = []
+
+/** /about long bio, one string per paragraph (copy.md "About"). */
+const bio = [
+  `I'm Bibi Branco, a product designer with ${yearsOfExperience}+ years of experience. I started in graphic design, at Universidade Federal de Pelotas and Agência Ursa, moved into product at Melhor Envio, and spent three and a half years at Itaú, Brazil's largest private bank, working on credit card experiences used by millions of customers.`,
+  "Since December 2025 I've been at momoGood, designing a workplace giving platform from the ground up and bringing AI into Tatango's messaging tools. I work AI-first: intelligence built into the workflow, not bolted on as a chat box. And I prototype in code, because a clickable thing answers questions a static screen can't.",
+  "The other half of me makes things. Woodworking, glass cutting, 3D printing, Arduino, and one rat costume. At ITP Camp at NYU in 2023 I logged my own interactions and turned them into 3D prisms. I'm always adding to the toolbox.",
+]
 
 /** Home "count me in for", in order. */
 const interests: Interest[] = [
@@ -129,5 +140,16 @@ const interests: Interest[] = [
 /** Footer credit for v3. */
 const credit = { name: 'Amanda Medeiros', href: 'https://asmdrs.vercel.app/' } as const
 
-export { person, contact, socials, experience, education, interests, credit, yearsOfExperience }
-export type { YearMonth, Experience, Education, Interest, InterestLink, Social }
+export {
+  person,
+  contact,
+  socials,
+  experience,
+  education,
+  interests,
+  talks,
+  bio,
+  credit,
+  yearsOfExperience,
+}
+export type { YearMonth, Experience, Education, Interest, InterestLink, Social, Talk }

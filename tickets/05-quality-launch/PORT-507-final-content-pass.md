@@ -29,7 +29,7 @@ The three new projects (momoProto, momoGood platform, Itaú card fees) use label
 - **Bodies:** replace every `[TODO: …]` paragraph in the full case studies, and write the 2–3 paragraphs for the short pages (Busca Resgatados, Rato Túlio).
 - **Desk fragments:** a real momoGood quote and who said it, woodworking specs, a Thomé sketch (or keep the screen), and the Busca Resgatados post date.
 - **Images:** real covers for the three new projects, high-res covers for Rato Túlio and Busca Resgatados, figure captions, and an alt-text check on every image.
-- **Profile:** Melhor Envio and Agência Ursa summaries, the Melhor Envio level, and the talks list.
+- **Profile:** Melhor Envio and Agência Ursa summaries, the Melhor Envio level, the talks list, and the About portrait (keep v3's `me.png` or take a new photo, inventory A2).
 - **Links:** open the Medium post and LinkedIn by hand (both block bots, inventory §10), and add any public prototype or repo links.
 - **Proofread** every page on the preview, with tone per brief §5.
 - **Gate:** run `pnpm content:todo` in production builds (`pnpm build`) or CI, so a leftover marker fails the build after this ticket.
