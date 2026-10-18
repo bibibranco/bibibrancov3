@@ -2,7 +2,12 @@ import { defineCollection, defineConfig, defineSingleton } from '@content-collec
 import { compileMDX } from '@content-collections/mdx'
 import { z } from 'zod'
 
-import { IMAGE_FILE, processProjectImages, type ResolvedImage } from './scripts/content-images'
+import {
+  IMAGE_FILE,
+  processOgImage,
+  processProjectImages,
+  type ResolvedImage,
+} from './scripts/content-images'
 
 // One MDX file per project in content/work. The file name is the slug (sitemap §3: lowercase
 // ASCII kebab-case, permanent once published), so there's no `slug` field to drift from it.
@@ -117,7 +122,9 @@ const projects = defineCollection({
     const fragments = data.fragments.map((fragment) =>
       'image' in fragment ? { ...fragment, image: resolve(fragment.image) } : fragment,
     )
-    return { ...data, slug, cover, fragments, images, mdx }
+    // Share image for og:image, cropped from the cover (PORT-501).
+    const og = await processOgImage(context.collection.directory, slug, data.cover.src)
+    return { ...data, slug, cover, fragments, images, og, mdx }
   },
 })
 

@@ -8,7 +8,7 @@
   "packageManager": "pnpm@10.34.5",
   "scripts": {
     "dev": "vite dev --port 3044 --strictPort",
-    "build": "rm -rf public/_img && NODE_ENV=production node scripts/content-build.ts && vite build",
+    "build": "rm -rf public/_img && NODE_ENV=production node scripts/content-build.ts && node scripts/sitemap.ts && vite build",
     "preview": "vite preview",
     "typecheck": "node scripts/content-build.ts && tsc --noEmit",
     "generate-routes": "tsr generate",
