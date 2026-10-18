@@ -24,7 +24,7 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
 - [x] Matches PORT-007 at 375 / 768 / 1440.
 - [x] Headline text is present in the prerendered HTML.
 - [x] ~~Rotation~~ The star is static with reduced motion and hidden from screen readers (no rotating text to announce).
-- [x] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse).
+- [ ] LCP element on the home page loads in < 2.5s on a mid-tier mobile profile (Lighthouse). _Not met: 2.9s, see Notes. Moved to PORT-504._
 
 ## Notes / links
 - **Hero copy (final, 2026-10-18)** from [`copy.md`](../artifacts/copy.md#hero-home): "I started with design. Got a little carried away." The h1's small first line carries the name ("Bibi Branco, product designer").
@@ -34,9 +34,10 @@ Legacy hero (`legacy/src/components/HeroSection/MainText/MainText.jsx`): "Hey th
   - The star (`<Star spinning />`) shows from lg, as on the canvas.
 - **Checked against the canvas:** the h1 is 329px tall at 1440 on both the build and `Main.dc.html`. Screenshots at 375, 768 and 1440 match the canvas layout.
 - **LCP (Lighthouse 12.8 mobile, local `vite preview`, 3 runs):**
-  - The LCP element is the h1.
-  - Before: 2.9s, waiting on the Syne webfont.
-  - After preloading the latin Syne and Atkinson files in `__root.tsx`: 2.1s, performance score 0.98.
+  - The LCP element is the h1. LCP is **2.9s** (score 0.95), so the < 2.5s criterion is not met.
+  - Correction (2026-10-18): an earlier note said 2.1s after the font preloads. That run got the main JS bundle (114 KB) from the browser cache (318 bytes transferred), so it skipped most of the script work. Re-measured cold, the same commit gives 2.9s, with or without the preloads.
+  - Where the time goes: TTFB about 0.45s, then about 2.4s of render delay. The fonts arrive early (preloaded), and preloading JetBrains Mono as well changes nothing, so the delay is main-thread JS before the h1's final paint. Fixing it (code-splitting, trimming the main bundle) belongs to PORT-504.
+  - The latin Syne and Atkinson preloads in `__root.tsx` stay: they're cheap and fetch the hero fonts with the CSS.
 - `e2e/home.spec.ts` checks:
   - With JS off: the headline, the name and both CTAs are present.
   - The star is `aria-hidden` and spins only without reduced motion.
