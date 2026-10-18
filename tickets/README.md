@@ -133,7 +133,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-403](04-pages/PORT-403-home-featured-work.md) | Home: featured work | eng | P0 | M | PORT-301, PORT-202, PORT-302 | todo |
 | [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | todo |
 | [PORT-405](04-pages/PORT-405-work-index.md) | Work index `/work` | eng | P0 | M | PORT-301, PORT-403 | todo |
-| [PORT-406](04-pages/PORT-406-case-study-page.md) | Case study page `/work/$slug` | eng | P0 | L | PORT-301, PORT-302, PORT-304 | todo |
+| [PORT-406](04-pages/PORT-406-case-study-page.md) | Case study page `/work/$slug` | eng | P0 | L | PORT-301, PORT-302, PORT-304 | review |
 | [PORT-407](04-pages/PORT-407-about-page.md) | About page `/about` | eng | P1 | M | PORT-303, PORT-202 | todo |
 | [PORT-408](04-pages/PORT-408-contact-cta.md) | Contact call-to-action | eng | P1 | S | PORT-303, PORT-202 | todo |
 | [PORT-409](04-pages/PORT-409-404-and-redirects.md) | 404 page & legacy redirects | eng | P0 | S | PORT-401, PORT-003, PORT-106 | review |

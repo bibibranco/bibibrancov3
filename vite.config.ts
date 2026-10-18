@@ -4,12 +4,22 @@ import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import contentCollections from '@content-collections/vite'
 
-export default defineConfig({
+// Every case study is prerendered, whether or not another page links to it yet. `pnpm build`
+// generates the content (scripts/content-build.ts, drafts excluded) before Vite starts.
+async function caseStudyPages(command: 'build' | 'serve') {
+  if (command !== 'build') return []
+  const { allProjects } = await import('./.content-collections/generated/index.js')
+  return allProjects.map((project) => ({ path: `/work/${project.slug}` }))
+}
+
+export default defineConfig(async ({ command }) => ({
   resolve: { tsconfigPaths: true },
   plugins: [
-    // Generates `content-collections` from content/work/*.mdx. `pnpm build` runs the CLI first,
-    // because only the CLI fails on invalid frontmatter; this plugin logs it and carries on.
-    contentCollections(),
+    // Generates `content-collections` from content/work/*.mdx and watches it, in dev only.
+    // `pnpm build` generates it with scripts/content-build.ts (fails on bad content, drops drafts)
+    // before Vite starts; letting the plugin rebuild here brought drafts back, since NODE_ENV
+    // isn't "production" yet when it runs. The plugin still sets the `content-collections` alias.
+    contentCollections({ isEnabled: () => command === 'serve' }),
     tanstackStart({
       // Every page ships as static HTML so crawlers and link previews see real content.
       prerender: {
@@ -21,9 +31,12 @@ export default defineConfig({
       },
       // Prerendering stops on non-200 responses, so the 404 page has a real route.
       // Vercel serves `404.html` with a 404 status for any path it can't match.
-      pages: [{ path: '/404', prerender: { outputPath: '/404.html', crawlLinks: false } }],
+      pages: [
+        { path: '/404', prerender: { outputPath: '/404.html', crawlLinks: false } },
+        ...(await caseStudyPages(command)),
+      ],
     }),
     viteReact(),
     tailwindcss(),
   ],
-})
+}))

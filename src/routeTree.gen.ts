@@ -14,6 +14,7 @@ import { Route as R404RouteImport } from './routes/404'
 import { Route as KitchenSinkRouteImport } from './routes/[_]kitchen-sink'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as WorkIndexRouteImport } from './routes/work/index'
+import { Route as WorkSlugRouteImport } from './routes/work/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,12 +41,18 @@ const WorkIndexRoute = WorkIndexRouteImport.update({
   path: '/work/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/_kitchen-sink': typeof KitchenSinkRoute
   '/about': typeof AboutRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/404': typeof R404Route
   '/_kitchen-sink': typeof KitchenSinkRoute
   '/about': typeof AboutRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,23 @@ export interface FileRoutesById {
   '/404': typeof R404Route
   '/_kitchen-sink': typeof KitchenSinkRoute
   '/about': typeof AboutRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/404' | '/_kitchen-sink' | '/about' | '/work/'
+  fullPaths:
+    '/' | '/404' | '/_kitchen-sink' | '/about' | '/work/$slug' | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/_kitchen-sink' | '/about' | '/work'
-  id: '__root__' | '/' | '/404' | '/_kitchen-sink' | '/about' | '/work/'
+  to: '/' | '/404' | '/_kitchen-sink' | '/about' | '/work/$slug' | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/_kitchen-sink'
+    | '/about'
+    | '/work/$slug'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +93,7 @@ export interface RootRouteChildren {
   R404Route: typeof R404Route
   KitchenSinkRoute: typeof KitchenSinkRoute
   AboutRoute: typeof AboutRoute
+  WorkSlugRoute: typeof WorkSlugRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
 
@@ -116,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -124,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   R404Route: R404Route,
   KitchenSinkRoute: KitchenSinkRoute,
   AboutRoute: AboutRoute,
+  WorkSlugRoute: WorkSlugRoute,
   WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
