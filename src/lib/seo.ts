@@ -1,7 +1,9 @@
 // Per-page <title> and description. Routes call `seo()` in `head()`; the deepest match wins.
 // Final copy comes from PORT-008; OG tags and the sitemap from PORT-501.
 
-export const siteName = 'Bibi Branco'
+import { person } from '@/content/profile'
+
+export const siteName = person.name
 
 // Matches --blue in src/styles.css (browser UI colour on mobile).
 export const themeColor = '#0055d4'

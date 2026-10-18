@@ -1,11 +1,17 @@
 import { Container } from '@/components/ui/layout'
 import { ExternalLink, textLinkClass } from '@/components/ui/text-link'
+import { contact, credit, person, socials } from '@/content/profile'
 import { track } from '@/lib/analytics'
 
 const year = new Date().getFullYear()
 
 // The footer is the page's #contact block, so email and LinkedIn count as contact clicks.
 // Medium is outbound. The v3 credit isn't tracked (brief.md §4).
+
+function trackSocial(id: (typeof socials)[number]['id']) {
+  if (id === 'linkedin') track('contact_click', { method: 'linkedin', location: 'footer' })
+  else track('outbound_click', { channel: id, location: 'footer' })
+}
 
 function SiteFooter() {
   return (
@@ -14,35 +20,27 @@ function SiteFooter() {
         <ul className="m-0 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
           <li>
             <a
-              href="mailto:oi@bibibran.co"
+              href={`mailto:${contact.email}`}
               className={textLinkClass}
               onClick={() => track('contact_click', { method: 'email', location: 'footer' })}
             >
-              oi@bibibran.co
+              {contact.email}
             </a>
           </li>
-          <li>
-            <ExternalLink
-              href="https://www.linkedin.com/in/bibibranco/"
-              onClick={() => track('contact_click', { method: 'linkedin', location: 'footer' })}
-            >
-              LinkedIn
-            </ExternalLink>
-          </li>
-          <li>
-            <ExternalLink
-              href="https://medium.com/@bibianabranco"
-              onClick={() => track('outbound_click', { channel: 'medium', location: 'footer' })}
-            >
-              Medium
-            </ExternalLink>
-          </li>
+          {socials.map((social) => (
+            <li key={social.id}>
+              <ExternalLink href={social.href} onClick={() => trackSocial(social.id)}>
+                {social.label}
+              </ExternalLink>
+            </li>
+          ))}
         </ul>
         <p className="m-0 text-muted-foreground">
-          v3 built with{' '}
-          <ExternalLink href="https://asmdrs.vercel.app/">Amanda Medeiros</ExternalLink>
+          v3 built with <ExternalLink href={credit.href}>{credit.name}</ExternalLink>
           {' · '}
-          <span className="font-mono">© {year} Bibi Branco</span>
+          <span className="font-mono">
+            © {year} {person.name}
+          </span>
         </p>
       </Container>
     </footer>
