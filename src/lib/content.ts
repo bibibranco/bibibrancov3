@@ -18,8 +18,9 @@ function getAllProjects(category?: Category): Project[] {
   )
 }
 
+/** Featured projects in /work order: Work first, then Craft (sitemap §3). */
 function getFeaturedProjects(): Project[] {
-  return allProjects.filter((project) => project.featured).sort(byOrder)
+  return getAllProjects().filter((project) => project.featured)
 }
 
 function getProjectBySlug(slug: string): Project | undefined {

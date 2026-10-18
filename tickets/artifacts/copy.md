@@ -177,7 +177,4 @@ Template "<page> · Bibi Branco" (PORT-401). Titles ≤ 60 characters, descripti
 | 404 | Page not found · Bibi Branco | This page doesn't exist. Try the home page or the work index. |
 
 ## Case-study bodies
-Status: **not started**. Waiting on:
-- **NDA:** how much of `itau-credit-card-fees` and `momogood-platform` can be shown (sitemap §6).
-- **Template:** the PORT-005 blocks in [`wireframes.md`](wireframes.md#case-study-content-blocks-input-for-port-301) (Summary, cover, text, Figure, ImagePair, Quote, Stats, Specs, ProjectLinks, prev/next). Each full case study needs a summary (role, timeline, team, outcome) plus problem, process and outcome sections. Short pages need 2–3 paragraphs and the external link text.
-- **Typos that land here:** "complete=" and "responsbilities" (AEDIT, P1.3), "made piece" → "made peace" (woodworking, P2.2).
+Status: **draft in MDX** (PORT-302, 2026-10-18). Each project's body is in `content/work/<slug>.mdx`, written from the inventory, this doc and v3, with the v3 typos fixed ("complete=", "responsbilities", "made piece"). Unknowns are `TODO` markers: `pnpm content:todo` lists them, and PORT-507 clears them before launch, including the NDA call for momoGood and Itaú.

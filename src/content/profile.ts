@@ -73,9 +73,9 @@ const experience: Experience[] = [
     summary:
       'Led the credit card annuity redesign and designed the upgrade/downgrade flow between card tiers. Built AI-powered Figma plugins that write SQL, so designers and product teams get data without waiting on data engineering.',
   },
-  // Summary owed (copy.md), and whether to keep v3's "junior/mid-level" in the title.
+  // TODO: summary (copy.md), and whether to keep v3's "junior/mid-level" in the title.
   { role: 'Product Designer', org: 'Melhor Envio', start: { year: 2020 }, end: { year: 2022 } },
-  // Summary owed (copy.md).
+  // TODO: summary (copy.md).
   { role: 'Designer', org: 'Agência Ursa', start: { year: 2018 }, end: { year: 2020 } },
 ]
 
@@ -99,6 +99,8 @@ const education: Education[] = [
 /** Whole years since the first role started, for "8+ years" lines. Updates on each build. */
 const yearsOfExperience =
   new Date().getFullYear() - Math.min(...experience.map((entry) => entry.start.year))
+
+// TODO: talks and workshops for /about#talks (copy.md "Talks & teaching").
 
 /** Home "count me in for", in order. */
 const interests: Interest[] = [
