@@ -27,12 +27,10 @@ bibibran.co is the home of a product designer who works AI-first, prototypes in 
 - **Needs to see:** materials, steps, photos and what went wrong. Enough detail to try it themselves.
 - **Top tasks:** read a craft project · see the build process · get in touch or follow along.
 
-### Hiring manager / recruiter (secondary)
-- **Who:** someone screening senior product design candidates, skimming fast.
-- **Comes for:** proof of seniority and impact.
-- **Needs to see:** role, team, scope and outcome for each work case study, visible in the first screen; current role and years of experience (8+) without hunting.
-- **Top tasks:** scan featured work · read one case study summary · find LinkedIn or email.
-- **Effect on design:** shapes the case-study format (a summary block with role, timeline, team and outcome) but does not drive the visual direction or IA.
+### Hiring manager / recruiter (not a target)
+_Changed 2026-10-17. Bibi isn't looking for a job: "if they don't get me, I don't want them."_
+- The site doesn't design for recruiters, and nothing is reordered or toned down to suit them. Personality comes first, and the site works as a filter.
+- They aren't shut out either. Facts stay easy to find on `/about` (current role, 8+ years) and in each case study's summary block. The summary block stays because peers find it useful too.
 
 ## 4. Success metrics
 No targets yet. Collect a baseline for the first 8 weeks after launch, then set targets.
@@ -51,7 +49,7 @@ No targets yet. Collect a baseline for the first 8 weeks after launch, then set 
 - Page views are tracked as before (one `page_view` per navigation, PORT-502).
 
 ## 5. Tone of voice
-**Playful but sharper.** Keep the v3 warmth and humour, but be more concise and confident. Casing: lower-case is fine for playful UI moments (section labels, the hero, small asides). Use sentence case for case-study body copy, page titles and anything a recruiter skims.
+**Playful but sharper.** Keep the v3 warmth and humour, but be more concise and confident. Casing: lower-case is fine for playful UI moments (section labels, the hero, small asides). Use sentence case for case-study body copy and page titles.
 
 | Principle | Do | Don't |
 |---|---|---|

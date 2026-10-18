@@ -18,9 +18,9 @@ Legacy content is a JS array (`projetos` in `legacy/src/pages/Project.jsx`) with
 ## Scope
 - Install `@content-collections/core`, `@content-collections/vite`, `@content-collections/mdx` and `zod`.
 - `content/work/*.mdx` collection with a zod schema:
-  `title`, `slug`, `summary`, `year`, `role`, `category` (`work` | `craft`, PORT-003), `tags[]`, `cover { src, alt }`, `featured` (bool), `order` (number), `externalUrl?`, `draft?`.
-- MDX component map for the blocks defined in PORT-005 (e.g. `<Figure>`, `<ImagePair>`, `<Quote>`, `<Stats>`), using PORT-202 primitives.
-- Helpers in `src/lib/content.ts`: `getAllProjects()`, `getFeaturedProjects()`, `getProjectBySlug()`, `getAdjacentProjects()`; drafts excluded in production.
+  `title`, `slug`, `summary`, `year`, `role`, `timeline`, `team?`, `outcome?`, `category` (`work` | `craft`, PORT-003), `tags[]`, `cover { src, alt }`, `featured` (bool), `order` (number), `links { live?, repo?, external? }` (replaces `externalUrl`), `fragments[]` (home "bits and pieces": `{ type: code | quote | stat | spec | image | writing | sketch, …, featured?, order? }`), `draft?`. See [`wireframes.md`](../artifacts/wireframes.md#case-study-content-blocks-input-for-port-301).
+- MDX component map for the blocks defined in PORT-005: `<Figure>`, `<ImagePair>`, `<Quote>`, `<Stats>`, `<Specs>`, using PORT-202 primitives.
+- Helpers in `src/lib/content.ts`: `getAllProjects()`, `getFeaturedProjects()`, `getProjectBySlug()`, `getAdjacentProjects()`, `getFeaturedFragments()`; drafts excluded in production.
 
 ## Acceptance criteria
 - [ ] A file with invalid frontmatter fails `pnpm build` with a readable error.
