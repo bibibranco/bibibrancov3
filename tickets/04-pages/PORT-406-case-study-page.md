@@ -46,4 +46,5 @@ Legacy `Project.jsx` + `SideBar.jsx` + `ProjectContent.jsx`: sidebar with title/
 - **Build fix:** the content-collections Vite plugin now runs in dev only. During `vite build` it rebuilt the content before `NODE_ENV` was `production`, which brought the draft sample back (it was prerendered at `/work/sample`). `scripts/content-build.ts` already generates production content before Vite starts.
 - **Local gotcha:** don't run `pnpm build` while `pnpm dev` is running. Both write to `.content-collections/` and `public/_img/`, and the dev watcher adds drafts back. CI and Vercel are unaffected.
 - **Not here:** the contact CTA (PORT-408). The footer is `#contact` for now.
+- **Follow-up fix (2026-10-18):** `pnpm dev` restarted in a loop after this merged. `vite.config.ts` imported the generated content to list the prerender pages, so Vite watched those files as config dependencies, and every content rebuild restarted the server. The file is now loaded by a runtime URL that the config bundler doesn't follow.
 

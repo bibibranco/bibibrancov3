@@ -1,3 +1,6 @@
+import path from 'node:path'
+import { pathToFileURL } from 'node:url'
+
 import { defineConfig } from 'vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
@@ -6,9 +9,15 @@ import contentCollections from '@content-collections/vite'
 
 // Every case study is prerendered, whether or not another page links to it yet. `pnpm build`
 // generates the content (scripts/content-build.ts, drafts excluded) before Vite starts.
+// Loaded by URL, not a literal import: Vite bundles this config and would otherwise watch the
+// generated files as config dependencies, so every content rebuild in dev restarted the server,
+// which rebuilt the content, in a loop.
 async function caseStudyPages(command: 'build' | 'serve') {
   if (command !== 'build') return []
-  const { allProjects } = await import('./.content-collections/generated/index.js')
+  const generated = pathToFileURL(path.resolve('.content-collections/generated/index.js')).href
+  const { allProjects }: typeof import('./.content-collections/generated/index.js') = await import(
+    generated
+  )
   return allProjects.map((project) => ({ path: `/work/${project.slug}` }))
 }
 
