@@ -25,3 +25,7 @@ npm-debug.log*
 # generated at build time (PORT-304, PORT-501)
 public/_img/
 public/sitemap.xml
+
+# test output (PORT-505)
+test-results/
+playwright-report/
