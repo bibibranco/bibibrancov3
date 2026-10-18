@@ -1,5 +1,6 @@
-import { cn } from 'cn'
 import type { ComponentProps } from 'react'
+
+import { cn } from '@/lib/utils'
 
 /** Content width (max-w-content) with the fluid side gutter. */
 function Container({ className, ...props }: ComponentProps<'div'>) {

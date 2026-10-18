@@ -1,6 +1,7 @@
 import { createLink, type LinkComponent } from '@tanstack/react-router'
-import { cn } from 'cn'
 import type { ComponentProps } from 'react'
+
+import { cn } from '@/lib/utils'
 
 // The whole card is one real link. Put no buttons or other links inside it.
 function CardAnchor({ className, ...props }: ComponentProps<'a'>) {
