@@ -31,7 +31,7 @@ Legacy: gtag snippet in `legacy/index.html` with ID `G-KR5JD1GYC2` plus `legacy/
 - **Production only = hostname gate.** gtag only loads on `bibibran.co` / `www.bibibran.co`. A `VERCEL_ENV` build check wouldn't be enough, because the v4 project's production URL goes live before the domain moves over (PORT-506) and would pollute the property.
 - **Debugging:** add `?ga_debug=1` to any URL (including previews) to turn tracking on with `debug_mode` for that tab (sessionStorage). Those hits go to the real property, so turn on GA4's "Developer traffic" data filter to keep them out of reports.
 - The footer is the page's `#contact` block, so footer email and LinkedIn send `contact_click` (location `footer`), and Medium sends `outbound_click`.
-- **Consent banner (proposed, Bibi to confirm): none at launch.** GA4 doesn't store IP addresses. Google signals and ad personalization are off, there are no ads and no cross-site tracking, and the audience is mostly recruiters and peers. Revisit if the site adds anything beyond first-party measurement, or if EU traffic becomes significant (strict ePrivacy reading). The alternative is Consent Mode v2 with default `denied` plus a small banner.
+- **Consent banner: none at launch** (confirmed by Bibi, 2026-10-18). GA4 doesn't store IP addresses. Google signals and ad personalization are off, there are no ads and no cross-site tracking, and the audience is mostly recruiters and peers. Revisit if the site adds anything beyond first-party measurement, or if EU traffic becomes significant (strict ePrivacy reading). The alternative is Consent Mode v2 with default `denied` plus a small banner.
 
 ## Out of scope
 - Switching analytics providers.
