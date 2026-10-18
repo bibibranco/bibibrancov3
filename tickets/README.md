@@ -131,7 +131,7 @@ Estimate: **S** ≤ half a day · **M** 1–2 days · **L** 3–5 days.
 | [PORT-401](04-pages/PORT-401-root-route-shell.md) | Root route: document shell, head & error handling | eng | P0 | S | PORT-203 | review |
 | [PORT-402](04-pages/PORT-402-home-hero.md) | Home: hero | eng | P0 | M | PORT-401, PORT-204, PORT-007 | todo |
 | [PORT-403](04-pages/PORT-403-home-featured-work.md) | Home: featured work | eng | P0 | M | PORT-301, PORT-202, PORT-302 | todo |
-| [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | todo |
+| [PORT-404](04-pages/PORT-404-home-interests.md) | Home: "count me in for" interests | eng | P1 | M | PORT-303, PORT-202 | review |
 | [PORT-405](04-pages/PORT-405-work-index.md) | Work index `/work` | eng | P0 | M | PORT-301, PORT-403 | review |
 | [PORT-406](04-pages/PORT-406-case-study-page.md) | Case study page `/work/$slug` | eng | P0 | L | PORT-301, PORT-302, PORT-304 | review |
 | [PORT-407](04-pages/PORT-407-about-page.md) | About page `/about` | eng | P1 | M | PORT-303, PORT-202 | review |
