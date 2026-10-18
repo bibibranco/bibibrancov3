@@ -22,18 +22,35 @@ Replaces HE1 and HE2. Status: **draft from Bibi, 2026-10-17**.
 
 **Notes:**
 - The hero no longer uses rotating words, unlike v3's "I … create stuff / build interfaces / …". Whether any rotation stays is a PORT-007 call; see PORT-402.
-- The h1 doesn't include Bibi's name. The name has to be clear nearby: the logo's accessible name "Bibi Branco", the page `<title>`, and the meta line.
 
-## Home: featured work
-Replaces LP1, LP6, LP7. Status: **draft**.
+## Home: bits and pieces on my desk
+Replaces LP1, LP6, LP7. Status: **draft**. Layout is direction A + C from PR #17 ([`wireframes.md`](wireframes.md#direction-a--c-bits-and-pieces-on-my-desk-bibi-2026-10-17)): each project fragment is a desk object, and the fragment type picks the object.
 
 | Part | Copy |
 |---|---|
-| Section title | featured work |
-| Link to `/work` | All work |
-| Card link text | The project title (the whole card is one link, so no "Check it out") |
+| Section title (h2) | bits and pieces on my desk |
+| Link to `/work` | Everything, tidy → |
+| Object link text | `<object> · <project title> →`, e.g. "terminal · momoProto →". The project title is always in the link text, so the name is real text in the HTML. Mobile drops the object word: "momoProto →" |
 
-Card summaries (one line each; also used as the case-study meta description and on `/work`):
+Fragments (input for `fragments[]` in PORT-301/PORT-302). Order follows the canvas; featured order is still Bibi's call.
+
+| Project | Type → object | Fragment copy | Owed |
+|---|---|---|---|
+| `momoproto` | `code` → terminal | `$ pnpm ds:check` / `✓ every prototype passes the contract` | — (the `ds:check` gate is real, inventory §7a) |
+| `momoproto` | `writing` → index card | **momoProto** · One hub for every prototype, with a design-system gate. | — |
+| `momogood-platform` | `quote` → sticky | "[A quote from a user, a teammate, or me in a retro]" | The quote and who said it |
+| `itau-credit-card-fees` | `stat` → receipt | ITAÚ · CARD FEES · [outcome] [value] · [outcome] [value] · TOTAL [value] | NDA-cleared numbers. If none can be shown, swap to a `writing` index card |
+| `rato-tulio` | `image` → polaroid | Photo crop of the costume | Alt text, e.g. "[the rat costume, describe it]" |
+| `busca-resgatados` | `writing` → clipping | MEDIUM · [date] · **A digital platform created amidst a catastrophe** | Medium post date |
+| `itp-mapping` | `image` → polaroid | Crop of the 3D prisms | Alt text |
+| `woodworking` | `spec` → shop tag | WOOD [ ] · TOOLS [ ] · TIME [ ] | Real wood, tools and time |
+| `thome` | `sketch` → notebook page | A sketch from the project | Which sketch, and alt text |
+| `aedit` | `image` → printed screenshot | One app screen | Which screen, and alt text |
+
+Image alt text describes what's in the image, never "Project 1" (LP7). Decorative objects (the star sticker, empty slots) are `aria-hidden`.
+
+## Project summaries
+Status: **draft**. One line per project, used on `/work`, as the case-study meta description and in the case-study summary block. Not on the home page any more (the desk replaces cards there).
 
 | Slug | Summary |
 |---|---|
@@ -46,8 +63,6 @@ Card summaries (one line each; also used as the case-study meta description and 
 | `busca-resgatados` | A digital platform created amidst a catastrophe. |
 | `woodworking` | Making peace with the side of me that likes working with tangible things. |
 | `itp-mapping` | My interactions at ITP Camp, logged and turned into 3D prisms. |
-
-Image alt text describes what's in the image (e.g. "The momoProto hub showing six prototype cards"), never "Project 1" (LP7). It's written per image in PORT-302.
 
 ## Home: "count me in for"
 Replaces T1–T6. Status: **draft**. Each label links to the page in [sitemap.md §5](sitemap.md#5-inventory-coverage).
@@ -154,11 +169,11 @@ Template "<page> · Bibi Branco" (PORT-401). Titles ≤ 60 characters, descripti
 | `/` | Bibi Branco · Product designer | Product designer at momoGood, previously Itaú. Design, data, code, prototypes and experiments, plus the things I build with my hands. |
 | `/work` | Work · Bibi Branco | Case studies from momoGood, Itaú and earlier product work, plus craft projects in 3D printing, woodworking and data viz. |
 | `/about` | About · Bibi Branco | Product designer with 8+ years of experience, now at momoGood. Experience, education, talks and how to get in touch. |
-| `/work/$slug` | <Project title> · Bibi Branco | The project's summary from "Home: featured work". |
+| `/work/$slug` | <Project title> · Bibi Branco | The project's line from "Project summaries". |
 | 404 | Page not found · Bibi Branco | This page doesn't exist. Try the home page or the work index. |
 
 ## Case-study bodies
 Status: **not started**. Waiting on:
 - **NDA:** how much of `itau-credit-card-fees` and `momogood-platform` can be shown (sitemap §6).
-- **Template:** the PORT-005 blocks (Summary, Links, Text, FullBleedImage, ImagePair, Quote, Stats, prev/next). Each full case study needs a summary (role, timeline, team, outcome) plus problem, process and outcome sections. Short pages need 2–3 paragraphs and the external link text.
+- **Template:** the PORT-005 blocks in [`wireframes.md`](wireframes.md#case-study-content-blocks-input-for-port-301) (Summary, cover, text, Figure, ImagePair, Quote, Stats, Specs, ProjectLinks, prev/next). Each full case study needs a summary (role, timeline, team, outcome) plus problem, process and outcome sections. Short pages need 2–3 paragraphs and the external link text.
 - **Typos that land here:** "complete=" and "responsbilities" (AEDIT, P1.3), "made piece" → "made peace" (woodworking, P2.2).
