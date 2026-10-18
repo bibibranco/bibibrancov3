@@ -5,27 +5,24 @@ Working copy doc for v4. When a section is final, it moves into MDX/TS data (POR
 **Status per section:** **Bibi** = written by Bibi · **draft** = drafted by Claude 2026-10-18 for Bibi to edit · **final** = signed off. Text in [brackets] is a fact or decision still owed.
 
 ## Hero (home)
-Replaces HE1 and HE2. Status: **draft from Bibi, 2026-10-17**.
+Replaces HE1 and HE2. Status: **final, from Bibi (2026-10-18, PORT-007)**.
 
-> **Whatever works. And sometimes whatever doesn't.**
-> Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways.
+> **I started with design. Got a little carried away.**
+> I'm a product designer with 8+ years of experience, a growing toolbox, and a tendency to learn things the hard way. Usually on purpose.
 
 | Part | Copy |
 |---|---|
-| Headline (h1) | Whatever works. And sometimes whatever doesn't. |
-| Subline | Design, data, code, prototypes, experiments. I've spent years building a toolbox, and I like putting it to work in unexpected ways. |
-
-**Suggested edits (not adopted yet):**
-- Make it specific: "years" → "8+ years" (brief: "specific beats generic").
-- Add a small mono meta line under the subline so first-time visitors see the role straight away. For example: `product designer at momoGood · são paulo`.
-- Optionally add one maker word to the list so the craft side is visible (e.g. "…prototypes, things with screws, experiments").
-
-**Hero structure, from the PORT-005 SEO review (2026-10-17):**
-- h1: a small mono line "Bibi Branco, product designer" (first span), then "Whatever works. And sometimes whatever doesn't."
-- Meta line: `at momoGood · previously Itaú · são paulo` (this covers the "role line" suggestion above).
+| h1, small first line (mono) | Bibi Branco, product designer |
+| h1 | I started with design. Got a little carried away. |
+| Subline | I'm a product designer with 8+ years of experience, a growing toolbox, and a tendency to learn things the hard way. Usually on purpose. |
+| Meta line (mono) | at momoGood · previously Itaú |
+| Buttons | See my work · Say hi |
 
 **Notes:**
-- The hero no longer uses rotating words, unlike v3's "I … create stuff / build interfaces / …". Whether any rotation stays is a PORT-007 call; see PORT-402.
+- Replaces the 2026-10-17 draft ("Whatever works. And sometimes whatever doesn't."), which ran to four lines at display size. Options A–D are kept on the hi-fi canvas for the record.
+- The name stays in the h1's small first line for name searches (PORT-005 SEO review), and the h1 uses the page-title size (36→72px), not display.
+- "8+" is written as text here; the build should use `yearsOfExperience` from `profile.ts`.
+- No rotating words (v3 had them); the only motion is the star (PORT-007 motion spec).
 
 ## Home: bits and pieces on my desk
 Replaces LP1, LP6, LP7. Status: **draft**. Layout is direction A + C from PR #17 ([`wireframes.md`](wireframes.md#direction-a--c-bits-and-pieces-on-my-desk-bibi-2026-10-17)): each project fragment is a desk object, and the fragment type picks the object.
