@@ -21,4 +21,8 @@ declare module '@tanstack/react-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }
+  interface StaticDataRouteOption {
+    /** The page renders <ContactCta>, which is its #contact target instead of the footer. */
+    contactCta?: boolean
+  }
 }
