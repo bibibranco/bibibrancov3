@@ -222,6 +222,15 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
+  /* The hero star, the only thing that moves without input (PORT-007 motion spec). Use it as
+     motion-safe:animate-star so reduced motion gets a static star. */
+  --animate-star: star-spin var(--duration-star) linear infinite;
+  @keyframes star-spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -256,6 +265,28 @@
   background-size: var(--grid-cell) var(--grid-cell);
 }
 
+/* A desk object (PORT-403): keeps its tilt (set rotate-* on it) and lifts 6px on hover or keyboard
+   focus. Reduced motion skips the lift and the transition; shadow and z-order still change so
+   focus stays visible. */
+@utility desk-object {
+  position: relative;
+  box-shadow: var(--shadow-object);
+  &:hover,
+  &:focus-within {
+    z-index: var(--z-object-focus);
+    box-shadow: var(--shadow-object-lift);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    transition-property: translate, box-shadow;
+    transition-duration: var(--duration-base);
+    transition-timing-function: var(--ease-out);
+    &:hover,
+    &:focus-within {
+      translate: 0 -6px;
+    }
+  }
+}
+
 /* "fig. N" before a caption, numbered in order per case study (MdxContent resets `fig`). */
 @utility fig-label {
   counter-increment: fig;
@@ -270,6 +301,12 @@
   }
   html {
     @apply bg-background font-sans text-foreground;
+  }
+  /* "Say hi" and in-page anchors scroll smoothly; reduced motion jumps. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
     @apply bg-background text-body text-foreground antialiased;

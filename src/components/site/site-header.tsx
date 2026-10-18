@@ -51,7 +51,7 @@ function MobileMenu() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className={buttonVariants({ variant: 'secondary' })}>Menu</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Popup className="fixed inset-0 z-(--z-menu) flex flex-col overflow-y-auto bg-popover text-popover-foreground transition-opacity duration-(--duration-base) ease-in-out data-ending-style:opacity-0 data-starting-style:opacity-0">
+        <Dialog.Popup className="fixed inset-0 z-(--z-menu) flex flex-col overflow-y-auto bg-popover text-popover-foreground transition-[opacity,translate] duration-(--duration-base) ease-in-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-safe:data-ending-style:-translate-y-3 motion-safe:data-starting-style:-translate-y-3">
           <Dialog.Title className="sr-only">Menu</Dialog.Title>
           <Container className="flex items-center justify-between py-4">
             <HomeLink onClick={close} />
