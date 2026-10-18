@@ -20,7 +20,8 @@ type ResolvedImage = {
   srcset: { avif: string; webp: string }
   width: number
   height: number
-  /** Dominant colour, painted behind the image while it loads. */
+  /** Dominant colour, painted behind the image while it loads. `transparent` for images with
+   * an alpha channel, so cut-out shapes (the portrait) don't get a coloured box. */
   color: string
 }
 
@@ -36,7 +37,7 @@ async function exists(file: string) {
 /** Writes any missing variants of one image and returns how to render it. */
 async function processImage(file: string, slug: string): Promise<ResolvedImage> {
   // Sizes after EXIF orientation, so they match what's displayed (variants use `autoOrient()` too).
-  const { autoOrient } = await sharp(file).metadata()
+  const { autoOrient, hasAlpha } = await sharp(file).metadata()
   const { width, height } = autoOrient
   const { dominant } = await sharp(file).stats()
   // A content hash in the file name: a replaced image gets new URLs, so variants can be cached forever.
@@ -72,11 +73,11 @@ async function processImage(file: string, slug: string): Promise<ResolvedImage> 
     srcset: { avif: variants.avif.join(', '), webp: variants.webp.join(', ') },
     width,
     height,
-    color: `#${hex(dominant.r)}${hex(dominant.g)}${hex(dominant.b)}`,
+    color: hasAlpha ? 'transparent' : `#${hex(dominant.r)}${hex(dominant.g)}${hex(dominant.b)}`,
   }
 }
 
-/** Every image in a project's folder, keyed by its `./file.jpg` path as written in MDX. */
+/** Every image in a folder (content/<directory>/<slug>/), keyed by `./file.jpg` as written in content. */
 async function processProjectImages(
   directory: string,
   slug: string,

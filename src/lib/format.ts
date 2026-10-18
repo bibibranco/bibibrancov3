@@ -14,4 +14,9 @@ function formatPeriod(start: YearMonth | undefined, end: YearMonth | 'present'):
   return start ? `${formatYearMonth(start)} – ${to}` : to
 }
 
-export { formatYearMonth, formatPeriod }
+/** Machine-readable value for `<time dateTime>`: "2025-12", or "2020". */
+function isoYearMonth({ year, month }: YearMonth): string {
+  return month ? `${year}-${String(month).padStart(2, '0')}` : String(year)
+}
+
+export { formatYearMonth, formatPeriod, isoYearMonth }

@@ -1,4 +1,4 @@
-import { defineCollection, defineConfig } from '@content-collections/core'
+import { defineCollection, defineConfig, defineSingleton } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
 import { z } from 'zod'
 
@@ -121,4 +121,18 @@ const projects = defineCollection({
   },
 })
 
-export default defineConfig({ content: [projects] })
+// About-page portrait (PORT-407), through the same image pipeline as project images.
+const portrait = defineSingleton({
+  name: 'portrait',
+  filePath: 'content/profile/portrait.yaml',
+  parser: 'yaml',
+  schema: image,
+  transform: async ({ src, alt }) => {
+    const images = await processProjectImages('content/profile', 'portrait')
+    const found = images[src]
+    if (!found) throw new Error(`portrait.yaml: no image ${src} in content/profile/portrait/`)
+    return { ...found, alt }
+  },
+})
+
+export default defineConfig({ content: [projects, portrait] })
