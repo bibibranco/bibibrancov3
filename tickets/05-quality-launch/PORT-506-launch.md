@@ -26,7 +26,7 @@ Production domain is `bibibran.co`, currently attached to the old Vercel project
 ## Acceptance criteria
 - [x] `https://www.bibibran.co` serves the new site; the apex and `http` redirect to it.
 - [x] `/project/1..3` redirect correctly on production.
-- [ ] GA Realtime shows production traffic.
+- [x] GA Realtime shows production traffic. _(Checked as hits: `g/collect` with `tid=G-KR5JD1GYC2`, `en=page_view` from the live site.)_
 - [x] `legacy/` removed and README rewritten.
 
 ## Out of scope
@@ -36,7 +36,9 @@ Production domain is `bibibran.co`, currently attached to the old Vercel project
 - **2026-11-14:** PR #46 (PORT-504) and #47 (PORT-205) merged to `main`; `bibibranco-v4` production deploy ready. `www.bibibran.co` moved from `bibibrancov3` to `bibibranco-v4` (`vercel domains add www.bibibran.co bibibranco-v4 --force`). The apex was never a project domain: Vercel redirects it to www (307), and `http` to `https` (308).
 - **Verified on production:** `/`, `/work`, `/about`, `/work/busca-resgatados` 200; WIP case studies 404; `/project/1` → `/work#work`, `/project/2` → `/work#craft`, `/project/3` → `/work/itp-mapping` (301); `sitemap.xml` 200; HSTS on. `lavanderia.bibibran.co` (another project) unaffected.
 - **Rollback:** `vercel domains add www.bibibran.co bibibrancov3 --force --scope bibibrancos-projects`.
-- **Email:** the `bibibran.co` zone has **no MX records** (checked 2026-11-14; the zone's SOA predates launch, and moving a domain between projects doesn't touch DNS). Mail to `oi@bibibran.co` is likely not delivered. Add the provider's MX (and SPF/DKIM) records in Vercel DNS.
+- **Email:** the `bibibran.co` zone had **no MX records** (the zone's SOA predates launch; moving a domain between projects doesn't touch DNS). Fixed 2026-11-14 for Google Workspace: `MX 1 smtp.google.com` and SPF `v=spf1 include:_spf.google.com ~all`, both resolving publicly. **DKIM still to do:** generate the key in Workspace Admin › Apps › Gmail › Authenticate email and add its `google._domainkey` TXT record.
 - **2026-11-14, later:** `legacy/` removed and README updated. `bibibrancov3`'s Git link disconnected so it stops building a folder that no longer exists; its last production deployment stays, so the rollback above still works.
-- **Still to do:** GA Realtime check; Search Console sitemap; share-card and Rich Results checks; favicon checks; delete `bibibrancov3` after a stable week (around 2026-11-21).
+- **Search Console:** Domain property `bibibran.co` added to Bibi's account and verified by DNS TXT (`google-site-verification=…`, keep that record). Sitemap `https://www.bibibran.co/sitemap.xml` submitted 2026-11-14: accepted, 7 pages.
+- **Share cards and icons (checked on production):** every page has title, description, canonical, `og:*` and `summary_large_image`; `og.jpg` and the Busca card are 1200×630 and load; Person JSON-LD on `/` and `/about` parses (no image since the portrait was removed). `favicon.ico`, `favicon.svg`, `apple-touch-icon.png` (180×180), the manifest and its three icons, `robots.txt` and `sitemap.xml` all 200.
+- **Still to do (by hand, need logins or devices):** LinkedIn Post Inspector and Google Rich Results Test on a live URL; favicon on an iOS home screen; DKIM; delete `bibibrancov3` after a stable week (around 2026-11-21).
 
