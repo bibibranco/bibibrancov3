@@ -12,7 +12,6 @@ export default defineConfig([
     'dist',
     '.output',
     '.tanstack',
-    'legacy',
     'src/routeTree.gen.ts',
     'src/lib/cn-tables.ts',
     '.content-collections',

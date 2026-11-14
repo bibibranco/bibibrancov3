@@ -27,7 +27,7 @@ Production domain is `bibibran.co`, currently attached to the old Vercel project
 - [x] `https://www.bibibran.co` serves the new site; the apex and `http` redirect to it.
 - [x] `/project/1..3` redirect correctly on production.
 - [ ] GA Realtime shows production traffic.
-- [ ] `legacy/` removed and README rewritten.
+- [x] `legacy/` removed and README rewritten.
 
 ## Out of scope
 - Post-launch content additions (new tickets).
@@ -37,5 +37,6 @@ Production domain is `bibibran.co`, currently attached to the old Vercel project
 - **Verified on production:** `/`, `/work`, `/about`, `/work/busca-resgatados` 200; WIP case studies 404; `/project/1` → `/work#work`, `/project/2` → `/work#craft`, `/project/3` → `/work/itp-mapping` (301); `sitemap.xml` 200; HSTS on. `lavanderia.bibibran.co` (another project) unaffected.
 - **Rollback:** `vercel domains add www.bibibran.co bibibrancov3 --force --scope bibibrancos-projects`.
 - **Email:** the `bibibran.co` zone has **no MX records** (checked 2026-11-14; the zone's SOA predates launch, and moving a domain between projects doesn't touch DNS). Mail to `oi@bibibran.co` is likely not delivered. Add the provider's MX (and SPF/DKIM) records in Vercel DNS.
-- **Still to do:** GA Realtime check; Search Console sitemap; share-card and Rich Results checks; favicon checks; remove `legacy/` and rewrite README (separate PR); delete `bibibrancov3` after a stable week (around 2026-11-21).
+- **2026-11-14, later:** `legacy/` removed and README updated. `bibibrancov3`'s Git link disconnected so it stops building a folder that no longer exists; its last production deployment stays, so the rollback above still works.
+- **Still to do:** GA Realtime check; Search Console sitemap; share-card and Rich Results checks; favicon checks; delete `bibibrancov3` after a stable week (around 2026-11-21).
 
