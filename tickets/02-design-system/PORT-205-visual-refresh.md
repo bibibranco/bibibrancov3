@@ -63,7 +63,7 @@ Reviewed typesafe.ai on 2026-11-14. Decided: **borrow the language, keep blue** 
 ## Notes / open items
 - **Branch:** `port-205-refresh`, stacked on `port-504-perf` (PR #46). Merge #46 first, or retarget this PR to `main` after it lands.
 - **Draft copy to confirm:** good guns lines (`src/content/good-guns.ts`), wall-of-shame text and progress percentages (`src/content/wall-of-shame.ts`), Geral do Grêmio titles (`src/content/geral.ts`).
-- **Desk labels:** `bibi.OS 4.0`, `*.wip` and `*.exe` file-name labels are still on home; drop them if they read as too much.
+- **Desk labels:** the `bibi.OS 4.0` panel tag was removed (2026-11-14); the `*.wip` window titles on the wall of shame remain.
 - **Duplicate visual:** Busca's cover and fig. 1 both show the search box (the cover only shows on cards and share images now).
 - **Busca Resgatados body** now carries the Medium text, so it is no longer a short page (PORT-507 scope updated).
 - **Other case studies** can now use `<Lead>`, `<Requirements>`, `coverSize: none` and `press`.

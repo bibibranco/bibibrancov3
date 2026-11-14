@@ -59,7 +59,7 @@ function SectionHeading({ className, level = 2, size = 'default', ...props }: Se
 }
 
 type PanelProps = ComponentProps<'div'> & {
-  /** Mono tag in the top-left corner, e.g. "bibi.OS 4.0". Decoration, hidden from AT. */
+  /** Mono tag in the top-left corner, e.g. "notes.txt". Decoration, hidden from AT. */
   tag?: string
   /** Halftone blobs behind the content. */
   dither?: boolean
