@@ -77,12 +77,25 @@ async function processImage(file: string, slug: string): Promise<ResolvedImage> 
   }
 }
 
+// One run per folder: `projects` and `projectBodies` both ask for a project's images, and two
+// concurrent runs would write the same variant files at once.
+const processed = new Map<string, Promise<Record<string, ResolvedImage>>>()
+
 /** Every image in a folder (content/<directory>/<slug>/), keyed by `./file.jpg` as written in content. */
-async function processProjectImages(
+function processProjectImages(
   directory: string,
   slug: string,
 ): Promise<Record<string, ResolvedImage>> {
   const folder = path.join(directory, slug)
+  let images = processed.get(folder)
+  if (!images) {
+    images = processFolder(folder, slug)
+    processed.set(folder, images)
+  }
+  return images
+}
+
+async function processFolder(folder: string, slug: string): Promise<Record<string, ResolvedImage>> {
   if (!(await exists(folder))) return {}
   const files = (await fs.readdir(folder)).filter((f) => IMAGE_FILE.test(f)).sort()
   const entries = await Promise.all(

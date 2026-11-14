@@ -14,6 +14,7 @@ export default defineConfig([
     '.tanstack',
     'legacy',
     'src/routeTree.gen.ts',
+    'src/lib/cn-tables.ts',
     '.content-collections',
     'test-results',
     'playwright-report',

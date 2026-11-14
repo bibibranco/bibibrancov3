@@ -10,6 +10,7 @@
     "dev": "vite dev --port 3044 --strictPort",
     "build": "rm -rf public/_img && NODE_ENV=production node scripts/content-build.ts && node scripts/sitemap.ts && vite build",
     "preview": "vite preview",
+    "budget": "node scripts/bundle-budget.ts",
     "typecheck": "node scripts/content-build.ts && tsc --noEmit",
     "generate-routes": "tsr generate",
     "lint": "eslint . --max-warnings 0",

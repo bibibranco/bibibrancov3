@@ -1,16 +1,13 @@
-import { Dialog } from '@base-ui/react/dialog'
 import { Link, useRouter } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 
-import { Logo } from '@/components/brand/logo'
 import { Container } from '@/components/ui/layout'
 import { buttonVariants } from '@/components/ui/button'
-import { person } from '@/content/profile'
-import { contactHref, navItems } from './nav'
+import { HomeLink } from './home-link'
+import { contactHref, navItems, navLinkClass } from './nav'
 
-// Links stay unstyled until hover; the current page gets a thick underline (and aria-current from Link).
-const navLinkClass =
-  'inline-flex min-h-tap items-center font-semibold text-foreground no-underline decoration-[3px] underline-offset-[6px] hover:underline data-[status=active]:underline'
+const loadMenuDialog = () => import('./menu-dialog')
+const MenuDialog = lazy(loadMenuDialog)
 
 function SkipLink() {
   return (
@@ -25,67 +22,52 @@ function SkipLink() {
   )
 }
 
-function HomeLink({ onClick }: { onClick?: () => void }) {
-  return (
-    <Link
-      to="/"
-      aria-label={`${person.name}, home`}
-      className="inline-flex min-h-tap items-center text-foreground"
-      onClick={onClick}
-    >
-      <Logo className="h-6 w-auto md:h-7" />
-    </Link>
-  )
-}
-
+// The Menu button is plain HTML; the dialog behind it loads when the page goes idle or the button
+// is touched or focused, so a tap rarely waits on the network (PORT-504).
 function MobileMenu() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const trigger = useRef<HTMLButtonElement>(null)
   const router = useRouter()
 
   // Close when navigation happens by any route, including the back button.
   useEffect(() => router.subscribe('onResolved', () => setOpen(false)), [router])
 
-  const close = () => setOpen(false)
+  // Safari has no requestIdleCallback; a timeout after load does the same job there.
+  useEffect(() => {
+    const load = () => void loadMenuDialog()
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(load)
+      return () => cancelIdleCallback(id)
+    }
+    const id = setTimeout(load, 2000)
+    return () => clearTimeout(id)
+  }, [])
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger className={buttonVariants({ variant: 'secondary' })}>Menu</Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Popup className="fixed inset-0 z-(--z-menu) flex flex-col overflow-y-auto bg-popover text-popover-foreground transition-[opacity,translate] duration-(--duration-base) ease-in-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-safe:data-ending-style:-translate-y-3 motion-safe:data-starting-style:-translate-y-3">
-          <Dialog.Title className="sr-only">Menu</Dialog.Title>
-          <Container className="flex items-center justify-between py-4">
-            <HomeLink onClick={close} />
-            <Dialog.Close className={buttonVariants()}>Close</Dialog.Close>
-          </Container>
-          <Container className="flex grow flex-col gap-8 pt-8 pb-section">
-            <nav aria-label="Main">
-              <ul className="m-0 list-none p-0">
-                {navItems.map((item) => (
-                  <li key={item.to} className="border-b border-border">
-                    <Link
-                      to={item.to}
-                      onClick={close}
-                      className={`${navLinkClass} min-h-18 font-heading text-h1`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-                <li className="border-b border-border">
-                  <a
-                    href={contactHref}
-                    onClick={close}
-                    className={`${navLinkClass} min-h-18 font-heading text-h1`}
-                  >
-                    Say hi
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </Container>
-        </Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <>
+      <button
+        ref={trigger}
+        type="button"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        onPointerEnter={() => void loadMenuDialog()}
+        onFocus={() => void loadMenuDialog()}
+        onClick={() => {
+          setMounted(true)
+          setOpen(true)
+        }}
+        className={buttonVariants({ variant: 'secondary' })}
+      >
+        Menu
+      </button>
+      {/* Stays mounted after the first open, so closing can animate. */}
+      {mounted && (
+        <Suspense fallback={null}>
+          <MenuDialog open={open} onOpenChange={setOpen} trigger={trigger} />
+        </Suspense>
+      )}
+    </>
   )
 }
 

@@ -26,6 +26,9 @@ jobs:
       - run: pnpm format:check
       - run: pnpm test
       - run: pnpm build
+      # Home JS budget (PORT-504), and the cn tables the build regenerated must be the committed ones.
+      - run: pnpm budget
+      - run: git diff --exit-code src/lib/cn-tables.ts
       # Browser tests run against the build (PORT-505). Chromium only, for both projects.
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e

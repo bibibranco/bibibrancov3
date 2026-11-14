@@ -5,6 +5,7 @@ legacy
 tickets
 pnpm-lock.yaml
 src/routeTree.gen.ts
+src/lib/cn-tables.ts
 .content-collections
 test-results
 playwright-report

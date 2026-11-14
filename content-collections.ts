@@ -105,13 +105,13 @@ const projects = defineCollection({
     if (document.draft && process.env.NODE_ENV === 'production') {
       return context.skip('draft')
     }
-    // The raw MDX source stays out of the bundle; only the compiled code ships.
+    // The raw MDX source never ships; `projectBodies` compiles the body.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- dropped on purpose
     const { content, _meta, ...data } = document
     const slug = _meta.path
-    const mdx = await compileMDX(context, { content, _meta })
 
     // Frontmatter images are resolved here, so a missing file fails the build. MDX body images
-    // resolve at render from `images` (MdxContent), and a missing one fails the prerender.
+    // resolve at render from the body's `images` (MdxContent), and a missing one fails the prerender.
     const images = await processProjectImages(context.collection.directory, slug)
     const resolve = ({ src, alt }: z.infer<typeof image>): ResolvedImage & { alt: string } => {
       const found = images[src]
@@ -124,7 +124,26 @@ const projects = defineCollection({
     )
     // Share image for og:image, cropped from the cover (PORT-501).
     const og = await processOgImage(context.collection.directory, slug, data.cover.src)
-    return { ...data, slug, cover, fragments, images, og, mdx }
+    return { ...data, slug, cover, fragments, og }
+  },
+})
+
+// The compiled MDX body and its images, kept apart from the project data above: only the case
+// study page imports them (src/lib/content-body.ts), so home and /work don't ship every body
+// (PORT-504). Same files, same draft rule.
+const projectBodies = defineCollection({
+  name: 'projectBodies',
+  directory: 'content/work',
+  include: '*.mdx',
+  schema: z.object({ draft: z.boolean().default(false), content: z.string() }),
+  transform: async (document, context) => {
+    if (document.draft && process.env.NODE_ENV === 'production') {
+      return context.skip('draft')
+    }
+    const slug = document._meta.path
+    const mdx = await compileMDX(context, document)
+    const images = await processProjectImages(context.collection.directory, slug)
+    return { slug, mdx, images }
   },
 })
 
@@ -142,4 +161,4 @@ const portrait = defineSingleton({
   },
 })
 
-export default defineConfig({ content: [projects, portrait] })
+export default defineConfig({ content: [projects, projectBodies, portrait] })
