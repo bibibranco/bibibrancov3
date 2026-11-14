@@ -1,10 +1,12 @@
-// Hero star (PORT-205): the star throws the good guns (src/content/good-guns.ts) into the hero.
-// Each one flies from the star to a free spot anywhere in the area, over the copy too, without
-// landing on another gun or on the areas passed in `avoid` (the star and its status line). Drag a
+// Hero mystery gun (PORT-205): the button throws the good guns (src/content/good-guns.ts) into the
+// hero. Each one flies from the button to a free spot anywhere in the area, over the copy too,
+// without landing on another gun or on the areas passed in `avoid` (the button column). Drag a
 // gun to move it; it stays where it's dropped. Plain DOM, no library, loaded on the first click.
 // The guns are decoration (aria-hidden); the hero's status line says which one is out.
 
 import { goodGuns } from '@/content/good-guns'
+
+import { gunSize, gunSvg } from './good-guns-art'
 
 type Kind = {
   kind: string
@@ -15,73 +17,11 @@ type Kind = {
   inner: string
 }
 
-const ink = 'stroke="#0a1f4d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"'
-const tag = (text: string, x: number, y: number) =>
-  `<text x="${x}" y="${y}" font-family="JetBrains Mono Variable, JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#0a1f4d">${text}</text>`
-const svg = (w: number, h: number, body: string) =>
-  `<svg viewBox="0 0 ${w} ${h}" width="100%" height="100%" overflow="visible">${body}</svg>`
-
-const drawings: Record<string, Omit<Kind, 'kind' | 'label'>> = {
-  'heat gun': {
-    w: 156,
-    h: 112,
-    inner: svg(
-      156,
-      112,
-      `<path d="M58 52 L82 52 L76 104 L50 104 Z" fill="#ffe45c" ${ink}/>
-       <rect x="8" y="12" width="104" height="44" rx="20" fill="#ffe45c" ${ink}/>
-       <rect x="110" y="20" width="40" height="28" rx="4" fill="#c7daff" ${ink}/>
-       <path d="M24 26 v16 M34 26 v16 M44 26 v16" ${ink}/>
-       <rect x="80" y="60" width="64" height="18" fill="#f7f7f3" ${ink}/>${tag('heat gun', 84, 73)}`,
-    ),
-  },
-  'tufting gun': {
-    w: 180,
-    h: 104,
-    inner: svg(
-      180,
-      104,
-      `<path d="M4 44 C 18 10, 40 70, 30 34" fill="none" stroke="#ffe45c" stroke-width="3" stroke-linecap="round"/>
-       <rect x="24" y="26" width="92" height="34" rx="8" fill="#f7f7f3" ${ink}/>
-       <path d="M116 40 H160" ${ink}/>
-       <path d="M44 58 L64 58 L58 98 L36 98 Z" fill="#f7f7f3" ${ink}/>
-       <path d="M86 58 L98 58 L94 84 L82 84 Z" fill="#c7daff" ${ink}/>
-       <rect x="96" y="70" width="82" height="18" fill="#ffe45c" ${ink}/>${tag('tufting gun', 100, 83)}`,
-    ),
-  },
-  'nail gun': {
-    w: 164,
-    h: 112,
-    inner: svg(
-      164,
-      112,
-      `<rect x="6" y="14" width="118" height="36" rx="10" fill="#0a4cbf" ${ink}/>
-       <rect x="124" y="20" width="28" height="56" rx="4" fill="#c7daff" ${ink}/>
-       <path d="M30 50 L60 50 L54 100 L26 100 Z" fill="#0a4cbf" ${ink}/>
-       <path d="M60 64 L122 74 L122 86 L58 76 Z" fill="#ffe45c" ${ink}/>
-       <rect x="64" y="90" width="64" height="18" fill="#f7f7f3" ${ink}/>${tag('nail gun', 70, 103)}`,
-    ),
-  },
-  'glue gun': {
-    w: 158,
-    h: 108,
-    inner: svg(
-      158,
-      108,
-      `<rect x="4" y="26" width="34" height="12" rx="6" fill="#f7f7f3" ${ink}/>
-       <rect x="34" y="14" width="80" height="38" rx="16" fill="#ffd6d0" ${ink}/>
-       <path d="M114 22 L144 30 L144 36 L114 44 Z" fill="#ffd6d0" ${ink}/>
-       <path d="M144 33 H154" ${ink}/>
-       <path d="M56 50 L80 50 L74 102 L48 102 Z" fill="#ffd6d0" ${ink}/>
-       <rect x="84" y="62" width="66" height="18" fill="#f7f7f3" ${ink}/>${tag('glue gun', 90, 75)}`,
-    ),
-  },
-}
-
 const kinds: Kind[] = goodGuns.guns.map((gun) => ({
   kind: gun.name.replace(' ', '-'),
   label: gun.name,
-  ...drawings[gun.name]!,
+  ...gunSize(gun.name),
+  inner: gunSvg(gun.name),
 }))
 
 type Gun = {
@@ -187,8 +127,9 @@ export function createToolbox(area: HTMLElement, options: ToolboxOptions) {
 
   return {
     /** Throws the next gun from `from` (the star's box) to a free spot. */
-    drop(from?: DOMRect) {
-      const def = kinds[dropped % kinds.length]!
+    /** Throws gun `index` (or the next in turn) from `from`, the hero button's box. */
+    drop(from?: DOMRect, index?: number) {
+      const def = kinds[(index ?? dropped) % kinds.length]!
       dropped += 1
       const w = Math.round(def.w * options.scale)
       const h = Math.round(def.h * options.scale)

@@ -248,15 +248,33 @@
   /* The hero star, the only thing that moves without input (PORT-007 motion spec). Use it as
      motion-safe:animate-star so reduced motion gets a static star. */
   --animate-star: star-spin var(--duration-star) linear infinite;
-  /* The hero toy gun's idle sway (PORT-205); the only thing that moves without input. */
-  --animate-gun-idle: gun-idle 3.6s ease-in-out infinite;
-  @keyframes gun-idle {
+  /* The hero mystery gun (PORT-205): one pop-in on load, then a wiggle only while hovered. */
+  --animate-gun-intro: gun-intro 900ms var(--ease-out) both;
+  @keyframes gun-intro {
+    0% {
+      scale: 0.6;
+      rotate: -14deg;
+    }
+    55% {
+      scale: 1.08;
+      rotate: 6deg;
+    }
+    100% {
+      scale: 1;
+      rotate: 0deg;
+    }
+  }
+  --animate-gun-wiggle: gun-wiggle 520ms ease-in-out infinite;
+  @keyframes gun-wiggle {
     0%,
     100% {
-      rotate: -3deg;
+      rotate: 0deg;
     }
-    50% {
-      rotate: 3deg;
+    25% {
+      rotate: -5deg;
+    }
+    75% {
+      rotate: 5deg;
     }
   }
   @keyframes star-spin {
@@ -434,6 +452,12 @@
     cursor: grabbing;
     filter: drop-shadow(0 14px 12px rgb(10 31 77 / 0.45));
   }
+}
+
+/* The hero's "who's that gun?" silhouette: every shape of the drawing in one solid colour. */
+.gun-silhouette * {
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 /* "fig. N" before a caption, numbered in order per case study (MdxContent resets `fig`). */
