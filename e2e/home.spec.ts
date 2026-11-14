@@ -18,15 +18,28 @@ test.describe('home hero', () => {
 })
 
 const star = (page: import('@playwright/test').Page) =>
-  page.getByRole('button', { name: 'Fire a good gun' }).and(page.locator(':visible'))
-test('the hero gun sways only without reduced motion', async ({ page }) => {
+  page.getByRole('button', { name: 'Reveal a gun from my arsenal' }).and(page.locator(':visible'))
+// The mystery gun moves once on load, then stays still until hovered; reduced motion keeps it still.
+test('the hero gun moves on load and on hover only, and not with reduced motion', async ({
+  page,
+  isMobile,
+}) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  const svg = star(page).locator('svg')
-  await expect(svg).toHaveAttribute('aria-hidden', 'true')
-  await expect(svg).toHaveCSS('animation-name', 'none')
+  const button = star(page)
+  await expect(button.locator('svg').first()).toHaveAttribute('aria-hidden', 'true')
+  const intro = button.locator('[data-intro]')
+  const recoil = button.locator('[data-recoil]')
+  await expect(intro).toHaveCSS('animation-name', 'none')
+
   await page.emulateMedia({ reducedMotion: 'no-preference' })
-  await expect(svg).toHaveCSS('animation-name', 'gun-idle')
+  await expect(intro).toHaveCSS('animation-name', 'gun-intro')
+  await expect(intro).toHaveCSS('animation-iteration-count', '1')
+  await expect(recoil).toHaveCSS('animation-name', 'none')
+  if (!isMobile) {
+    await button.hover()
+    await expect(recoil).toHaveCSS('animation-name', 'gun-wiggle')
+  }
 })
 
 const status = (page: import('@playwright/test').Page) =>
@@ -40,7 +53,7 @@ test.describe('hero gun', () => {
   }) => {
     await page.goto('/')
     const area = page.getByTestId(isMobile ? 'hero-tray' : 'hero-layer')
-    await expect(status(page)).toContainText('the gun. it has a project in it.')
+    await expect(status(page)).toContainText('check out a really cool gun from my arsenal')
 
     await star(page).click()
     await expect(status(page)).toContainText('heat gun:')
@@ -51,7 +64,7 @@ test.describe('hero gun', () => {
     await expect(area.locator('.hero-tool').first()).toHaveAttribute('aria-hidden', 'true')
 
     await page.getByRole('button', { name: 'tidy up' }).and(page.locator(':visible')).click()
-    await expect(status(page)).toContainText('the gun. it has a project in it.')
+    await expect(status(page)).toContainText('check out a really cool gun from my arsenal')
     await expect(page.locator('.hero-tool')).toHaveCount(0)
   })
 
