@@ -256,7 +256,7 @@ function Desk() {
             bits and pieces on my desk
           </SectionHeading>
           {/* The desk is a dotted "desktop" panel (PORT-205); objects keep their own surfaces. */}
-          <Panel tag="bibi.OS 4.0" dither className="p-3 pt-10 md:p-6 md:pt-12 xl:pt-10 xl:pb-4">
+          <Panel dither className="p-3 md:p-6 xl:py-6">
             {/* From xl the objects and the wall of shame sit side by side; below that, the wall
                 comes after the objects. */}
             <div className="flex flex-col gap-8 xl:grid xl:grid-cols-[minmax(0,1fr)_17.5rem] xl:gap-8">

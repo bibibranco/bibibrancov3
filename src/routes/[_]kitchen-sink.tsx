@@ -150,7 +150,7 @@ function KitchenSink() {
               <p className="m-0">Six weeks.</p>
             </RuledColumn>
           </div>
-          <Panel tag="bibi.OS 4.0" dither className="h-64 p-6 pt-12">
+          <Panel tag="panel.tag" dither className="h-64 p-6 pt-12">
             <Window title="on.the.desktop">
               <span className="block p-3 font-mono text-caption">Panel: dots, dither, tag</span>
             </Window>
