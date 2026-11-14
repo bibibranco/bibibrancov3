@@ -19,7 +19,7 @@ type Events = {
   prototype_click: { slug: string; destination: 'live' | 'repo' }
   contact_click: { method: 'email' | 'linkedin'; location: Location }
   outbound_click: { channel: 'linkedin' | 'medium'; location: Location }
-  /** First drop from the hero star in a page view (PORT-410). */
+  /** First good gun dropped from the hero star in a page view (PORT-205; was PORT-410). */
   hero_play: Record<string, never>
 }
 

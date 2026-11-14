@@ -4,9 +4,10 @@ import { MdxContent } from '@/components/mdx/mdx-content'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardDescription, CardMedia, CardMeta, CardTitle } from '@/components/ui/card'
 import { Image, Picture } from '@/components/ui/image'
-import { Container, Section, SectionHeading } from '@/components/ui/layout'
+import { Container, Panel, RuledColumn, Section, SectionHeading } from '@/components/ui/layout'
 import { Tag } from '@/components/ui/tag'
-import { ExternalLink, TextLink } from '@/components/ui/text-link'
+import { BigLink, ExternalLink, TextLink } from '@/components/ui/text-link'
+import { Window } from '@/components/ui/window'
 import { getProjectBySlug } from '@/lib/content'
 import { getProjectBody } from '@/lib/content-body'
 
@@ -53,6 +54,24 @@ function KitchenSink() {
               Link as secondary button
             </a>
           </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <a className={buttonVariants({ variant: 'chip', size: 'chip' })} href="#ks-button">
+              Chip
+            </a>
+            <a
+              className={buttonVariants({ variant: 'chip', size: 'chip' })}
+              data-status="active"
+              href="#ks-button"
+            >
+              Chip, current
+            </a>
+            <a
+              className={buttonVariants({ variant: 'chip-solid', size: 'chip' })}
+              href="#ks-button"
+            >
+              Chip, solid
+            </a>
+          </div>
         </Container>
       </Section>
 
@@ -63,6 +82,7 @@ function KitchenSink() {
             Back to the <TextLink to="/">home page</TextLink>, or read the{' '}
             <ExternalLink href="https://medium.com/">write-up on Medium</ExternalLink>.
           </p>
+          <BigLink to="/">BigLink, for CTA rows</BigLink>
         </Container>
       </Section>
 
@@ -103,6 +123,38 @@ function KitchenSink() {
           <p className="m-0 max-w-measure text-h3">
             The squared grid is for the desk only, so text this size is the smallest allowed on it.
           </p>
+        </Container>
+      </Section>
+
+      <Section aria-labelledby="ks-refresh">
+        <Container className="flex flex-col gap-8">
+          <SectionHeading id="ks-refresh" size="display">
+            PORT-205 · display heading
+          </SectionHeading>
+          <div className="flex flex-wrap items-start gap-6">
+            <Window title="paper.window" meta="1.0">
+              <span className="block p-3 font-mono text-caption">Window, paper</span>
+            </Window>
+            <Window title="deep.window" variant="deep">
+              <span className="block p-3 font-mono text-caption">Window, deep</span>
+            </Window>
+            <Window title="ice.window" variant="ice">
+              <span className="block p-3 font-mono text-caption">Window, ice</span>
+            </Window>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <RuledColumn label="Role">
+              <p className="m-0">Ruled column: mono label, left rule.</p>
+            </RuledColumn>
+            <RuledColumn label="Timeline">
+              <p className="m-0">Six weeks.</p>
+            </RuledColumn>
+          </div>
+          <Panel tag="bibi.OS 4.0" dither className="h-64 p-6 pt-12">
+            <Window title="on.the.desktop">
+              <span className="block p-3 font-mono text-caption">Panel: dots, dither, tag</span>
+            </Window>
+          </Panel>
         </Container>
       </Section>
 

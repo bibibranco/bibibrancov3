@@ -33,6 +33,7 @@ Bibi found the hero star too fast at 14s per turn (now 40s, PORT-402) and asked 
 - [x] Same rules on phones, using the tray.
 
 ## Notes
+- **Superseded in PORT-205 (2026-11-14):** the star now throws the "good guns" (heat, tufting, nail, glue), a project still to be built. `toolbox.ts` (gravity, piling, throwing) is replaced by `gun-drop.ts`: each gun lands on a free spot anywhere in the hero, never on another gun or the star column, and can be dragged anywhere. The criteria above describe the original engine; PORT-205's e2e tests cover the new one.
 - **Canvas:** https://claude.ai/artifact/WXCCpvZpTHWEAsu535dTX5 has the boards `Play-A..D` and `Play-375`, and a note there records the pick.
 - **Layering:**
   - The copy, the star and the status line sit above the tools, but only their own boxes take the pointer. A tool under an empty part of the grid can still be grabbed.

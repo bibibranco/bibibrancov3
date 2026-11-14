@@ -15,7 +15,9 @@ const generated = path.resolve('.content-collections/generated/index.js')
 const { allProjects } = await import(pathToFileURL(generated).href)
 const paths = [
   ...staticPaths,
-  ...allProjects.map((project: { slug: string }) => `/work/${project.slug}`),
+  ...allProjects
+    .filter((project: { wip?: boolean }) => !project.wip)
+    .map((project: { slug: string }) => `/work/${project.slug}`),
 ]
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

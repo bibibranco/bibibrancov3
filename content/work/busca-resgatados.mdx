@@ -1,27 +1,142 @@
 ---
-# TODO: draft from PORT-302 (Short page (sitemap §3): the full story is on Medium). Delete this line once the rest are cleared (PORT-507).
+# Text as published on Medium (Sep 10, 2024). PORT-205 only adds structure: headings, stats,
+# figures and the pull quote (split from its paragraph, not repeated). Typos fixed: "able to
+# handle", "wouldn't". The summary drops "simple" to fit 155 characters. The screens are rebuilt
+# from the project's code (tickets/artifacts/busca-resgatados/).
 title: Busca Resgatados
-summary: A digital platform created amidst a catastrophe.
-year: 2024 # TODO: confirm the year
-role: TODO — your role
-timeline: TODO — dates
+summary: How a website developed in 24 hours helped thousands of people to find their loved ones during the most devastating flood ever seen in Southern Brazil.
+year: 2024
+role: Product designer, from the idea to the interface
+timeline: May 2024 · first version in 24 hours
+team: Gabi Branco, Amanda Medeiros, Igor Carrasco and a group of volunteers
+outcome: 27,000 unique users
+press:
+  - name: CNN Brasil
+    href: https://www.cnnbrasil.com.br/nacional/enchentes-no-rs-voluntarios-criam-site-que-reune-informacoes-sobre-pessoas-desabrigadas/
+  - name: O Globo
+    href: https://oglobo.globo.com/brasil/sos-rio-grande-do-sul/noticia/2024/05/10/chuvas-no-rs-aplicativos-ajudam-na-busca-por-desaparecidos-e-animais-de-estimacao.ghtml
+  - name: Exame
+    href: https://exame.com/tecnologia/ajuda-encontrar-resgatados-vitimas-rio-grande-do-sul/
 category: work
 tags: [product design, social impact]
 cover:
-  src: ./cover.jpg # TODO: high-res cover (this one is 272×192)
-  alt: A laptop showing the Busca Resgatados platform
+  src: ./cover.png
+  alt: The Busca Resgatados home page, titled Lista de Abrigados, with a name search box and a green Buscar button on a dark background
+coverSize: none
 order: 6
-links:
-  external: https://medium.com/@bibianabranco/busca-resgatados-a-digital-platform-created-amidst-a-catastrophe-3b402c184f11
 fragments:
   - type: writing
     object: clipping
     featured: true
     order: 6
-    source: 'MEDIUM · TODO: date'
+    source: MEDIUM
     title: A digital platform created amidst a catastrophe
 ---
 
-[TODO: two or three paragraphs. What happened, what the platform did, and your part in it. The Medium post has the details.]
+## The flood
 
-The full story is in my write-up on Medium: [Busca Resgatados: a digital platform created amidst a catastrophe](https://medium.com/@bibianabranco/busca-resgatados-a-digital-platform-created-amidst-a-catastrophe-3b402c184f11).
+Rio Grande do Sul, my home state, faced unprecedented floods in May this year. 581,638 people were displaced from their homes, and around 76,000 had to be rescued amidst the floods.
+
+<Stats
+  items={[
+    { value: '581,638', label: 'people displaced' },
+    { value: '76,000', label: 'people rescued' },
+    { value: '24h', label: 'to build the website' },
+    { value: '27,000', label: 'unique users' },
+  ]}
+/>
+
+People often had to leave their houses without means of communication with their families — for several reasons, such as poor connection in the area, power outages, or simply not having a smartphone to let their loved ones know they were ok.
+
+Volunteers working at shelters created several spreadsheets listing names of rescued and sheltered people, and started sharing those links on social media so these people could be found.
+
+## The idea
+
+<Lead>
+
+The lack of a system led to a lot of disorganized information. While trying to find a person in one of those spreadsheets, I felt desperate. I had to navigate between different spreadsheets, different tabs, unsure of how the person’s name had been written — did they use a full name? Maybe there was a typo? How was I supposed to know in which shelter the person went to or which group had rescued them?
+
+**So I understood that my Product Design skills could be useful to minimize the issues I had faced.**
+
+</Lead>
+
+I reached out to Amanda Medeiros, a front-end engineer, my sister, Gabi Branco, who is an engineering manager and Igor Carrasco, a back-end engineer, and told them my idea: to build a search tool as simple as Google that would aggregate the data so people could find their loved ones.
+
+## Product requirements
+
+<Requirements>
+  <Requirement title="We should be able to use the existing spreadsheets as our database">
+    It would not be realistic to ask volunteers in shelters to change their workflow to feed our
+    database. I had already done a little bit of web scraping with Python, so I knew it would be a
+    possibility for us to consume their data.
+  </Requirement>
+  <Requirement title="The search mechanism should be able to handle typos">
+    People were under a lot of stress and many names contained typos, so the tool had to accommodate
+    that. It also should be able to give people similar results: for example, if a person is called
+    “Maria Alice dos Santos”, we should be able to inform if we found a “Maria dos Santos”, since we
+    couldn’t predict how those names were informed in shelters.
+  </Requirement>
+  <Requirement title="We had a lot of responsibility when giving a feedback">
+    We couldn’t just say “no results found”. We were dealing with people in a very critical
+    situation. The tool should be transparent about the spreadsheets we were consulting and about
+    our search mechanism — encouraging people to come back later or to keep on looking for their
+    loved ones in another database if, for instance, a particular spreadsheet hadn’t yet been
+    integrated into our website.
+  </Requirement>
+</Requirements>
+
+Once we understood the requirements, I jumped into Figma to start prototyping. I knew that this was not the time to worry about creating the most appealing UI of my life, so I opted for Tailwind as I knew it had a reliable library that would make UI decisions easier and also would be faster to implement from a front-end perspective.
+
+## Search mechanism
+
+The main goal was to provide a really simple interface to minimize cognitive load in a way that even first-time users could easily understand what to do. Inspired by Google Search, a tool that I assumed people would most likely know, I decided to wrap the interface around a simple search box.
+
+<Figure
+  src="./search-box.png"
+  alt="The top of the page: the title Lista de Abrigados, a line saying it searches a compilation of lists of people rescued in the Rio Grande do Sul floods, and a name search box, powered by Algolia, with a green Buscar (search) button"
+  caption="Search box"
+/>
+
+We had to make sure users were aware of all the data sources our tool searched through. To solve this, we included a list of the spreadsheets we were currently integrating with, as well as those we were currently working on adding, allowing users to search these lists directly if needed.
+
+<Figure
+  src="./sources.png"
+  alt="The Listas consultadas section: a line saying the database updates from the lists below, a warning that the list may be out of date as more than 70 lists are checked, and two columns of linked spreadsheets, the newest tagged Nova"
+/>
+
+## Displaying the results
+
+Even when a specific or similar name was found, we still had to give people resources to check if that was the person they were looking for.
+The solution for that was to keep every name clickable, taking the user to our original source where they could find more information.
+
+<Figure
+  src="./results.png"
+  alt="A results page for Maria Alice dos Santos: two results, Maria Alice dos Santos and the similar Maria dos Santos, each with their shelter and an icon linking to the source spreadsheet, then a “didn't find who you were looking for?” note explaining the person may not have been registered yet"
+/>
+
+And in case the names found weren’t a match or we couldn’t find any results, we informed that our database was being constantly updated — and also listed all of the sources we were currently consulting and had an open channel to receive new spreadsheets.
+
+## Impact
+
+The website had 27,000 unique users and was cited on major Brazilian news platforms, such as [CNN Brasil](https://www.cnnbrasil.com.br/nacional/enchentes-no-rs-voluntarios-criam-site-que-reune-informacoes-sobre-pessoas-desabrigadas/), [O Globo](https://oglobo.globo.com/brasil/sos-rio-grande-do-sul/noticia/2024/05/10/chuvas-no-rs-aplicativos-ajudam-na-busca-por-desaparecidos-e-animais-de-estimacao.ghtml) and [Exame](https://exame.com/tecnologia/ajuda-encontrar-resgatados-vitimas-rio-grande-do-sul/). But the most important results didn’t come from any measurable key metrics, the number of requests we had on our server or how many people were simultaneously online on the website —
+
+<Quote>
+  we knew that if at least one person could find a loved one in our platform, all our work was worth
+  it.
+</Quote>
+
+During those weeks, we received feedback that kept us going. We heard stories of families who found each other through our platform, and of social workers helping elderly people in shelters reconnect with their families — it was a small source of hope in the middle of the chaos.
+
+## Takeaway
+
+As I finish writing this article almost four months after the tragedy, I realize there are many things we could have done differently and almost wonder if I should actually publish this article. But the most important personal takeaway for me as a designer was I had to take off my 8-point grid cop hat, blend all the frameworks I’d used throughout my career, and quickly put together a solution.
+
+## Thank you
+
+Busca Resgatados wouldn’t have been possible without the help of these incredible people:
+
+Gabi Branco, Bibiana Branco, Igor Carrasco, Amanda Medeiros, Douglas Eloy, Adriano Viana, Pedro Vanzella, Lucas Trajano, Henrique Barbosa, Andressa Quines, Maicon Machado, Victor Guimarães, Fernando Martinkovics, Luísa Giusti, Helena Martinelli Serra, Elisa Albuquerque, Carol Goyer, Helena Poetini, Salva RS.
+
+Thank you so much :)
+
+First published on [Medium](https://medium.com/@bibianabranco/busca-resgatados-a-digital-platform-created-amidst-a-catastrophe-3b402c184f11), September 10, 2024.

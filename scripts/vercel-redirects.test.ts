@@ -12,7 +12,8 @@ describe('vercel.json redirects', () => {
   it('maps the v3 project pages', () => {
     expect(config.redirects.map((r) => [r.source, r.destination])).toEqual([
       ['/project/1', '/work#work'],
-      ['/project/2', '/work/woodworking'],
+      // Woodworking is WIP (no page yet), so its old URL goes to the Craft group.
+      ['/project/2', '/work#craft'],
       ['/project/3', '/work/itp-mapping'],
       ['/project/:id', '/work'],
     ])
@@ -22,10 +23,14 @@ describe('vercel.json redirects', () => {
     expect(config.redirects.every((r) => r.statusCode === 301)).toBe(true)
   })
 
-  it('points at case studies that exist', () => {
+  it('points at published case studies', () => {
     for (const { destination } of config.redirects) {
       const slug = destination.match(/^\/work\/([a-z0-9-]+)$/)?.[1]
-      if (slug) expect(fs.existsSync(`content/work/${slug}.mdx`), destination).toBe(true)
+      if (!slug) continue
+      const file = `content/work/${slug}.mdx`
+      expect(fs.existsSync(file), destination).toBe(true)
+      // A WIP project has no page, so a redirect must not land on one.
+      expect(/^wip:\s*true\b/m.test(fs.readFileSync(file, 'utf8')), destination).toBe(false)
     }
   })
 })

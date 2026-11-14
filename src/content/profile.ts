@@ -20,6 +20,8 @@ type Education = {
   /** Omitted for one-off programmes that only have an end date. */
   start?: YearMonth
   end: YearMonth
+  /** Later editions of the same programme, shown on the same row ("Jun 2023, Jun 2024"). */
+  again?: YearMonth[]
   note?: string
 }
 
@@ -87,6 +89,7 @@ const education: Education[] = [
     what: 'ITP Camp',
     where: 'NYU',
     end: { year: 2023, month: 6 },
+    again: [{ year: 2024, month: 6 }],
     note: 'Summer program on interactive technology',
   },
   { what: 'Programming For All', where: 'Le Wagon', end: { year: 2020 } },
@@ -108,11 +111,10 @@ type Talk = { title: string; where: string; year: number; href?: string }
 // list out while it's empty.
 const talks: Talk[] = []
 
-/** /about long bio, one string per paragraph (copy.md "About"). */
+/** /about bio, one string per paragraph. Shortened for launch (PORT-205); leads with momoGood. */
 const bio = [
-  `I'm Bibi Branco, a product designer with ${yearsOfExperience}+ years of experience. I started in graphic design, at Universidade Federal de Pelotas and Agência Ursa, moved into product at Melhor Envio, and spent three and a half years at Itaú, Brazil's largest private bank, working on credit card experiences used by millions of customers.`,
-  "Since December 2025 I've been at momoGood, designing a workplace giving platform from the ground up and bringing AI into Tatango's messaging tools. I work AI-first: intelligence built into the workflow, not bolted on as a chat box. And I prototype in code, because a clickable thing answers questions a static screen can't.",
-  "The other half of me makes things. Woodworking, glass cutting, 3D printing, Arduino, and one rat costume. At ITP Camp at NYU in 2023 I logged my own interactions and turned them into 3D prisms. I'm always adding to the toolbox.",
+  `I'm Bibi Branco, a product designer with ${yearsOfExperience}+ years of experience, now at momoGood. There I'm designing a workplace giving platform from the ground up and bringing AI into Tatango's messaging tools. I work AI-first and prototype in code, because a clickable thing answers questions a static screen can't.`,
+  "Before that I spent three and a half years at Itaú, Brazil's largest private bank, on credit card experiences used by millions, after starting in graphic design and moving into product at Melhor Envio. Away from screens I make things: woodworking, 3D printing, Arduino, a rat costume, and two summers at ITP Camp at NYU, in 2023 and 2024.",
 ]
 
 /** Home "count me in for", in order. */
@@ -125,7 +127,8 @@ const interests: Interest[] = [
   {
     label: 'crafting',
     line: 'playing around with woodworking, glass cutting and circuits since I was a child',
-    link: { to: '/work/$slug', params: { slug: 'woodworking' } },
+    // Woodworking is WIP (no page yet), so this goes to the Craft group.
+    link: { to: '/work', hash: 'craft' },
   },
   {
     label: 'data viz',
@@ -139,19 +142,5 @@ const interests: Interest[] = [
   },
 ]
 
-/** Footer credit for v3. */
-const credit = { name: 'Amanda Medeiros', href: 'https://asmdrs.vercel.app/' } as const
-
-export {
-  person,
-  contact,
-  socials,
-  experience,
-  education,
-  interests,
-  talks,
-  bio,
-  credit,
-  yearsOfExperience,
-}
+export { person, contact, socials, experience, education, interests, talks, bio, yearsOfExperience }
 export type { YearMonth, Experience, Education, Interest, InterestLink, Social, Talk }

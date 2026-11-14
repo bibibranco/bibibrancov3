@@ -32,7 +32,7 @@ Rules:
 ## Type
 | Family | Token | Role |
 |---|---|---|
-| Syne | `heading` | Display and headings only, 700–800, tight tracking |
+| Inter Tight | `heading` | Display and headings only, 550–600, very tight tracking. Replaced Syne in PORT-205 |
 | Atkinson Hyperlegible Next | `sans` | All body text: 17px, 1.6 line height, max `measure` (65ch) |
 | JetBrains Mono | `mono` | Meta lines, labels, receipts, terminals, code |
 

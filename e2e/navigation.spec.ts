@@ -28,7 +28,7 @@ test.describe('mobile menu', () => {
 })
 
 test('"Say hi" lands on the contact block of a case study', async ({ page, isMobile }) => {
-  await page.goto('/work/woodworking')
+  await page.goto('/work/busca-resgatados')
   if (isMobile) {
     await page.getByRole('button', { name: 'Menu' }).click()
     await page.getByRole('dialog').getByRole('link', { name: 'Say hi' }).click()
@@ -40,7 +40,7 @@ test('"Say hi" lands on the contact block of a case study', async ({ page, isMob
 })
 
 test('case studies link to their neighbours in the same group', async ({ page }) => {
-  await page.goto('/work/woodworking')
+  await page.goto('/work/busca-resgatados')
   const more = page.getByRole('navigation', { name: 'More projects' })
   await more.getByRole('link').last().click()
   await expect(page).toHaveURL(/\/work\/[a-z0-9-]+$/)

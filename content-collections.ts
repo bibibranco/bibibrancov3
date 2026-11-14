@@ -78,13 +78,20 @@ const projects = defineCollection({
     summary: z.string().min(1).max(155),
     year: z.number().int().min(2000).max(2100),
     role: z.string().min(1),
-    /** Notebook date form, e.g. "2024.03 – 2025.01" (design-system README). */
-    timeline: z.string().min(1),
+    /** Notebook date form, e.g. "2024.03 – 2025.01" (design-system README). Left out until confirmed. */
+    timeline: z.string().min(1).optional(),
     team: z.string().optional(),
     outcome: z.string().optional(),
+    /** Press coverage, linked under Outcome in the case-study header (PORT-205). */
+    press: z.array(z.object({ name: z.string().min(1), href: z.url() })).default([]),
     category: z.enum(['work', 'craft']),
     tags: z.array(z.string()).default([]),
     cover: image,
+    /**
+     * `none` leaves the cover out of the case-study header, so the story leads and images come in
+     * where the text introduces them (PORT-205). The cover still serves cards and share images.
+     */
+    coverSize: z.enum(['wide', 'none']).default('wide'),
     featured: z.boolean().default(false),
     /** Sort order within the category, on /work and for prev/next. */
     order: z.number(),
@@ -97,6 +104,11 @@ const projects = defineCollection({
       })
       .default({}),
     fragments: z.array(fragment).default([]),
+    /**
+     * Work in progress: listed on /work and the desk with a WIP tag, but not clickable, and the
+     * case study isn't published (no page, no sitemap entry, skipped by prev/next).
+     */
+    wip: z.boolean().default(false),
     /** Shows in dev, left out of production builds. */
     draft: z.boolean().default(false),
     content: z.string(),
@@ -119,26 +131,42 @@ const projects = defineCollection({
       return { ...found, alt }
     }
     const cover = resolve(data.cover)
-    const fragments = data.fragments.map((fragment) =>
-      'image' in fragment ? { ...fragment, image: resolve(fragment.image) } : fragment,
-    )
+    // A WIP project has no page, so production keeps only what /work and the desk show: its
+    // unconfirmed facts and unfeatured fragments (often TODO text) never reach the bundle.
+    const wipStrip = data.wip && process.env.NODE_ENV === 'production'
+    const fragments = data.fragments
+      .filter((fragment) => !wipStrip || fragment.featured)
+      .map((fragment) =>
+        'image' in fragment ? { ...fragment, image: resolve(fragment.image) } : fragment,
+      )
     // Share image for og:image, cropped from the cover (PORT-501).
     const og = await processOgImage(context.collection.directory, slug, data.cover.src)
-    return { ...data, slug, cover, fragments, og }
+    const facts = wipStrip
+      ? { timeline: undefined, team: undefined, outcome: undefined, press: [] }
+      : {}
+    return { ...data, ...facts, slug, cover, fragments, og }
   },
 })
 
 // The compiled MDX body and its images, kept apart from the project data above: only the case
 // study page imports them (src/lib/content-body.ts), so home and /work don't ship every body
-// (PORT-504). Same files, same draft rule.
+// (PORT-504). Same files, same draft rule; WIP bodies are skipped in production too.
 const projectBodies = defineCollection({
   name: 'projectBodies',
   directory: 'content/work',
   include: '*.mdx',
-  schema: z.object({ draft: z.boolean().default(false), content: z.string() }),
+  schema: z.object({
+    draft: z.boolean().default(false),
+    wip: z.boolean().default(false),
+    content: z.string(),
+  }),
   transform: async (document, context) => {
     if (document.draft && process.env.NODE_ENV === 'production') {
       return context.skip('draft')
+    }
+    // WIP projects have no case-study page, so their (placeholder) bodies never ship.
+    if (document.wip && process.env.NODE_ENV === 'production') {
+      return context.skip('wip')
     }
     const slug = document._meta.path
     const mdx = await compileMDX(context, document)

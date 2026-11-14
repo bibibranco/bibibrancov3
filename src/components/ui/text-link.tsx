@@ -36,4 +36,16 @@ function ExternalLink({ className, children, ...props }: ExternalLinkProps) {
   )
 }
 
-export { TextLink, ExternalLink, textLinkClass }
+/** Display-size underlined link for CTA rows (PORT-205). Use with `<a>` or a router Link. */
+const bigLinkClass =
+  'inline-flex min-h-tap items-end font-heading text-h2 text-foreground underline decoration-[3px] underline-offset-[0.12em] transition-[text-decoration-color,color] duration-(--duration-fast) ease-out hover:text-white hover:decoration-star md:text-h1'
+
+function BigLinkAnchor({ className, ...props }: ComponentProps<'a'>) {
+  return <a data-slot="big-link" className={cn(bigLinkClass, className)} {...props} />
+}
+
+const CreatedBigLink = createLink(BigLinkAnchor)
+
+const BigLink: LinkComponent<typeof BigLinkAnchor> = (props) => <CreatedBigLink {...props} />
+
+export { TextLink, ExternalLink, BigLink, textLinkClass, bigLinkClass }

@@ -43,12 +43,16 @@ await builder.build()
 const load = (file: string) => import(pathToFileURL(path.resolve(file)).href)
 const { allProjects } = await load('.content-collections/generated/index.js')
 const { interests } = await load('src/content/profile.ts')
-const slugs = new Set(allProjects.map((project: { slug: string }) => project.slug))
+const slugs = new Set(
+  allProjects
+    .filter((project: { wip?: boolean }) => !project.wip)
+    .map((project: { slug: string }) => project.slug),
+)
 for (const interest of interests) {
   const slug = interest.link?.to === '/work/$slug' ? interest.link.params.slug : undefined
   if (slug && !slugs.has(slug)) {
     errors.push(
-      `profile.ts: interest "${interest.label}" links to /work/${slug}, which isn't a project`,
+      `profile.ts: interest "${interest.label}" links to /work/${slug}, which isn't a published project (missing, draft or wip)`,
     )
   }
 }

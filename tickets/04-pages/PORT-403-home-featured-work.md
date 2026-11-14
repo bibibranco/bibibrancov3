@@ -28,6 +28,7 @@ Legacy `ProjectSection.jsx` hardcodes two cards (Busca Resgatados, Rato Túlio) 
 - [x] Layout matches PORT-007 on all breakpoints. _(Hand-placed from xl, not lg: see Notes.)_
 
 ## Notes
+- **Changed in PORT-205 (2026-11-14):** the desk fits one screen from xl, inside a dotted `bibi.OS 4.0` panel, with a "wall of shame" column (unfinished projects) beside the objects. Seven slots now (a row of three over a row of four), sized to the viewport. The momoProto terminal, momoGood sticky and woodworking shop tag are off the desk (`featured: false`), and captions dropped the object word ("… · momoProto" became "momoProto →").
 - **Built in:**
   - `src/components/home/desk.tsx`: one object per fragment type. The terminal, sticky, receipt, shop tag, polaroid, print, index card, clipping and notebook page are all from the canvas.
   - `src/components/home/desk-layout.ts`: the ten canvas slots, as percentages of a 1200px desk.
