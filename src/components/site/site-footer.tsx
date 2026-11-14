@@ -3,6 +3,7 @@ import { useMatches } from '@tanstack/react-router'
 import { Logo } from '@/components/brand/logo'
 import { Container } from '@/components/ui/layout'
 import { ExternalLink, textLinkClass } from '@/components/ui/text-link'
+import { gunCredits } from '@/content/gun-photos'
 import { contact, person, socials } from '@/content/profile'
 import { track } from '@/lib/analytics'
 
@@ -52,9 +53,23 @@ function SiteFooter() {
             </li>
           ))}
         </ul>
-        <p className="m-0 font-mono text-muted-foreground">
-          © {year} {person.name}
-        </p>
+        <div className="flex flex-col gap-1 md:items-end">
+          <p className="m-0 font-mono text-muted-foreground">
+            © {year} {person.name}
+          </p>
+          {/* The hero's gun photos: CC BY-SA ones need credit, and the collage versions are
+              shared under the same licence (src/content/gun-photos.ts). */}
+          <p className="m-0 font-mono text-[0.75rem] text-muted-foreground">
+            gun photos via Wikimedia Commons:{' '}
+            {gunCredits.map((photo, index) => (
+              <span key={photo.slug}>
+                {index > 0 && ', '}
+                <ExternalLink href={photo.source}>{photo.author}</ExternalLink>
+              </span>
+            ))}
+            , CC BY-SA 4.0, edited
+          </p>
+        </div>
       </Container>
     </footer>
   )

@@ -1,6 +1,6 @@
-// The good guns, drawn (PORT-205). Shared by the drop engine (./gun-drop, full colour with a label)
-// and the hero's "who's that gun?" button (the body as a solid silhouette), so the hero can show
-// the next gun without loading the engine.
+// The good guns' outlines (PORT-205), for the hero's "who's that gun?" silhouette only: a photo's
+// outline includes its paper border and torn edges, which doesn't read as a gun. The guns that
+// come out are the collage photos (src/content/gun-photos.ts).
 
 import { goodGuns } from '@/content/good-guns'
 
@@ -61,21 +61,10 @@ const drawings: Record<string, Drawing> = {
   },
 }
 
-/** Full-colour gun with its label, for the drop engine. */
-export function gunSvg(name: string) {
-  const d = drawings[name]!
-  return svg(d.w, d.h, d.body + d.label)
-}
-
 /** Just the body, for a silhouette: callers fill it one colour with CSS (`.gun-silhouette`). */
 export function gunSilhouetteSvg(name: string) {
   const d = drawings[name]!
   return svg(d.w, d.h, d.body)
-}
-
-export function gunSize(name: string) {
-  const d = drawings[name]!
-  return { w: d.w, h: d.h }
 }
 
 export const gunNames = goodGuns.guns.map((gun) => gun.name)
