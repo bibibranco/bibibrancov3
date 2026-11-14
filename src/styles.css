@@ -448,9 +448,14 @@
     cursor: grabbing;
     filter: drop-shadow(0 14px 12px rgb(10 31 77 / 0.45));
   }
+  & img {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+  }
 }
 
-/* The hero's "who's that gun?" silhouette: every shape of the drawing in one solid colour. */
+/* The hero's "who's that gun?" silhouette: every shape of the outline in one solid colour. */
 .gun-silhouette * {
   fill: currentColor;
   stroke: currentColor;

@@ -6,23 +6,27 @@
 
 import { goodGuns } from '@/content/good-guns'
 
-import { gunSize, gunSvg } from './good-guns-art'
+import { gunPhotos, gunPhotoSrc } from '@/content/gun-photos'
 
 type Kind = {
   kind: string
   label: string
+  /** Display size, px: the collage photo at half its pixel size. */
   w: number
   h: number
-  /** Inline SVG, drawn in the site palette with Deep outlines so it reads on blue. */
-  inner: string
+  src: string
 }
 
-const kinds: Kind[] = goodGuns.guns.map((gun) => ({
-  kind: gun.name.replace(' ', '-'),
-  label: gun.name,
-  ...gunSize(gun.name),
-  inner: gunSvg(gun.name),
-}))
+const kinds: Kind[] = goodGuns.guns.map((gun) => {
+  const photo = gunPhotos[gun.name]!
+  return {
+    kind: photo.slug,
+    label: gun.name,
+    w: photo.w / 2,
+    h: photo.h / 2,
+    src: gunPhotoSrc(photo.slug),
+  }
+})
 
 type Gun = {
   el: HTMLElement
@@ -187,7 +191,15 @@ export function createToolbox(area: HTMLElement, options: ToolboxOptions) {
       el.setAttribute('aria-hidden', 'true')
       el.style.width = `${w}px`
       el.style.height = `${h}px`
-      el.innerHTML = def.inner
+      // A collage photo (public/guns). Not draggable as an image, so the pointer moves the gun.
+      const img = document.createElement('img')
+      img.src = def.src
+      img.alt = ''
+      img.draggable = false
+      img.decoding = 'async'
+      img.style.width = '100%'
+      img.style.height = '100%'
+      el.append(img)
       area.append(el)
 
       const gun: Gun = {
