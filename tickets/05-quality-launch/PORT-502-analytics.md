@@ -27,6 +27,7 @@ Legacy: gtag snippet in `legacy/index.html` with ID `G-KR5JD1GYC2` plus `legacy/
 - [x] No analytics requests in dev or on preview deploys. _(Without the flag, localhost loads no gtag script and creates no `dataLayer`; the same gate covers every non-production host.)_
 
 ## Notes / links
+- **Vercel Web Analytics + Speed Insights (2026-11-14):** added next to GA4 (`@vercel/analytics`, `@vercel/speed-insights`, mounted in `src/routes/__root.tsx`). Cookieless, first-party (`/_vercel/...`), +1.4 KB home JS. Both were already enabled on the `bibibranco-v4` project but collected nothing without the script. GA4 keeps the custom events; Vercel gives page views and Core Web Vitals.
 - `src/lib/analytics.ts` exports `initAnalytics()`, `trackPageView(path)` and a typed `track(event, params)`. `src/components/site/analytics.tsx` sits in the root layout and sends `page_view` from an effect after each resolved navigation, so the new `<title>` is already in place. Hits are deduped by path + query.
 - **Production only = hostname gate.** gtag only loads on `bibibran.co` / `www.bibibran.co`. A `VERCEL_ENV` build check wouldn't be enough, because the v4 project's production URL goes live before the domain moves over (PORT-506) and would pollute the property.
 - **Debugging:** add `?ga_debug=1` to any URL (including previews) to turn tracking on with `debug_mode` for that tab (sessionStorage). Those hits go to the real property, so turn on GA4's "Developer traffic" data filter to keep them out of reports.

@@ -1,4 +1,6 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 import { Analytics } from '@/components/site/analytics'
 import { NotFound } from '@/components/site/not-found'
@@ -71,6 +73,10 @@ function RootLayout() {
       </main>
       <SiteFooter />
       <Analytics />
+      {/* Vercel Web Analytics and Speed Insights (PORT-502), alongside GA4. Cookieless, served from
+          this origin (/_vercel/...), and they follow client-side navigation on their own. */}
+      <VercelAnalytics />
+      <SpeedInsights />
     </>
   )
 }
