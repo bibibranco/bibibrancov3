@@ -27,10 +27,20 @@ const ruled = 'bg-[repeating-linear-gradient(var(--paper)_0_27px,#e1e6ef_27px_28
 const imageSizes = '(min-width: 1280px) 330px, (min-width: 1024px) 30vw, 45vw'
 
 /** Just the project and an arrow: the object speaks for itself (PORT-205 dropped the object word). */
-function Caption({ title, className }: { title: string; className?: string }) {
+function Caption({ title, wip, className }: { title: string; wip?: boolean; className?: string }) {
   return (
     <span className={cn(captionClass, 'text-paper-muted', className)}>
-      {title} <span aria-hidden="true">→</span>
+      {wip ? (
+        // Not a link yet (PORT-205): a WIP stamp instead of the arrow.
+        <>
+          {title}{' '}
+          <span className="ml-1 rounded-sm bg-deep px-1 py-px text-[0.625rem] text-ice">WIP</span>
+        </>
+      ) : (
+        <>
+          {title} <span aria-hidden="true">→</span>
+        </>
+      )}
     </span>
   )
 }
@@ -202,16 +212,30 @@ function DeskObject({
       style={slotStyle(index, count) as CSSProperties}
       className="relative mb-5 rotate-(--rm) break-inside-avoid focus-within:z-(--z-object-focus) hover:z-(--z-object-focus) max-md:mb-3 xl:absolute xl:top-(--y) xl:left-(--x) xl:z-(--z) xl:mb-0 xl:w-(--w) xl:rotate-(--r)"
     >
-      <Link
-        to="/work/$slug"
-        params={{ slug: fragment.project.slug }}
-        className="desk-object block text-inherit no-underline"
-      >
-        <ObjectBody
-          fragment={fragment}
-          caption={(className) => <Caption title={fragment.project.title} className={className} />}
-        />
-      </Link>
+      {fragment.project.wip ? (
+        // WIP projects have no case study yet: the object stays on the desk, not as a link.
+        <div className="desk-object block">
+          <ObjectBody
+            fragment={fragment}
+            caption={(className) => (
+              <Caption title={fragment.project.title} wip className={className} />
+            )}
+          />
+        </div>
+      ) : (
+        <Link
+          to="/work/$slug"
+          params={{ slug: fragment.project.slug }}
+          className="desk-object block text-inherit no-underline"
+        >
+          <ObjectBody
+            fragment={fragment}
+            caption={(className) => (
+              <Caption title={fragment.project.title} className={className} />
+            )}
+          />
+        </Link>
+      )}
     </li>
   )
 }

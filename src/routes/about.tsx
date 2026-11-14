@@ -1,10 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { portrait } from 'content-collections'
 
 import { Period } from '@/components/about/period'
 import { TimelineList } from '@/components/about/timeline-list'
 import { ContactCta } from '@/components/site/contact-cta'
-import { Picture } from '@/components/ui/image'
 import { Container, Section, SectionHeading } from '@/components/ui/layout'
 import { ExternalLink } from '@/components/ui/text-link'
 import {
@@ -19,7 +17,7 @@ import {
 import { track } from '@/lib/analytics'
 import { pageHead, personJsonLd } from '@/lib/seo'
 
-// Background for a recruiter scan (PORT-407): bio and portrait, then experience, education and
+// Background for a recruiter scan (PORT-407): bio (no portrait since PORT-205), then experience, education and
 // talks, all from src/content/profile.ts. One h1; every section is an h2 with h3 entries.
 export const Route = createFileRoute('/about')({
   staticData: { contactCta: true },
@@ -45,7 +43,7 @@ function About() {
   return (
     <>
       <Container className="grid gap-8 pt-10 pb-section md:pt-16 lg:grid-cols-12 lg:gap-x-6">
-        <div className="flex flex-col gap-5 lg:col-span-7">
+        <div className="flex flex-col gap-5 lg:col-span-9">
           <h1 className="m-0 font-heading text-h1">About</h1>
           {bio.map((paragraph) => (
             <p key={paragraph.slice(0, 24)} className="m-0 max-w-measure text-lead">
@@ -55,15 +53,6 @@ function About() {
           <p className="m-0 font-mono text-meta text-muted-foreground lowercase">
             {yearsOfExperience}+ years · {person.location} · remote
           </p>
-        </div>
-        <div className="max-w-sm lg:col-span-4 lg:col-start-9 lg:max-w-none">
-          <Picture
-            image={portrait}
-            alt={portrait.alt}
-            priority
-            sizes="(min-width: 1024px) 380px, (min-width: 640px) 384px, calc(100vw - 2 * var(--fluid-gutter))"
-            className="aspect-square w-full"
-          />
         </div>
       </Container>
 
@@ -101,7 +90,7 @@ function About() {
               <TimelineList
                 items={education.map((entry) => ({
                   key: entry.what,
-                  period: <Period start={entry.start} end={entry.end} />,
+                  period: <Period start={entry.start} end={entry.end} again={entry.again} />,
                   title: `${entry.what} · ${entry.where}`,
                   detail: entry.note,
                 }))}

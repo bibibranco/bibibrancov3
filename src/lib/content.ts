@@ -6,7 +6,7 @@ type Category = Project['category']
 type Fragment = Project['fragments'][number]
 
 /** A featured fragment with the project it links to (home desk, PORT-403). */
-type DeskFragment = Fragment & { project: Pick<Project, 'slug' | 'title'> }
+type DeskFragment = Fragment & { project: Pick<Project, 'slug' | 'title' | 'wip'> }
 
 const byOrder = (a: { order: number }, b: { order: number }) => a.order - b.order
 
@@ -27,11 +27,17 @@ function getProjectBySlug(slug: string): Project | undefined {
   return allProjects.find((project) => project.slug === slug)
 }
 
+/** A published case study: WIP projects are listed but have no page (content-collections.ts). */
+function getPublishedProject(slug: string): Project | undefined {
+  const project = getProjectBySlug(slug)
+  return project && !project.wip ? project : undefined
+}
+
 /** Prev and next in the same group, by `order`. No wrap-around at the ends. */
 function getAdjacentProjects(slug: string): { prev?: Project; next?: Project } {
   const project = getProjectBySlug(slug)
   if (!project) return {}
-  const group = getAllProjects(project.category)
+  const group = getAllProjects(project.category).filter((item) => !item.wip)
   const index = group.indexOf(project)
   return { prev: group[index - 1], next: group[index + 1] }
 }
@@ -47,7 +53,7 @@ function getFeaturedFragments(): DeskFragment[] {
         .filter((fragment) => fragment.featured)
         .map((fragment) => ({
           ...fragment,
-          project: { slug: project.slug, title: project.title },
+          project: { slug: project.slug, title: project.title, wip: project.wip },
         })),
     )
     .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER))
@@ -57,6 +63,7 @@ export {
   getAllProjects,
   getFeaturedProjects,
   getProjectBySlug,
+  getPublishedProject,
   getAdjacentProjects,
   getFeaturedFragments,
 }

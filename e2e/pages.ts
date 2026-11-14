@@ -20,10 +20,23 @@ export function draftSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ''))
 }
 
-/** Featured fragments across published projects: one desk object each on home (PORT-403). */
+/** Projects with `wip: true`: listed on /work and the desk, but not linked and not published. */
+export function wipSlugs(): string[] {
+  const dir = path.resolve('content/work')
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith('.mdx'))
+    .filter((file) => /^wip:\s*true\b/m.test(fs.readFileSync(path.join(dir, file), 'utf8')))
+    .map((file) => file.replace(/\.mdx$/, ''))
+}
+
+/**
+ * Featured fragments across published, non-WIP projects: one linked desk object each on home
+ * (PORT-403). WIP projects' fragments are on the desk too, but not as links.
+ */
 export function featuredFragmentCount(): number {
   const dir = path.resolve('content/work')
-  const drafts = new Set(draftSlugs())
+  const drafts = new Set([...draftSlugs(), ...wipSlugs()])
   return fs
     .readdirSync(dir)
     .filter((file) => file.endsWith('.mdx') && !drafts.has(file.replace(/\.mdx$/, '')))

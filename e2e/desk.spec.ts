@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-import { featuredFragmentCount } from './pages'
+import { featuredFragmentCount, wipSlugs } from './pages'
 
 // PORT-403: "bits and pieces on my desk". One real link per featured fragment, named by its
 // caption so the project title is always link text.
@@ -14,7 +14,9 @@ test.describe('home desk', () => {
       await expect(link).toHaveAttribute('href', /^\/work\/[a-z0-9-]+$/)
       await expect(link).toHaveAccessibleName(/\S/)
     }
-    await expect(desk.getByRole('link', { name: /momoProto/ })).toHaveCount(1)
+    // momoProto is WIP: on the desk, but not a link.
+    await expect(desk.getByRole('link', { name: /momoProto/ })).toHaveCount(0)
+    await expect(desk).toContainText('momoProto')
   })
 
   test('objects are reachable with Tab and open with Enter', async ({ page }) => {
@@ -53,4 +55,24 @@ test('desk objects lift on hover only without reduced motion', async ({ page, is
   await page.mouse.move(0, 0)
   await link.hover()
   await expect(link).toHaveCSS('translate', '0px -6px')
+})
+
+// PORT-205: WIP projects are listed but not clickable, and their case study isn't published.
+test.describe('WIP projects', () => {
+  test('show on /work with a WIP tag and no link', async ({ page }) => {
+    await page.goto('/work')
+    const wipCards = page.locator('[data-slot=card][data-wip]')
+    await expect(wipCards).toHaveCount(wipSlugs().length)
+    await expect(wipCards.first()).toContainText('WIP')
+    for (const slug of wipSlugs()) {
+      await expect(page.locator(`a[href="/work/${slug}"]`)).toHaveCount(0)
+    }
+  })
+
+  test('have no case-study page', async ({ page }) => {
+    for (const slug of wipSlugs()) {
+      const response = await page.goto(`/work/${slug}`)
+      expect(response?.status(), slug).toBe(404)
+    }
+  })
 })

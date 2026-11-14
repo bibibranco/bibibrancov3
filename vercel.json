@@ -13,7 +13,7 @@
     },
     {
       "source": "/project/2",
-      "destination": "/work/woodworking",
+      "destination": "/work#craft",
       "statusCode": 301
     },
     {

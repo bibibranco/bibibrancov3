@@ -32,7 +32,7 @@ function ProjectSummary({ project }: { project: Project }) {
 
   const facts: { label: string; value: ReactNode }[] = [
     { label: 'Role', value: project.role },
-    { label: 'Timeline', value: project.timeline },
+    ...(project.timeline ? [{ label: 'Timeline', value: project.timeline }] : []),
     ...(project.team ? [{ label: 'Team', value: project.team }] : []),
     ...(outcome ? [{ label: 'Outcome', value: outcome }] : []),
   ]

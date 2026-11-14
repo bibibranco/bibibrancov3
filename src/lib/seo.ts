@@ -1,11 +1,7 @@
 // Per-page <title> and description. Routes call `seo()` in `head()`; the deepest match wins.
 // Copy from PORT-008; share tags, JSON-LD and the share card from PORT-501.
 
-import { portrait } from 'content-collections'
-
 import { contact, person, socials } from '@/content/profile'
-
-const portraitSrc = portrait.src
 
 export const siteName = person.name
 
@@ -112,7 +108,6 @@ export function personJsonLd() {
     '@id': `${siteUrl}/#person`,
     name: person.name,
     url: siteUrl,
-    image: `${siteUrl}${portraitSrc}`,
     jobTitle: person.role,
     worksFor: { '@type': 'Organization', name: person.company },
     address: { '@type': 'PostalAddress', addressLocality: person.location, addressCountry: 'BR' },

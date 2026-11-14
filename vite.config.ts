@@ -19,7 +19,10 @@ async function caseStudyPages(command: 'build' | 'serve') {
   const { allProjects }: typeof import('./.content-collections/generated/index.js') = await import(
     generated
   )
-  return allProjects.map((project) => ({ path: `/work/${project.slug}` }))
+  // WIP projects are listed but not published (content-collections.ts).
+  return allProjects
+    .filter((project) => !project.wip)
+    .map((project) => ({ path: `/work/${project.slug}` }))
 }
 
 const cnContent = ['src/**/*.{ts,tsx}', 'content/**/*.mdx']

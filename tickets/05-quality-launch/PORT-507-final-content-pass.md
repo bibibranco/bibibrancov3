@@ -50,5 +50,7 @@ The three new projects (momoProto, momoGood platform, Itaú card fees) use label
   - Busca Resgatados is done: Medium text in the body, real 2024 facts, press links, screens rebuilt from the project's code. Its TODOs are cleared, and it is no longer a short page.
   - The momoGood quote and woodworking spec are off the desk (`featured: false`) until they have real content; set them back to `true` when filled in.
   - New draft copy to confirm: good guns, wall of shame (text and progress %), Geral do Grêmio titles.
+  - Launched with five projects as `wip: true` (momoProto, momoGood platform, Itaú card fees, Rato Túlio, woodworking): listed, not clickable, not published. Publishing one = finish its TODOs, then delete its `wip:` line. For woodworking, also point `/project/2` back at it (vercel.json) and the "crafting" interest.
+  - AEDIT, Thomé and ITP Camp are live with their placeholders hidden as MDX comments; their timeline/outcome are left out until confirmed.
 - Markers per file at PORT-302 merge: Itaú 11, woodworking 10, momoProto 9, momoGood 9, Busca Resgatados 7, AEDIT 5, Rato Túlio 5, Thomé 5, ITP map 3, `profile.ts` 3.
 - Owed facts are also listed in [`copy.md`](../artifacts/copy.md) and PORT-008.

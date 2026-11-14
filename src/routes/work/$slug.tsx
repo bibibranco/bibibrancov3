@@ -10,21 +10,21 @@ import { Picture } from '@/components/ui/image'
 import { Container } from '@/components/ui/layout'
 import { Tag } from '@/components/ui/tag'
 import { TextLink } from '@/components/ui/text-link'
-import { getAdjacentProjects, getProjectBySlug } from '@/lib/content'
+import { getAdjacentProjects, getPublishedProject } from '@/lib/content'
 import { getProjectBody } from '@/lib/content-body'
 import { pageHead } from '@/lib/seo'
 import { useCaseStudyAnalytics } from '@/lib/use-case-study-analytics'
 
 // One project (PORT-406). The loader only checks the slug: the project data is already in the
 // bundle (content-collections), so returning it would serialise the MDX into every page again.
-// Unknown slugs throw notFound(); on the host they get 404.html with a 404 status (PORT-409).
+// Unknown and WIP slugs throw notFound(); on the host they get 404.html with a 404 status (PORT-409).
 export const Route = createFileRoute('/work/$slug')({
   staticData: { contactCta: true },
   loader: ({ params }) => {
-    if (!getProjectBySlug(params.slug)) throw notFound()
+    if (!getPublishedProject(params.slug)) throw notFound()
   },
   head: ({ params }) => {
-    const project = getProjectBySlug(params.slug)
+    const project = getPublishedProject(params.slug)
     if (!project) return {}
     return pageHead({
       title: project.title,
@@ -60,7 +60,7 @@ const bodyLayout = [
 function CaseStudy() {
   const { slug } = Route.useParams()
   // The loader guarantees the slug exists.
-  const project = getProjectBySlug(slug)!
+  const project = getPublishedProject(slug)!
   const body = getProjectBody(slug)!
   const { prev, next } = getAdjacentProjects(slug)
   const readMarker = useRef<HTMLDivElement>(null)

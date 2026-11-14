@@ -43,10 +43,16 @@ Reviewed typesafe.ai on 2026-11-14. Decided: **borrow the language, keep blue** 
 - New `<Lead>` MDX block: a passage at lead size in the display face on Deep, with **bold** in star yellow for the turning point. Used for Busca's "The idea".
 - Column figures: from lg the caption sits in the margin column beside the image, bottom-aligned; below lg it stays underneath.
 - `press` frontmatter (name + href): listed under Outcome in the case-study header as "Covered by …" links. Busca lists CNN Brasil, O Globo and Exame, also linked in its Impact section.
+- **Launch prep (2026-11-14):**
+  - `wip: true` frontmatter: listed on /work (dotted "work in progress" panel, WIP tag) and on the desk (WIP stamp), never linked; no page, sitemap entry or prev/next; production strips its body and unconfirmed facts from the bundle. WIP: momoProto, momoGood platform, Itaú card fees, Rato Túlio, woodworking.
+  - AEDIT, Thomé, ITP Camp stay published: placeholder paragraphs became MDX comments (still listed by `pnpm content:todo`), unconfirmed timeline/outcome left out (timeline is now optional).
+  - `/project/2` redirects to `/work#craft`; the "crafting" interest links to `/work#craft`.
+  - About: portrait removed (page and Person JSON-LD); bio shortened to two paragraphs, leading with momoGood; ITP Camp 2023 and 2024 on one Education row (`again`).
+  - Hero status area has a fixed height from lg, so the star doesn't jump when guns come out.
 
 ## Acceptance criteria
-- [x] Typecheck, lint, 28 unit tests and all 181 e2e tests (axe included) pass, desktop and mobile.
-- [x] Home JS within budget (136.0 KB of 150 KB).
+- [x] Typecheck, lint, 28 unit tests and all 125 e2e tests (axe included) pass, desktop and mobile (fewer pages since WIP projects aren't published).
+- [x] Home JS within budget (135.8 KB of 150 KB). No TODO text in the production build.
 - [x] Decoration is CSS-only or `aria-hidden`; crop marks fall back to a border and the grain is hidden in forced colours.
 - [ ] Bibi signs off visually on the Vercel preview.
 - [ ] Lighthouse ≥ 98 on the preview.
