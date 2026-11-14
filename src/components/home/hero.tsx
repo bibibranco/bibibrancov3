@@ -71,11 +71,10 @@ function Hero() {
     button.querySelector('[data-recoil]')?.animate(
       [
         { translate: '0 0', rotate: '0deg' },
-        { translate: '12% 0', rotate: '9deg', offset: 0.18 },
-        { translate: '-2% 0', rotate: '-2deg', offset: 0.6 },
+        { translate: '5% 0', rotate: '4deg', offset: 0.25 },
         { translate: '0 0', rotate: '0deg' },
       ],
-      { duration: 420, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      { duration: 700, easing: 'cubic-bezier(0.33, 1, 0.68, 1)' },
     )
     const puff = document.createElement('span')
     puff.setAttribute('aria-hidden', 'true')
@@ -88,11 +87,11 @@ function Hero() {
     puff
       .animate(
         [
-          { opacity: 1, scale: 0.4, translate: '0 0' },
-          { opacity: 1, scale: 1.1, translate: '-18px -6px', offset: 0.35 },
-          { opacity: 0, scale: 1, translate: '-34px -14px' },
+          { opacity: 0, scale: 0.7, translate: '0 0' },
+          { opacity: 1, scale: 1, translate: '-14px -4px', offset: 0.3 },
+          { opacity: 0, scale: 1, translate: '-30px -10px' },
         ],
-        { duration: 650, easing: 'ease-out' },
+        { duration: 1100, easing: 'ease-out' },
       )
       .finished.finally(() => puff.remove())
   }
@@ -176,7 +175,8 @@ function Hero() {
   )
 
   // "Who's that gun?" (PORT-205): the next good gun as a solid Deep silhouette on a star-yellow
-  // burst, with a "?". It moves once on load, then only wiggles on hover; clicking reveals it.
+  // burst, with a "?", mirrored to point at the copy. It settles in once on load, then only rocks
+  // slowly on hover; clicking reveals it.
   const gunButton = (size: string, area: Area) => (
     <button
       type="button"
@@ -205,7 +205,7 @@ function Hero() {
           </svg>
           <span
             aria-hidden="true"
-            className="gun-silhouette absolute top-[28%] left-[16%] block h-[46%] w-[66%] -rotate-6 text-deep"
+            className="gun-silhouette absolute top-[28%] left-[18%] block h-[46%] w-[66%] -scale-x-100 rotate-6 text-deep"
             dangerouslySetInnerHTML={{ __html: gunSilhouetteSvg(gunNames[next]!) }}
           />
           <span
