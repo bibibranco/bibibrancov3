@@ -1,7 +1,6 @@
 dist
 .output
 .tanstack
-legacy
 tickets
 pnpm-lock.yaml
 src/routeTree.gen.ts
