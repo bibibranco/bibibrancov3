@@ -7,7 +7,7 @@
 | Priority | P1 |
 | Estimate | S |
 | Depends on | E4 complete, PORT-304 |
-| Status | review |
+| Status | done |
 
 ## User story
 As a **visitor on mobile data**, I want pages to load almost instantly so that I don't give up.
