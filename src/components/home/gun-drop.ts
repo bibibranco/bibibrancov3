@@ -1,7 +1,7 @@
 // Hero mystery gun (PORT-205): the button throws the good guns (src/content/good-guns.ts) into the
 // hero. Each one flies from the button to a free spot anywhere in the area, over the copy too,
 // without landing on another gun or on the areas passed in `avoid` (the button column). Drag a
-// gun to move it; it stays where it's dropped. Plain DOM, no library, loaded on the first click.
+// gun to move it; it stays where it's dropped. Double click or double tap a gun to remove it. Plain DOM, no library, loaded on the first click.
 // The guns are decoration (aria-hidden); the hero's status line says which one is out.
 
 import { goodGuns } from '@/content/good-guns'
@@ -56,7 +56,7 @@ const overlap = (a: Box, b: Box) =>
 export function createToolbox(area: HTMLElement, options: ToolboxOptions) {
   const guns: Gun[] = []
   let dropped = 0
-  let dragged: { gun: Gun; ox: number; oy: number } | undefined
+  let dragged: { gun: Gun; ox: number; oy: number; startX: number; startY: number } | undefined
 
   const size = () => ({ W: area.clientWidth, H: area.clientHeight })
   const local = (x: number, y: number) => {
@@ -106,16 +106,63 @@ export function createToolbox(area: HTMLElement, options: ToolboxOptions) {
     place(gun)
   }
 
-  function onPointerUp() {
+  /** Takes one gun off the hero: a little shrink-and-fade, or straight away with reduced motion. */
+  function remove(gun: Gun) {
+    const index = guns.indexOf(gun)
+    if (index === -1) return
+    guns.splice(index, 1)
+    notify()
+    if (options.reducedMotion()) {
+      gun.el.remove()
+      return
+    }
+    gun.el.style.pointerEvents = 'none'
+    gun.el
+      .animate(
+        [
+          { opacity: 1, scale: 1 },
+          { opacity: 0, scale: 0.4 },
+        ],
+        { duration: 260, easing: 'ease-in' },
+      )
+      .finished.finally(() => gun.el.remove())
+  }
+
+  // Double click (or double tap) a gun to put it away. Detected here rather than with `dblclick`,
+  // which touch Safari doesn't fire reliably; a drag between the taps doesn't count.
+  const doubleTapMs = 350
+  const tapSlop = 6
+  let lastTap: { gun: Gun; at: number } | undefined
+
+  function onPointerUp(event: PointerEvent) {
     if (!dragged) return
-    dragged.gun.el.removeAttribute('data-dragging')
+    const { gun, startX, startY } = dragged
+    gun.el.removeAttribute('data-dragging')
     dragged = undefined
+    const moved = Math.hypot(event.clientX - startX, event.clientY - startY) > tapSlop
+    if (moved) {
+      lastTap = undefined
+      return
+    }
+    const now = performance.now()
+    if (lastTap?.gun === gun && now - lastTap.at < doubleTapMs) {
+      lastTap = undefined
+      remove(gun)
+    } else {
+      lastTap = { gun, at: now }
+    }
   }
 
   function grab(gun: Gun, event: PointerEvent) {
     event.preventDefault()
     const p = local(event.clientX, event.clientY)
-    dragged = { gun, ox: p.x - gun.x, oy: p.y - gun.y }
+    dragged = {
+      gun,
+      ox: p.x - gun.x,
+      oy: p.y - gun.y,
+      startX: event.clientX,
+      startY: event.clientY,
+    }
     gun.el.setAttribute('data-dragging', '')
     // The gun being moved comes to the front.
     area.append(gun.el)

@@ -51,6 +51,7 @@ Reviewed typesafe.ai on 2026-11-14. Decided: **borrow the language, keep blue** 
   - Hero status area has a fixed height from lg, so the star doesn't jump when guns come out.
 - **Hero gun (2026-11-14):** the hero star became a line-drawn toy gun (`gun-icon.tsx`, star yellow, a tiny star on the grip). It sways gently while idle; each click recoils it, puffs a "pew!" from the muzzle and launches the next good gun from there. Reduced motion: no sway, recoil or puff; the guns still land. The button is "Fire a good gun". Brand star stays in the favicon, share card and desk sticker.
 - **Mystery gun (2026-11-14):** the hero button is now a "who's that gun?": the next good gun as a solid Deep silhouette (no outlines) on a star-yellow burst, with a "?". Clicking reveals that gun (it flies out with a "pew!") and the silhouette moves on to the next. It pops in once on load and only wiggles on hover; reduced motion keeps it still. Drawings now live in `good-guns-art.ts`, shared by the hero and the drop engine. Status line: "check out a really cool gun from my arsenal".
+- **Calmer gun, double click (2026-11-14):** the mystery gun settles in over 1.6s and rocks slowly only on hover; its silhouette is mirrored to point at the copy. Double clicking (or double tapping) a thrown gun removes it with a small fade; the status line says so.
 
 ## Acceptance criteria
 - [x] Typecheck, lint, 28 unit tests and all 125 e2e tests (axe included) pass, desktop and mobile (fewer pages since WIP projects aren't published).

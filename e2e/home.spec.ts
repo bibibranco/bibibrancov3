@@ -68,6 +68,19 @@ test.describe('hero gun', () => {
     await expect(page.locator('.hero-tool')).toHaveCount(0)
   })
 
+  test('a double click puts one gun away', async ({ page, isMobile }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/')
+    await star(page).click()
+    await star(page).click()
+    const area = page.getByTestId(isMobile ? 'hero-tray' : 'hero-layer')
+    const guns = area.locator('.hero-tool')
+    await expect(guns).toHaveCount(2)
+    await guns.last().dblclick()
+    await expect(guns).toHaveCount(1)
+    await expect(status(page)).toContainText('heat gun:')
+  })
+
   test('guns land apart, inside the hero, and stay where they are dragged', async ({
     page,
     isMobile,
