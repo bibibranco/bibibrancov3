@@ -49,6 +49,7 @@ Reviewed typesafe.ai on 2026-11-14. Decided: **borrow the language, keep blue** 
   - `/project/2` redirects to `/work#craft`; the "crafting" interest links to `/work#craft`.
   - About: portrait removed (page and Person JSON-LD); bio shortened to two paragraphs, leading with momoGood; ITP Camp 2023 and 2024 on one Education row (`again`).
   - Hero status area has a fixed height from lg, so the star doesn't jump when guns come out.
+- **Hero gun (2026-11-14):** the hero star became a line-drawn toy gun (`gun-icon.tsx`, star yellow, a tiny star on the grip). It sways gently while idle; each click recoils it, puffs a "pew!" from the muzzle and launches the next good gun from there. Reduced motion: no sway, recoil or puff; the guns still land. The button is "Fire a good gun". Brand star stays in the favicon, share card and desk sticker.
 
 ## Acceptance criteria
 - [x] Typecheck, lint, 28 unit tests and all 125 e2e tests (axe included) pass, desktop and mobile (fewer pages since WIP projects aren't published).

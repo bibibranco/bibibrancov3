@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-// PORT-402: the hero is in the prerendered HTML and its star is decoration only.
+// PORT-402: the hero is in the prerendered HTML and its gun drawing is decoration only.
 test.describe('home hero', () => {
   test.use({ javaScriptEnabled: false })
 
@@ -18,29 +18,29 @@ test.describe('home hero', () => {
 })
 
 const star = (page: import('@playwright/test').Page) =>
-  page.getByRole('button', { name: 'Drop a good gun from the star' }).and(page.locator(':visible'))
-test('the hero star spins only without reduced motion', async ({ page }) => {
+  page.getByRole('button', { name: 'Fire a good gun' }).and(page.locator(':visible'))
+test('the hero gun sways only without reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   const svg = star(page).locator('svg')
   await expect(svg).toHaveAttribute('aria-hidden', 'true')
   await expect(svg).toHaveCSS('animation-name', 'none')
   await page.emulateMedia({ reducedMotion: 'no-preference' })
-  await expect(svg).toHaveCSS('animation-name', 'star-spin')
+  await expect(svg).toHaveCSS('animation-name', 'gun-idle')
 })
 
 const status = (page: import('@playwright/test').Page) =>
   page.locator('section[aria-labelledby="hero-heading"] [role="status"]:visible')
 
-// PORT-205 (engine from PORT-410): the star drops the good guns; "tidy up" clears them.
-test.describe('hero star', () => {
-  test('the star drops good guns, the status line names them, tidy up clears them', async ({
+// PORT-205 (engine from PORT-410): the toy gun fires the good guns; "tidy up" clears them.
+test.describe('hero gun', () => {
+  test('the gun fires good guns, the status line names them, tidy up clears them', async ({
     page,
     isMobile,
   }) => {
     await page.goto('/')
     const area = page.getByTestId(isMobile ? 'hero-tray' : 'hero-layer')
-    await expect(status(page)).toContainText('the star. it has a project in it.')
+    await expect(status(page)).toContainText('the gun. it has a project in it.')
 
     await star(page).click()
     await expect(status(page)).toContainText('heat gun:')
@@ -51,7 +51,7 @@ test.describe('hero star', () => {
     await expect(area.locator('.hero-tool').first()).toHaveAttribute('aria-hidden', 'true')
 
     await page.getByRole('button', { name: 'tidy up' }).and(page.locator(':visible')).click()
-    await expect(status(page)).toContainText('the star. it has a project in it.')
+    await expect(status(page)).toContainText('the gun. it has a project in it.')
     await expect(page.locator('.hero-tool')).toHaveCount(0)
   })
 
