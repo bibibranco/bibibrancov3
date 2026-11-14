@@ -248,33 +248,29 @@
   /* The hero star, the only thing that moves without input (PORT-007 motion spec). Use it as
      motion-safe:animate-star so reduced motion gets a static star. */
   --animate-star: star-spin var(--duration-star) linear infinite;
-  /* The hero mystery gun (PORT-205): one pop-in on load, then a wiggle only while hovered. */
-  --animate-gun-intro: gun-intro 900ms var(--ease-out) both;
+  /* The hero mystery gun (PORT-205): one gentle settle on load, then a slow rock only while hovered. */
+  --animate-gun-intro: gun-intro 1600ms cubic-bezier(0.33, 1, 0.68, 1) both;
   @keyframes gun-intro {
     0% {
-      scale: 0.6;
-      rotate: -14deg;
-    }
-    55% {
-      scale: 1.08;
-      rotate: 6deg;
+      scale: 0.88;
+      rotate: -5deg;
+      translate: 0 8px;
     }
     100% {
       scale: 1;
       rotate: 0deg;
+      translate: 0 0;
     }
   }
-  --animate-gun-wiggle: gun-wiggle 520ms ease-in-out infinite;
+  /* A slow, small rock while hovered: noticeable, never jittery. */
+  --animate-gun-wiggle: gun-wiggle 1800ms ease-in-out infinite;
   @keyframes gun-wiggle {
     0%,
     100% {
       rotate: 0deg;
     }
-    25% {
-      rotate: -5deg;
-    }
-    75% {
-      rotate: 5deg;
+    50% {
+      rotate: -3deg;
     }
   }
   @keyframes star-spin {
