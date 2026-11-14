@@ -254,12 +254,10 @@
     0% {
       scale: 0.6;
       rotate: -14deg;
-      opacity: 0;
     }
     55% {
       scale: 1.08;
       rotate: 6deg;
-      opacity: 1;
     }
     100% {
       scale: 1;
