@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
-import { Star } from '@/components/brand/star'
 import { Container } from '@/components/ui/layout'
 import { BigLink, bigLinkClass } from '@/components/ui/text-link'
 import { Window } from '@/components/ui/window'
@@ -12,6 +11,10 @@ import { track } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 
 import type { Toolbox, ToolboxStatus } from './gun-drop'
+import { GunIcon } from './gun-icon'
+
+/** Muzzle tip of GunIcon, as fractions of its 120×80 drawing: the good guns fly out of here. */
+const MUZZLE = { x: 4 / 120, y: 22 / 80 }
 
 // Home hero (PORT-402), copy from tickets/artifacts/copy.md "Hero (home)", layout from the PORT-007
 // canvas. The name stays in the h1's small first line for name searches.
@@ -62,7 +65,47 @@ function Hero() {
     return () => Object.values(current).forEach((box) => box?.destroy())
   }, [])
 
-  async function drop(area: Area, star: HTMLElement) {
+  /** The muzzle tip on screen, as a zero-size rect: where the good guns fly out from. */
+  function muzzle(button: HTMLElement) {
+    const svg = button.querySelector('svg')!.getBoundingClientRect()
+    return new DOMRect(svg.left + MUZZLE.x * svg.width, svg.top + MUZZLE.y * svg.height, 0, 0)
+  }
+
+  // The silly simulation: the gun kicks back and a "pew!" puffs out of the muzzle. Reduced
+  // motion skips it; the guns still land.
+  function fire(button: HTMLElement) {
+    if (reducedMotion()) return
+    button.querySelector('[data-recoil]')?.animate(
+      [
+        { translate: '0 0', rotate: '0deg' },
+        { translate: '12% 0', rotate: '9deg', offset: 0.18 },
+        { translate: '-2% 0', rotate: '-2deg', offset: 0.6 },
+        { translate: '0 0', rotate: '0deg' },
+      ],
+      { duration: 420, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+    )
+    const puff = document.createElement('span')
+    puff.setAttribute('aria-hidden', 'true')
+    puff.textContent = 'pew!'
+    puff.className =
+      'pointer-events-none absolute z-[4] -translate-x-full -translate-y-1/2 rounded-full bg-ice px-2 font-mono text-caption font-medium text-deep'
+    puff.style.left = `${MUZZLE.x * 100}%`
+    puff.style.top = `${MUZZLE.y * 100}%`
+    button.append(puff)
+    puff
+      .animate(
+        [
+          { opacity: 1, scale: 0.4, translate: '0 0' },
+          { opacity: 1, scale: 1.1, translate: '-18px -6px', offset: 0.35 },
+          { opacity: 0, scale: 1, translate: '-34px -14px' },
+        ],
+        { duration: 650, easing: 'ease-out' },
+      )
+      .finished.finally(() => puff.remove())
+  }
+
+  async function drop(area: Area, button: HTMLElement) {
+    fire(button)
     if (!played.current) {
       played.current = true
       track('hero_play', {})
@@ -79,7 +122,7 @@ function Hero() {
         max: area === 'desktop' ? 5 : 4,
         reducedMotion,
         onChange: setStatus,
-        // Keep the star, the now tag and the status line clear, so the star stays clickable.
+        // Keep the gun, the now tag and the status line clear, so the gun stays clickable.
         avoid: () =>
           area === 'desktop' && starColumn.current
             ? [starColumn.current.getBoundingClientRect()]
@@ -87,7 +130,7 @@ function Hero() {
       })
       boxes.current[area] = box
     }
-    box.drop(area === 'desktop' ? star.getBoundingClientRect() : undefined)
+    box.drop(area === 'desktop' ? muzzle(button) : undefined)
   }
 
   function tidy() {
@@ -100,7 +143,7 @@ function Hero() {
 
   const latest = goodGuns.guns.find((gun) => gun.name === status.latest)
   const statusText = (verb: string) =>
-    latest ? `${latest.name}: ${latest.line}` : `${verb} the star. it has a project in it.`
+    latest ? `${latest.name}: ${latest.line}` : `${verb} the gun. it has a project in it.`
 
   // Once guns are out, the status line and tidy up get a blue backing so they stay legible over the
   // pile. Before that there's nothing under them but the hero cloud.
@@ -135,14 +178,17 @@ function Hero() {
     </div>
   )
 
-  const starButton = (size: string, area: Area) => (
+  // The toy gun (PORT-205, replaced the star): sways a little while idle, recoils on click.
+  const gunButton = (size: string, area: Area) => (
     <button
       type="button"
-      aria-label="Drop a good gun from the star"
+      aria-label="Fire a good gun"
       onClick={(event) => drop(area, event.currentTarget)}
-      className="inline-flex cursor-pointer items-center justify-center rounded-full bg-transparent p-0 text-star"
+      className="relative inline-flex cursor-pointer items-center justify-center bg-transparent p-0 text-star"
     >
-      <Star spinning className={size} />
+      <span data-recoil className="block origin-[70%_60%]">
+        <GunIcon className={cn('origin-[70%_60%] motion-safe:animate-gun-idle', size)} />
+      </span>
     </button>
   )
 
@@ -179,7 +225,7 @@ function Hero() {
             <a href="#contact" className={cn(bigLinkClass, heroLink)}>
               Say hi
             </a>
-            <span className="lg:hidden">{starButton('size-11', 'phone')}</span>
+            <span className="lg:hidden">{gunButton('w-14 h-auto', 'phone')}</span>
           </div>
           <div className="flex flex-col gap-2 lg:hidden">
             {trayOpen && (
@@ -196,9 +242,9 @@ function Hero() {
           ref={starColumn}
           className="relative col-span-3 col-start-10 hidden flex-col items-center gap-4 lg:flex [&>*]:pointer-events-auto"
         >
-          {/* Pinned over the spinning star: it stays put while the star turns underneath. */}
-          <NowTag className="relative z-[1] -mb-16 w-full -rotate-3" />
-          {starButton('size-56', 'desktop')}
+          {/* Pinned above the gun, clear of the barrel so the "pew!" shows. */}
+          <NowTag className="relative z-[1] mb-2 w-full -rotate-3" />
+          {gunButton('w-60 h-auto', 'desktop')}
           {statusLine('click')}
         </div>
       </Container>
