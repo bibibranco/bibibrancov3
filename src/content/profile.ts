@@ -139,19 +139,5 @@ const interests: Interest[] = [
   },
 ]
 
-/** Footer credit for v3. */
-const credit = { name: 'Amanda Medeiros', href: 'https://asmdrs.vercel.app/' } as const
-
-export {
-  person,
-  contact,
-  socials,
-  experience,
-  education,
-  interests,
-  talks,
-  bio,
-  credit,
-  yearsOfExperience,
-}
+export { person, contact, socials, experience, education, interests, talks, bio, yearsOfExperience }
 export type { YearMonth, Experience, Education, Interest, InterestLink, Social, Talk }

@@ -4,7 +4,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Container } from '@/components/ui/layout'
 import { buttonVariants } from '@/components/ui/button'
 import { HomeLink } from './home-link'
-import { contactHref, navItems, navLinkClass } from './nav'
+import { contactHref, navItems } from './nav'
 
 const loadMenuDialog = () => import('./menu-dialog')
 const MenuDialog = lazy(loadMenuDialog)
@@ -57,7 +57,7 @@ function MobileMenu() {
           setMounted(true)
           setOpen(true)
         }}
-        className={buttonVariants({ variant: 'secondary' })}
+        className={buttonVariants({ variant: 'chip', size: 'chip' })}
       >
         Menu
       </button>
@@ -73,20 +73,25 @@ function MobileMenu() {
 
 function SiteHeader() {
   return (
-    <header className="border-b border-border">
-      <Container className="flex items-center justify-between py-3 md:py-5">
-        <HomeLink />
+    // Chip nav (PORT-205, typesafe.ai reference): each page and "Say hi" sit in small boxes; the
+    // current page inverts to Deep. The logo stays bare and white: the block stands for "branco".
+    <header className="relative">
+      <Container className="flex items-center justify-between py-3 md:py-4">
+        <HomeLink className="text-white" />
         <nav aria-label="Main" className="hidden md:block">
-          <ul className="m-0 flex list-none items-center gap-8 p-0">
+          <ul className="m-0 flex list-none items-center gap-1.5 p-0">
             {navItems.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className={navLinkClass}>
+                <Link to={item.to} className={buttonVariants({ variant: 'chip', size: 'chip' })}>
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <a href={contactHref} className={navLinkClass}>
+            <li className="ml-3">
+              <a
+                href={contactHref}
+                className={buttonVariants({ variant: 'chip-solid', size: 'chip' })}
+              >
                 Say hi
               </a>
             </li>

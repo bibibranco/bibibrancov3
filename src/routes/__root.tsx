@@ -7,7 +7,7 @@ import { SiteHeader, SkipLink } from '@/components/site/site-header'
 import { seo, themeColor } from '@/lib/seo'
 import appCss from '@/styles.css?url'
 import bodyFont from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url'
-import headingFont from '@fontsource-variable/syne/files/syne-latin-wght-normal.woff2?url'
+import headingFont from '@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -58,9 +58,15 @@ function RootLayout() {
   return (
     <>
       <SkipLink />
+      {/* The grainy cloud (PORT-205) opens every page and runs behind the header. Header and main
+          are positioned to paint above it; the footer has its own, upside down. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 bg-grain h-[min(40rem,90vh)]"
+      />
       <SiteHeader />
       {/* tabIndex lets the skip link move focus here; main itself shows no ring. */}
-      <main id="main" tabIndex={-1} className="focus-visible:outline-none">
+      <main id="main" tabIndex={-1} className="relative focus-visible:outline-none">
         <Outlet />
       </main>
       <SiteFooter />

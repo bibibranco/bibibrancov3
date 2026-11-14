@@ -82,9 +82,16 @@ const projects = defineCollection({
     timeline: z.string().min(1),
     team: z.string().optional(),
     outcome: z.string().optional(),
+    /** Press coverage, linked under Outcome in the case-study header (PORT-205). */
+    press: z.array(z.object({ name: z.string().min(1), href: z.url() })).default([]),
     category: z.enum(['work', 'craft']),
     tags: z.array(z.string()).default([]),
     cover: image,
+    /**
+     * `none` leaves the cover out of the case-study header, so the story leads and images come in
+     * where the text introduces them (PORT-205). The cover still serves cards and share images.
+     */
+    coverSize: z.enum(['wide', 'none']).default('wide'),
     featured: z.boolean().default(false),
     /** Sort order within the category, on /work and for prev/next. */
     order: z.number(),

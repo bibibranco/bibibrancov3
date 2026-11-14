@@ -41,7 +41,9 @@ function Interests() {
   return (
     <Section aria-labelledby="interests-heading">
       <Container className="flex flex-col gap-6">
-        <SectionHeading id="interests-heading">count me in for</SectionHeading>
+        <SectionHeading id="interests-heading" size="display">
+          count me in for
+        </SectionHeading>
         <ul className="m-0 list-none border-b border-border p-0">
           {interests.map((interest) => (
             <li key={interest.label}>

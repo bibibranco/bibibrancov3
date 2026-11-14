@@ -46,5 +46,9 @@ The three new projects (momoProto, momoGood platform, Itaú card fees) use label
 - Layout changes (E4 tickets).
 
 ## Notes / links
+- **Update 2026-11-14 (PORT-205):**
+  - Busca Resgatados is done: Medium text in the body, real 2024 facts, press links, screens rebuilt from the project's code. Its TODOs are cleared, and it is no longer a short page.
+  - The momoGood quote and woodworking spec are off the desk (`featured: false`) until they have real content; set them back to `true` when filled in.
+  - New draft copy to confirm: good guns, wall of shame (text and progress %), Geral do Grêmio titles.
 - Markers per file at PORT-302 merge: Itaú 11, woodworking 10, momoProto 9, momoGood 9, Busca Resgatados 7, AEDIT 5, Rato Túlio 5, Thomé 5, ITP map 3, `profile.ts` 3.
 - Owed facts are also listed in [`copy.md`](../artifacts/copy.md) and PORT-008.

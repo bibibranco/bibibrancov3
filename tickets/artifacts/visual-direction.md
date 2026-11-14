@@ -68,3 +68,7 @@ All three are self-hosted through fontsource, so there's no Google Fonts request
 
 ## Decided in PORT-006
 - Light theme: no. One theme (Blue). See [`design-system/README.md`](design-system/README.md).
+
+## Updated in PORT-205 (2026-11-14)
+- typesafe.ai adopted as a layout and ornament reference, not a palette: window chrome, dotted panels, dither, crop marks, ruled columns, chip nav and big underlined CTAs, all on Blue.
+- Display face Syne → **Inter Tight** (free neo-grotesk standing in for typesafe's Die Grotesk). Body and mono unchanged.

@@ -1,7 +1,17 @@
 import { MDXContent } from '@content-collections/mdx/react'
 import type { ComponentProps } from 'react'
 
-import { Figure, ImagePair, MarginNote, Quote, Specs, Stats } from '@/components/mdx/blocks'
+import {
+  Figure,
+  ImagePair,
+  Lead,
+  MarginNote,
+  Quote,
+  Requirement,
+  Requirements,
+  Specs,
+  Stats,
+} from '@/components/mdx/blocks'
 import type { ResponsiveImage } from '@/components/ui/image'
 import { ExternalLink, TextLink, textLinkClass } from '@/components/ui/text-link'
 import { ProjectImagesContext } from '@/lib/project-images'
@@ -46,6 +56,9 @@ const components = {
   Stats,
   Specs,
   MarginNote,
+  Requirements,
+  Requirement,
+  Lead,
 }
 
 type MdxContentProps = {

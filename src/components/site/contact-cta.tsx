@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { buttonVariants } from '@/components/ui/button'
 import { Container, SectionHeading } from '@/components/ui/layout'
 import { CopyButton } from '@/components/ui/copy-button'
-import { ExternalLink } from '@/components/ui/text-link'
+import { bigLinkClass, ExternalLink } from '@/components/ui/text-link'
 import { contact, socials } from '@/content/profile'
 import { track } from '@/lib/analytics'
 
@@ -21,14 +21,24 @@ function ContactCta({ location }: ContactCtaProps) {
   const trackEmail = () => track('contact_click', { method: 'email', location })
 
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="scroll-mt-4 border-t border-border py-section"
-    >
-      <Container className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+    <section id="contact" aria-labelledby="contact-heading" className="scroll-mt-4 py-section">
+      {/* PORT-205: "get in touch ⏵⏵⏵ say hi" as one display-size row, after typesafe.ai's
+          "Come Build With Us ⏵⏵⏵ Open Roles". The row sits between crop marks. */}
+      <Container className="flex flex-col gap-8">
+        <div className="crop-marks flex flex-wrap items-end gap-x-8 gap-y-2 px-4 py-6 md:py-8">
+          <SectionHeading id="contact-heading" className="text-h2 md:text-h1">
+            get in touch
+          </SectionHeading>
+          <span aria-hidden="true" className="font-heading text-h2 text-star md:text-h1">
+            ⏵⏵⏵
+          </span>
+          <a href={`mailto:${contact.email}`} onClick={trackEmail} className={bigLinkClass}>
+            say hi
+          </a>
+        </div>
+      </Container>
+      <Container className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex flex-col gap-3 lg:flex-1">
-          <SectionHeading id="contact-heading">get in touch</SectionHeading>
           <p className="m-0 max-w-measure text-lead">
             Say hi, pitch me a weird project, or ask how the rat costume works.
           </p>

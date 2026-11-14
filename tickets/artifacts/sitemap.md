@@ -35,7 +35,7 @@ flowchart TD
 
 ## 2. Navigation
 - **Header:** logo (home link, accessible name "Bibi Branco") · **Work** `/work` · **About** `/about` · **Say hi** (scrolls to the contact CTA, which uses `mailto:oi@bibibran.co`).
-- **Footer:** email `oi@bibibran.co` · LinkedIn · Medium · credit for v3 by Amanda Medeiros (F1/F2, reworded) · © year.
+- **Footer:** email `oi@bibibran.co` · LinkedIn · Medium · © year.
 - Case-study pages have no sidebar. Prev/next and the header replace v3's "back to homepage" (P0).
 
 ## 3. Projects and slugs

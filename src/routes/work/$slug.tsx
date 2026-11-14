@@ -44,8 +44,15 @@ const bodyLayout = [
   'grid gap-y-6 lg:grid-cols-[minmax(0,var(--measure))_var(--margin-width)] lg:justify-center lg:gap-x-10',
   'lg:[&>:not([data-slot=margin-note])]:col-start-1',
   'lg:[&>[data-slot=margin-note]]:col-start-2 lg:[&>[data-slot=margin-note]]:self-start',
-  'lg:[&>[data-size=full]]:col-span-2 lg:[&>[data-slot=image-pair]]:col-span-2',
-  'lg:[&>[data-slot=quote]]:col-span-2',
+  // Highlights (stats, quotes, full figures, image pairs) span both columns and bleed to the panel's
+  // edges, so they read as gridded bands across the solid reading panel (PORT-205).
+  'lg:[&>[data-highlight]]:col-span-2 lg:[&>[data-slot=requirements]]:col-span-2 lg:[&>[data-slot=lead]]:col-span-2 lg:[&>[data-slot=figure]]:col-span-2',
+  // The side padding equals the bleed, so a band's content starts at the text column's left edge.
+  '[&>[data-highlight]]:-mx-5 [&>[data-highlight]]:px-5',
+  'md:[&>[data-highlight]]:-mx-10 md:[&>[data-highlight]]:px-10',
+  'lg:[&>[data-highlight]]:mx-[calc(-1*var(--band-bleed))] lg:[&>[data-highlight]]:px-(--band-bleed)',
+  'lg:[--band-bleed:calc((100cqw-var(--measure)-var(--margin-width)-2.5rem)/2+4rem)]',
+  '[&>[data-highlight]]:my-6 md:[&>[data-highlight]]:my-10',
   // Section breaks: more air above each h2 than between paragraphs.
   '[&>h2:not(:first-child)]:mt-8',
 ].join(' ')
@@ -89,18 +96,21 @@ function CaseStudy() {
           <ProjectLinks project={project} />
         </Container>
 
-        <Container>
-          <Picture
-            image={project.cover}
-            alt={project.cover.alt}
-            priority
-            sizes="(min-width: 1440px) 1200px, calc(100vw - 2 * var(--fluid-gutter))"
-            className="aspect-[16/10] w-full object-cover md:aspect-[2/1]"
-          />
-        </Container>
+        {project.coverSize === 'wide' && (
+          <Container>
+            <Picture
+              image={project.cover}
+              alt={project.cover.alt}
+              priority
+              sizes="(min-width: 1440px) 1200px, calc(100vw - 2 * var(--fluid-gutter))"
+              className="aspect-[16/10] w-full object-cover md:aspect-[2/1]"
+            />
+          </Container>
+        )}
 
         <Container>
-          <div className="relative bg-card bg-notebook-card px-5 py-10 text-card-foreground md:px-10 md:py-16 lg:px-16">
+          {/* Text reads on solid Deep; only the highlights get the grid (PORT-205). */}
+          <div className="[container-type:inline-size] relative bg-card px-5 py-10 text-card-foreground md:px-10 md:py-16 lg:px-16">
             <MdxContent code={body.mdx} images={body.images} className={bodyLayout} />
             {/* case_study_read fires when this reaches the viewport: 75% of the way down the body. */}
             <div

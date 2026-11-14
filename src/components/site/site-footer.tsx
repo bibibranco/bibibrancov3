@@ -1,15 +1,15 @@
 import { useMatches } from '@tanstack/react-router'
 
+import { Logo } from '@/components/brand/logo'
 import { Container } from '@/components/ui/layout'
 import { ExternalLink, textLinkClass } from '@/components/ui/text-link'
-import { contact, credit, person, socials } from '@/content/profile'
+import { contact, person, socials } from '@/content/profile'
 import { track } from '@/lib/analytics'
 
 const year = new Date().getFullYear()
 
 // On pages without a <ContactCta> (/work, 404) the footer is the #contact target for "Say hi", so
-// email and LinkedIn count as contact clicks. Medium is outbound. The v3 credit isn't tracked
-// (brief.md §4).
+// email and LinkedIn count as contact clicks. Medium is outbound (brief.md §4).
 
 function trackSocial(id: (typeof socials)[number]['id']) {
   if (id === 'linkedin') track('contact_click', { method: 'linkedin', location: 'footer' })
@@ -21,8 +21,19 @@ function SiteFooter() {
     select: (matches) => matches.some((match) => match.staticData.contactCta),
   })
   return (
-    <footer id={pageHasCta ? undefined : 'contact'} className="border-t border-border">
-      <Container className="flex flex-col gap-4 py-8 text-small md:flex-row md:items-center md:justify-between">
+    <footer id={pageHasCta ? undefined : 'contact'} className="relative">
+      {/* The hero's grainy cloud, flipped so it rises from the bottom of the page (PORT-205). */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 bg-grain h-[min(32rem,100%)] -scale-y-100"
+      />
+      {/* Big logo band between crop marks (PORT-205). Decoration: the header already links home. */}
+      <Container aria-hidden="true" className="relative">
+        <div className="crop-marks flex justify-center px-4 py-[clamp(2rem,6vw,5rem)] text-white">
+          <Logo className="h-auto w-full max-w-[40rem]" />
+        </div>
+      </Container>
+      <Container className="relative flex flex-col gap-4 py-8 text-small md:flex-row md:items-center md:justify-between">
         <ul className="m-0 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
           <li>
             <a
@@ -41,12 +52,8 @@ function SiteFooter() {
             </li>
           ))}
         </ul>
-        <p className="m-0 text-muted-foreground">
-          v3 built with <ExternalLink href={credit.href}>{credit.name}</ExternalLink>
-          {' · '}
-          <span className="font-mono">
-            © {year} {person.name}
-          </span>
+        <p className="m-0 font-mono text-muted-foreground">
+          © {year} {person.name}
         </p>
       </Container>
     </footer>

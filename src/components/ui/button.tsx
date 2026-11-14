@@ -13,9 +13,13 @@ const buttonClasses = cva(
         secondary:
           'border-input bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground',
         ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
+        // Chips (PORT-205): small square-ish boxes for the header, after typesafe.ai's nav.
+        chip: 'rounded-sm bg-paper text-paper-foreground hover:bg-ice data-[status=active]:bg-deep data-[status=active]:text-ice',
+        'chip-solid': 'rounded-sm bg-deep text-ice hover:bg-[#13306e]',
       },
       size: {
         default: 'min-h-tap px-5',
+        chip: 'min-h-tap px-3 text-body font-medium',
         icon: 'size-tap',
       },
     },

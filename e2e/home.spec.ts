@@ -18,10 +18,7 @@ test.describe('home hero', () => {
 })
 
 const star = (page: import('@playwright/test').Page) =>
-  page.getByRole('button', { name: 'Drop a tool from the star' }).and(page.locator(':visible'))
-const status = (page: import('@playwright/test').Page) =>
-  page.locator('section[aria-labelledby="hero-heading"] [role="status"]:visible')
-
+  page.getByRole('button', { name: 'Drop a good gun from the star' }).and(page.locator(':visible'))
 test('the hero star spins only without reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
@@ -32,58 +29,75 @@ test('the hero star spins only without reduced motion', async ({ page }) => {
   await expect(svg).toHaveCSS('animation-name', 'star-spin')
 })
 
-// PORT-410: hero play, option A. The star drops tools; "tidy up" clears them.
-test.describe('hero play', () => {
-  test('the star drops tools, the status line counts them, tidy up clears them', async ({
+const status = (page: import('@playwright/test').Page) =>
+  page.locator('section[aria-labelledby="hero-heading"] [role="status"]:visible')
+
+// PORT-205 (engine from PORT-410): the star drops the good guns; "tidy up" clears them.
+test.describe('hero star', () => {
+  test('the star drops good guns, the status line names them, tidy up clears them', async ({
     page,
     isMobile,
   }) => {
     await page.goto('/')
     const area = page.getByTestId(isMobile ? 'hero-tray' : 'hero-layer')
-    await expect(status(page)).toContainText('the star. it has things to show you.')
+    await expect(status(page)).toContainText('the star. it has a project in it.')
 
     await star(page).click()
-    await expect(status(page)).toHaveText('1 thing out · latest: a pencil')
+    await expect(status(page)).toContainText('heat gun:')
     await star(page).click()
     await star(page).click()
-    await expect(status(page)).toHaveText('3 things out · latest: a terminal')
+    await expect(status(page)).toContainText('nail gun:')
     await expect(area.locator('.hero-tool')).toHaveCount(3)
     await expect(area.locator('.hero-tool').first()).toHaveAttribute('aria-hidden', 'true')
 
     await page.getByRole('button', { name: 'tidy up' }).and(page.locator(':visible')).click()
-    await expect(status(page)).toContainText('the star. it has things to show you.')
+    await expect(status(page)).toContainText('the star. it has a project in it.')
     await expect(page.locator('.hero-tool')).toHaveCount(0)
   })
 
-  test('with reduced motion, tools land stacked and stay put', async ({ page, isMobile }) => {
+  test('guns land apart, inside the hero, and stay where they are dragged', async ({
+    page,
+    isMobile,
+  }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
-    for (let i = 0; i < 4; i++) await star(page).click()
+    const clicks = isMobile ? 3 : 4
+    for (let i = 0; i < clicks; i++) await star(page).click()
     const area = page.getByTestId(isMobile ? 'hero-tray' : 'hero-layer')
-    const tools = area.locator('.hero-tool')
-    await expect(tools).toHaveCount(4)
+    const guns = area.locator('.hero-tool')
+    await expect(guns).toHaveCount(clicks)
 
-    const boxes = async () => tools.evaluateAll((els) => els.map((el) => el.style.transform))
-    const before = await boxes()
-    await page.waitForTimeout(300)
-    expect(await boxes()).toEqual(before)
-
-    // Every tool sits inside the play area, on the floor or on the pile. The tilt (up to 5°) lets a
-    // long tool's rotated corner reach a few pixels past its box.
     const areaBox = (await area.boundingBox())!
-    for (const box of await tools.evaluateAll((els) =>
+    const boxes = await guns.evaluateAll((els) =>
       els.map((el) => el.getBoundingClientRect().toJSON()),
-    )) {
-      expect(box.bottom).toBeLessThanOrEqual(areaBox.y + areaBox.height + 10)
+    )
+    for (const box of boxes) {
+      expect(box.top).toBeGreaterThanOrEqual(areaBox.y - 20)
+      expect(box.bottom).toBeLessThanOrEqual(areaBox.y + areaBox.height + 20)
     }
-  })
 
-  test('tools never cover the copy or the buttons', async ({ page, isMobile }) => {
-    test.skip(isMobile, 'Phones use a tray below the buttons')
-    await page.goto('/')
-    for (let i = 0; i < 8; i++) await star(page).click()
-    await page.waitForTimeout(1500)
-    await page.getByRole('link', { name: 'See my work' }).click({ trial: true })
-    await page.getByRole('link', { name: 'Say hi' }).first().click({ trial: true })
+    // Drag the last gun (on top, so nothing covers it) 50px toward the middle; it stays there.
+    const gun = guns.last()
+    const before = (await gun.boundingBox())!
+    const dx = before.x + before.width / 2 > areaBox.x + areaBox.width / 2 ? -50 : 50
+    const cx = before.x + before.width / 2
+    const cy = before.y + before.height / 2
+    await page.mouse.move(cx, cy)
+    await page.mouse.down()
+    await page.mouse.move(cx + dx, cy, { steps: 5 })
+    await page.mouse.up()
+    await page.waitForTimeout(300)
+    const after = (await gun.boundingBox())!
+    expect(Math.abs(after.x - before.x - dx)).toBeLessThan(5)
   })
+})
+
+// PORT-205: unfinished projects under the desk. Not case studies, so no links.
+test('the wall of shame lists unfinished projects without links', async ({ page }) => {
+  await page.goto('/')
+  const wall = page.getByRole('region', { name: 'wall of shame' })
+  await expect(wall.getByRole('listitem')).toHaveCount(2)
+  await expect(wall).toContainText('good guns')
+  await expect(wall).toContainText('cafuné')
+  await expect(wall.getByRole('link')).toHaveCount(0)
 })

@@ -2,12 +2,14 @@ import { Link } from '@tanstack/react-router'
 import type { CSSProperties, ReactNode } from 'react'
 
 import { Picture } from '@/components/ui/image'
-import { Container, Section, SectionHeading } from '@/components/ui/layout'
-import { TextLink } from '@/components/ui/text-link'
+import { Container, Panel, Section, SectionHeading } from '@/components/ui/layout'
+import { BigLink } from '@/components/ui/text-link'
+import { Window } from '@/components/ui/window'
 import { getFeaturedFragments, type DeskFragment } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
-import { deskHeightFor, slotStyle, stickerStyle } from './desk-layout'
+import { WallOfShame } from './wall-of-shame'
+import { deskHeightFor, slotStyle, stickerStyleFor } from './desk-layout'
 
 // "bits and pieces on my desk" (PORT-403, design PORT-007 / wireframes A + C). Every featured
 // fragment is a desk object, and its type picks the object. From xl the objects are placed by
@@ -15,18 +17,8 @@ import { deskHeightFor, slotStyle, stickerStyle } from './desk-layout'
 // `order`. Hand placement starts at xl, not lg: at 1024 the objects narrow but their text
 // doesn't, and neighbours overlap. Each object is
 // one link to its case study. The link is named by everything on the object, caption
-// included ("… terminal · momoProto"), so the project title is always real link text (copy.md)
+// included ("… momoProto →"), so the project title is always real link text (copy.md)
 // and the visible text is part of the name (WCAG 2.5.3).
-
-const objectWord: Record<DeskFragment['type'], (fragment: DeskFragment) => string> = {
-  code: () => 'terminal',
-  quote: () => 'sticky',
-  stat: () => 'receipt',
-  spec: () => 'shop tag',
-  image: (f) => (f.type === 'image' && f.object === 'print' ? 'print' : 'polaroid'),
-  writing: (f) => (f.type === 'writing' && f.object === 'clipping' ? 'clipping' : 'index card'),
-  sketch: () => 'notebook page',
-}
 
 const captionClass = 'block font-mono text-[0.75rem] leading-[1.3] tracking-[0.04em]'
 const kickerClass =
@@ -34,11 +26,10 @@ const kickerClass =
 const ruled = 'bg-[repeating-linear-gradient(var(--paper)_0_27px,#e1e6ef_27px_28px)]'
 const imageSizes = '(min-width: 1280px) 330px, (min-width: 1024px) 30vw, 45vw'
 
-function Caption({ word, title, className }: { word: string; title: string; className?: string }) {
+/** Just the project and an arrow: the object speaks for itself (PORT-205 dropped the object word). */
+function Caption({ title, className }: { title: string; className?: string }) {
   return (
     <span className={cn(captionClass, 'text-paper-muted', className)}>
-      {/* The object word drops on phones, where the columns are narrow (copy.md). */}
-      <span className="max-md:hidden">{word} · </span>
       {title} <span aria-hidden="true">→</span>
     </span>
   )
@@ -66,16 +57,9 @@ function ObjectBody({
 }) {
   switch (fragment.type) {
     case 'code':
+      // Window chrome (PORT-205) in place of the traffic lights.
       return (
-        <span className="block bg-terminal text-terminal-foreground">
-          <span
-            aria-hidden="true"
-            className="flex gap-1.5 border-b border-terminal-foreground/20 px-3 py-2.5"
-          >
-            <i className="block size-2.5 rounded-full bg-terminal-muted" />
-            <i className="block size-2.5 rounded-full bg-terminal-muted" />
-            <i className="block size-2.5 rounded-full bg-star" />
-          </span>
+        <Window title={`${fragment.project.slug}.sh`} variant="deep">
           <span className="block px-[18px] pt-4 pb-1.5 font-mono text-[0.9375rem] leading-[1.6] max-md:text-[0.8125rem]">
             {fragment.lines.map((line, index) => (
               <span key={index} className="block">
@@ -91,7 +75,7 @@ function ObjectBody({
             ))}
           </span>
           {caption('px-[18px] pt-2 pb-4 text-terminal-muted')}
-        </span>
+        </Window>
       )
     case 'quote':
       return (
@@ -204,11 +188,18 @@ function ObjectBody({
   }
 }
 
-function DeskObject({ fragment, index }: { fragment: DeskFragment; index: number }) {
-  const word = objectWord[fragment.type](fragment)
+function DeskObject({
+  fragment,
+  index,
+  count,
+}: {
+  fragment: DeskFragment
+  index: number
+  count: number
+}) {
   return (
     <li
-      style={slotStyle(index) as CSSProperties}
+      style={slotStyle(index, count) as CSSProperties}
       className="relative mb-5 rotate-(--rm) break-inside-avoid focus-within:z-(--z-object-focus) hover:z-(--z-object-focus) max-md:mb-3 xl:absolute xl:top-(--y) xl:left-(--x) xl:z-(--z) xl:mb-0 xl:w-(--w) xl:rotate-(--r)"
     >
       <Link
@@ -218,9 +209,7 @@ function DeskObject({ fragment, index }: { fragment: DeskFragment; index: number
       >
         <ObjectBody
           fragment={fragment}
-          caption={(className) => (
-            <Caption word={word} title={fragment.project.title} className={className} />
-          )}
+          caption={(className) => <Caption title={fragment.project.title} className={className} />}
         />
       </Link>
     </li>
@@ -231,43 +220,58 @@ function Desk() {
   const fragments = getFeaturedFragments()
   return (
     <>
-      <Section notebook aria-labelledby="desk-heading" className="pb-12">
-        <Container className="flex flex-col gap-10">
-          <SectionHeading id="desk-heading">bits and pieces on my desk</SectionHeading>
-          <div
-            className="relative"
-            style={{ '--desk-h': deskHeightFor(fragments.length) } as CSSProperties}
+      <Section aria-labelledby="desk-heading" className="pb-12 xl:pt-8 xl:pb-6">
+        {/* From xl the heading and the desk fit one screen (PORT-205): the heading scales with the
+          viewport height and the desk takes what is left (desk-layout.ts). */}
+        <Container className="flex flex-col gap-10 xl:gap-5">
+          <SectionHeading
+            id="desk-heading"
+            size="display"
+            className="xl:py-4 xl:text-[clamp(2.5rem,7svh,4.5rem)]"
           >
-            <ul className="m-0 list-none columns-2 gap-3 p-0 md:gap-4 lg:columns-3 lg:gap-6 xl:h-(--desk-h) xl:columns-auto">
-              {fragments.map((fragment, index) => (
-                <DeskObject
-                  key={`${fragment.project.slug}-${index}`}
-                  fragment={fragment}
-                  index={index}
-                />
-              ))}
-            </ul>
-            <svg
-              viewBox="0 0 32 32"
-              aria-hidden="true"
-              focusable="false"
-              style={stickerStyle as CSSProperties}
-              className="pointer-events-none absolute top-(--y) left-(--x) z-8 hidden w-(--w) rotate-(--r) text-star xl:block"
-            >
-              <path
-                fill="currentColor"
-                stroke="var(--deep)"
-                strokeWidth=".6"
-                d="M16 7.25263L21.5565 0L21.2218 9.18292L30.0699 7.25263L24 14.0697L32 18.3691L23.0349 19.6263L26.4435 28.1427L18.7782 23.2559L16 32L13.2218 23.2559L5.55646 28.1427L8.96507 19.6263L0 18.3691L8 14.0697L1.93014 7.25263L10.7782 9.18292L10.4435 0L16 7.25263Z"
-              />
-            </svg>
-          </div>
+            bits and pieces on my desk
+          </SectionHeading>
+          {/* The desk is a dotted "desktop" panel (PORT-205); objects keep their own surfaces. */}
+          <Panel tag="bibi.OS 4.0" dither className="p-3 pt-10 md:p-6 md:pt-12 xl:pt-10 xl:pb-4">
+            {/* From xl the objects and the wall of shame sit side by side; below that, the wall
+                comes after the objects. */}
+            <div className="flex flex-col gap-8 xl:grid xl:grid-cols-[minmax(0,1fr)_17.5rem] xl:gap-8">
+              <div
+                className="relative"
+                style={{ '--desk-h': deskHeightFor(fragments.length) } as CSSProperties}
+              >
+                <ul className="m-0 list-none columns-2 gap-3 p-0 md:gap-4 lg:columns-3 lg:gap-6 xl:h-(--desk-h) xl:columns-auto">
+                  {fragments.map((fragment, index) => (
+                    <DeskObject
+                      key={`${fragment.project.slug}-${index}`}
+                      fragment={fragment}
+                      index={index}
+                      count={fragments.length}
+                    />
+                  ))}
+                </ul>
+                <svg
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={stickerStyleFor(fragments.length) as CSSProperties}
+                  className="pointer-events-none absolute top-(--y) left-(--x) z-8 hidden w-(--w) rotate-(--r) text-star xl:block"
+                >
+                  <path
+                    fill="currentColor"
+                    stroke="var(--deep)"
+                    strokeWidth=".6"
+                    d="M16 7.25263L21.5565 0L21.2218 9.18292L30.0699 7.25263L24 14.0697L32 18.3691L23.0349 19.6263L26.4435 28.1427L18.7782 23.2559L16 32L13.2218 23.2559L5.55646 28.1427L8.96507 19.6263L0 18.3691L8 14.0697L1.93014 7.25263L10.7782 9.18292L10.4435 0L16 7.25263Z"
+                  />
+                </svg>
+              </div>
+              <WallOfShame className="border-t pt-6 xl:border-t-0 xl:border-l xl:pt-0 xl:pl-6" />
+            </div>
+          </Panel>
         </Container>
       </Section>
       <Container className="pt-7 pb-section">
-        <TextLink to="/work" className="font-heading text-[1.375rem] font-bold">
-          Everything, tidy →
-        </TextLink>
+        <BigLink to="/work">Everything, tidy →</BigLink>
       </Container>
     </>
   )

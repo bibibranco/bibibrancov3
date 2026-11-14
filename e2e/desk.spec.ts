@@ -14,7 +14,7 @@ test.describe('home desk', () => {
       await expect(link).toHaveAttribute('href', /^\/work\/[a-z0-9-]+$/)
       await expect(link).toHaveAccessibleName(/\S/)
     }
-    await expect(desk.getByRole('link', { name: /momoProto/ })).toHaveCount(2)
+    await expect(desk.getByRole('link', { name: /momoProto/ })).toHaveCount(1)
   })
 
   test('objects are reachable with Tab and open with Enter', async ({ page }) => {
