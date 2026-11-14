@@ -147,10 +147,10 @@ function Hero() {
   // and "tidy up"), so the star column never grows when guns come out. Otherwise the centred
   // hero re-centres and the star jumps.
   const statusLine = (
-    <div className="flex flex-col items-start gap-1 lg:h-36 lg:items-center">
+    <div className="flex flex-col items-start gap-1 lg:h-56 lg:items-center">
       {status.count > 0 && (
         <p className="m-0 bg-background font-mono text-caption text-foreground lg:px-2 lg:text-center">
-          {goodGuns.title}, a project i still want to build
+          {goodGuns.title}, a project i still want to build. double-click one to put it away
         </p>
       )}
       <p
@@ -271,7 +271,7 @@ function Hero() {
         >
           {/* Pinned above the gun, clear of the barrel so the "pew!" shows. */}
           <NowTag className="relative z-[1] mb-2 w-full -rotate-3" />
-          {gunButton('size-60', 'desktop')}
+          {gunButton('size-[min(15rem,26svh)]', 'desktop')}
           {statusLine}
         </div>
       </Container>
